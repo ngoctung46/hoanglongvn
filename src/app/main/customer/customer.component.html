@@ -1,79 +1,114 @@
 <sm-modal title="Customer Information." #customerModal>
-  <modal-content *ngIf="customer">    
+  <modal-content *ngIf="customer">
     <form class="ui form" [formGroup]="customerForm">
       <div class="field">
         <div class="four fields">
           <div class="field">
             <label for="idNumber">Số CMND/Hộ Chiếu</label>
-            <input type="text" name="Số CMND/Hộ Chiếu/..." 
-                  placeholder="ID Number" 
-                  [class.error]="!customerForm.controls['id'].valid" 
-                  [formControl]="customerForm.controls['id']"
-                  [(ngModel)]="customer.id"
-                  [disabled]="doesExist">
-            <div *ngIf="customerForm.controls['id'].hasError('required')&&customerForm.controls['id'].dirty" 
-                  class="ui pointing red basic label">Yêu cầu phải có mã số giấy tờ </div>
+            <input type="text" name="Số CMND/Hộ Chiếu/..." placeholder="ID Number" [class.error]="!customerForm.controls['id'].valid"
+              [formControl]="customerForm.controls['id']" [(ngModel)]="customer.id" [disabled]="doesExist">
+            <div *ngIf="customerForm.controls['id'].hasError('required')&&customerForm.controls['id'].dirty" class="ui pointing red basic label">Yêu cầu phải có mã số giấy tờ </div>
           </div>
           <div class="field">
             <label for="issueDate">Ngày Cấp</label>
-            <input type="text" name="issueDate" placeholder="Ngày Cấp" 
-                  [class.error]="!customerForm.controls['issueDate'].valid" 
-                  [formControl]="customerForm.controls['issueDate']"
-                  [(ngModel)]="customer.issueDate">
-            <div *ngIf="customerForm.controls['issueDate'].hasError('required')&&customerForm.controls['issueDate'].dirty" 
-                  class="ui pointing red basic label">Yêu cầu phải có ngày cấp</div>
-             <div *ngIf="customerForm.controls['issueDate'].hasError('invalidDate')" 
-                  class="ui pointing red basic label">Ngày cấp phải theo định dạng dd/mm/yyyy (VD: 30/12/2015)</div> 
+            <input type="text" name="issueDate" placeholder="Ngày Cấp" [class.error]="!customerForm.controls['issueDate'].valid" [formControl]="customerForm.controls['issueDate']"
+              [(ngModel)]="customer.issueDate">
+            <div *ngIf="customerForm.controls['issueDate'].hasError('required')&&customerForm.controls['issueDate'].dirty" class="ui pointing red basic label">Yêu cầu phải có ngày cấp</div>
+            <div *ngIf="customerForm.controls['issueDate'].hasError('invalidDate')" class="ui pointing red basic label">Ngày cấp phải theo định dạng dd/mm/yyyy (VD: 30/12/2015)</div>
           </div>
           <div class="field">
             <label>Ngày Hết Hạn</label>
-            <input type="text" name="expirationDate" placeholder="Ngày Hết Hạn" 
-                    [class.error]="!customerForm.controls['expirationDate'].valid"
-                    [formControl]="customerForm.controls['expirationDate']"
-                    [(ngModel)]="customer.expirationDate">
+            <input type="text" name="expirationDate" placeholder="Ngày Hết Hạn" [class.error]="!customerForm.controls['expirationDate'].valid"
+              [formControl]="customerForm.controls['expirationDate']" [(ngModel)]="customer.expirationDate">
             <div *ngIf="customerForm.controls['expirationDate'].hasError('required')&&customerForm.controls['expirationDate'].dirty"
-                    class="ui pointing red basic label">Yêu cầu phải có ngày hết hạn</div>
-             <div *ngIf="customerForm.controls['expirationDate'].hasError('invalidDate')" 
-                    class="ui pointing red basic label">Ngày hết hạn phải theo định dạnh dd/mm/yyyy (VD: 30/12/2015)</div> 
+              class="ui pointing red basic label">Yêu cầu phải có ngày hết hạn</div>
+            <div *ngIf="customerForm.controls['expirationDate'].hasError('invalidDate')" class="ui pointing red basic label">Ngày hết hạn phải theo định dạnh dd/mm/yyyy (VD: 30/12/2015)</div>
 
           </div>
           <div class="field">
-            <label>Quốc Gia Cấp: </label>
-          
-              <input type="text" placeholder="Quốc Gia Cấp" 
-                [formControl]="customerForm.controls['issueCountry']"
-                [class.error]="!customerForm.controls['issueCountry'].valid"
-                [(ngModel)]="customer.issueCountry">
-            <div *ngIf="customerForm.controls['issueCountry'].hasError('required')&&customerForm.controls['issueCountry'].dirty" 
-                  class="ui pointing red basic label">Yêu cầu nhập quốc gia cấp </div>
-          </div>
-          <div class="field">
             <label>Thành Phố Cấp:</label>
-                <input type="text" placeholder="Thành Phố Cấp" 
+            <select [(ngModel)]="customer.issueCity" (focus)="showDropDown()" class="ui fluid search selection dropdown" [formControl]="customerForm.controls['issueCity']">
+                <option *ngFor="let city of cityList" [ngValue]="city">{{ city }}</option>
+              </select >
+                <!-- <input type="text" placeholder="Thành Phố Cấp" 
                 [formControl]="customerForm.controls['issueCity']"
                 [class.error]="!customerForm.controls['issueCity'].valid"
-                [(ngModel)]="customer.issueCity">
+                [(ngModel)]="customer.issueCity"> -->
           </div>
+          <div class="field">
+            <label>Quốc Gia Cấp: </label>
+            <select [(ngModel)]="customer.issueCountry" (focus)="showDropDown()" class="ui fluid search selection dropdown" [formControl]="customerForm.controls['issueCountry']">
+                <option *ngFor="let country of countryList" [ngValue]="country.name">{{ country.name }}</option>
+              </select >
+          
+              <!-- <input type="text" placeholder="Quốc Gia Cấp" 
+                [formControl]="customerForm.controls['issueCountry']"
+                [class.error]="!customerForm.controls['issueCountry'].valid"
+                [(ngModel)]="customer.issueCountry"> -->
+            <div *ngIf="customerForm.controls['issueCountry'].hasError('required')&&customerForm.controls['issueCountry'].dirty" 
+                  class="ui pointing red basic label">Yêu cầu nhập quốc gia cấp </div>
+          </div>         
         </div>
       </div>
       <div class="field">
-        <label>Tên</label>
+        <label>Họ</label>
         <div class="two fields">
           <div class="field">
-            <input type="text" name="firstName" placeholder="Tên" 
-                  [class.error]="!customerForm.controls['firstName'].valid" 
-                  [formControl]="customerForm.controls['firstName']"
-                  [(ngModel)]="customer.firstName">
-            <div *ngIf="customerForm.controls['firstName'].hasError('required')&&customerForm.controls['firstName'].dirty" 
-                  class="ui pointing red basic label">Yêu cầu phải có tên</div>
-          </div>
-          <div class="field">
             <input type="text" name="lastName" placeholder="Họ" 
-                  [class.error]="!customerForm.controls['lastName'].valid"
+                  [class.error]="!customerForm.controls['lastName'].valid" 
                   [formControl]="customerForm.controls['lastName']"
                   [(ngModel)]="customer.lastName">
-            <div *ngIf="customerForm.controls['lastName'].hasError('required')&&customerForm.controls['lastName'].dirty" 
+            <div *ngIf="customerForm.controls['lastName'].hasError('required')&&customerForm.controls['firstName'].dirty" 
                   class="ui pointing red basic label">Yêu cầu phải có họ</div>
+          </div>
+          <div class="field">
+            <input type="text" name="firstName" placeholder="Tên" 
+                  [class.error]="!customerForm.controls['firstName'].valid"
+                  [formControl]="customerForm.controls['firstName']"
+                  [(ngModel)]="customer.firstName">
+            <div *ngIf="customerForm.controls['firstName'].hasError('required')&&customerForm.controls['lastName'].dirty" 
+                  class="ui pointing red basic label">Yêu cầu phải có tên</div>
+          </div>
+        </div>
+        <div class="three fields">
+          <div class="field">
+            <label for="birthDate">Ngày Sinh</label>
+            <input type="text" name="birthDate" placeholder="Ngày Sinh" 
+                  [class.error]="!customerForm.controls['birthDate'].valid" 
+                  [formControl]="customerForm.controls['birthDate']"
+                  [(ngModel)]="customer.birthDate">
+            <div *ngIf="customerForm.controls['birthDate'].hasError('required')&&customerForm.controls['birthDate'].dirty" 
+                  class="ui pointing red basic label">Yêu cầu phải có ngày sinh</div>
+             <div *ngIf="customerForm.controls['birthDate'].hasError('invalidDate')" 
+                  class="ui pointing red basic label">Ngày sinh phải theo định dạng dd/mm/yyyy (VD: 30/12/2015)</div> 
+          </div>
+          <div class="field">
+            <label>Thành Phố</label>
+            <select [(ngModel)]="customer.birthPlace"
+                (focus)="showDropDown()" class="ui fluid search selection dropdown" 
+                [formControl]="customerForm.controls['birthPlace']" >
+                <option *ngFor="let city of cityList" [ngValue]="city">{{ city }}</option>
+              </select >
+            <!-- <input type="text" name="birthPlace" placeholder="Nơi Sinh" 
+                    [class.error]="!customerForm.controls['birthPlace'].valid"
+                    [formControl]="customerForm.controls['birthPlace']"
+                    [(ngModel)]="customer.birthPlace"> -->
+            <!-- <div *ngIf="customerForm.controls['birthPlace'].hasError('required')&&customerForm.controls['birthPlace'].dirty"
+                    class="ui pointing red basic label">Yêu cầu phải có nơi sinh</div> -->
+          </div>
+          <div class="field">
+            <label>Quốc Gia</label>
+            <select [(ngModel)]="customer.birthCountry"
+                (focus)="showDropDown()" class="ui fluid search selection dropdown" 
+                [formControl]="customerForm.controls['birthCountry']" >
+                <option *ngFor="let country of countryList" [ngValue]="country.name">{{ country.name }}</option>
+              </select >
+            <!-- <input type="text" name="birthPlace" placeholder="Nơi Sinh" 
+                    [class.error]="!customerForm.controls['birthPlace'].valid"
+                    [formControl]="customerForm.controls['birthPlace']"
+                    [(ngModel)]="customer.birthPlace"> -->
+            <div *ngIf="customerForm.controls['birthPlace'].hasError('required')&&customerForm.controls['birthPlace'].dirty"
+                    class="ui pointing red basic label">Yêu cầu phải có nơi sinh</div>
           </div>
         </div>
         <div class="field">
@@ -86,24 +121,34 @@
         <div class="two fields">
           <div class="field">
             <label>Thành Phố</label>
-            <input type="text" placeholder="Thành Phố" 
+             <select [(ngModel)]="customer.city"
+                (focus)="showDropDown()" class="ui fluid search selection dropdown" 
+                [formControl]="customerForm.controls['city']" >
+                <option *ngFor="let city of cityList" [ngValue]="city">{{ city }}</option>
+              </select >
+            <!-- <input type="text" placeholder="Thành Phố" 
                 [formControl]="customerForm.controls['city']"
                 [class.error]="!customerForm.controls['city'].valid"
-                [(ngModel)]="customer.city">
+                [(ngModel)]="customer.city"> -->
           </div>
           <div class="field">
             <label>Quốc Gia</label>
-            <input type="text" placeholder="Quốc Gia" 
+             <select [(ngModel)]="customer.country"
+                (focus)="showDropDown()" class="ui fluid search selection dropdown" 
+                [formControl]="customerForm.controls['country']" >
+                <option *ngFor="let country of countryList" [ngValue]="country.name">{{ country.name }}</option>
+              </select >
+            <!-- <input type="text" placeholder="Quốc Gia" 
                 [formControl]="customerForm.controls['country']"
                 [class.error]="!customerForm.controls['country'].valid"
-                [(ngModel)]="customer.country">
+                [(ngModel)]="customer.country"> -->
             <div *ngIf="customerForm.controls['country'].hasError('required')&&customerForm.controls['country'].dirty" 
                 class="ui pointing red basic label">Country is required</div>
           </div>
         </div>
       </div>
     </form>
-    <!-- <div class="ui message info">{{ customerForm.value | json }} DOES EXIST{{ doesExist }}</div> -->
+    <div class="ui message info">{{ customerForm.value | json }} DOES EXIST{{ doesExist }}</div>
   </modal-content>
   <modal-actions>
     <button class="ui button primary" 

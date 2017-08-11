@@ -33,6 +33,8 @@ export class OrderComponent implements OnInit {
   minutes: number;
   discount: number = 0.0;
   roomId: string;
+  editting: string;
+  adjustment = 0.0;
   constructor(
     private orderService: OrderService,
     private roomService: RoomService,
@@ -45,6 +47,7 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.orderId = params['id'];
+      this.editting = params['edit'];
       this.order = this.orderService.getOrder(params['id']);
       this.order.subscribe((order: Order) => {
         this.roomId = order.roomId;
@@ -93,8 +96,9 @@ export class OrderComponent implements OnInit {
         });
       });
     });
-    this.orderModal.show({observeChanges: true});
-
+    setTimeout(() => {
+      this.orderModal.show({ observeChanges: true });
+    }, 500);
   }
 
   close() {
@@ -109,10 +113,15 @@ export class OrderComponent implements OnInit {
       status: 2,
       isOccupied: false
     });
+    setTimeout(() => {
+      this.orderModal.hide();;
+    }, 1000);
     this.orderModal.hide();
     location.reload();
   }
-
+  hide() {
+    this.orderModal.hide();
+  }
   remove(key: string) {
     this.orderService.removeService(this.orderId, key);
   }

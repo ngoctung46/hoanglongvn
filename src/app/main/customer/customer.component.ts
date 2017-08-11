@@ -9,7 +9,8 @@ import { Location } from '@angular/common';
 import { OrderService } from '../order.service';
 import { Order } from '../order.model';
 import { Service } from '../service.model';
-
+import { VIETNAM_CITIES, KOREA_CITIES } from '../cities';
+import { COUNTRIES } from '../country';
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
@@ -23,6 +24,8 @@ export class CustomerComponent implements OnInit {
   doesExist;
   customersObser: Observable<Customer[]>;
   customer: Customer;
+  cityList: string[];
+  countryList: any[];
   constructor(
     private location: Location,
     private roomService: RoomService,
@@ -33,6 +36,9 @@ export class CustomerComponent implements OnInit {
     this.customerForm = fb.group({
       'firstName': ['', Validators.required],
       'lastName': ['', Validators.required],
+      'birthDate': ['', Validators.compose([ Validators.required, dateValidator ])],
+      'birthPlace': [''],
+      'birthCountry': ['', Validators.required],
       'id': ['', Validators.required],
       'issueDate': ['', Validators.compose([Validators.required, dateValidator])],
       'expirationDate': ['', Validators.compose([Validators.required, dateValidator])],
@@ -64,6 +70,8 @@ export class CustomerComponent implements OnInit {
       }
       this.customerModal.show({observeChanges: true});
     });
+    this.cityList = KOREA_CITIES.concat(VIETNAM_CITIES.map(x => x.city));
+    this.countryList = COUNTRIES;
   }
 
 
@@ -76,6 +84,10 @@ export class CustomerComponent implements OnInit {
     this.customerModal.hide();
   }
 
+  showDropDown() {
+     (<any>$('.ui.dropdown')).dropdown({ allowAdditions: true });
+  }
+
   async addOrder() {
     const price = this.getPrice(this.roomId);
     const order = new Order(
@@ -84,9 +96,9 @@ export class CustomerComponent implements OnInit {
         roomId: this.roomId,
         services: [
           new Service({
-            description: 'Room Charge',
+            description: 'Tiền Phòng',
             price: 400000,
-            unit: 'night',
+            unit: 'đêm',
             quantity: 1
           })
         ]

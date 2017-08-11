@@ -67,5 +67,21 @@ export const SERVICES: Service[] = [
             unit: `VNĐ`,
             quantity: 1
         }
+    ),
+    new Service(
+        {
+            description: `Đặt Cọc`,
+            price: 0,
+            unit: `VNĐ`,
+            quantity: 1
+        }
+    ),
+    new Service(
+        {
+            description: `Khác`,
+            price: 0,
+            unit: `VNĐ`,
+            quantity: 1
+        }
     )
 ]

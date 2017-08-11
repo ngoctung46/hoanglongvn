@@ -33,7 +33,7 @@
 
 <sm-popup #servicePopup>
   <div class="ui icon buttons">
-    <!-- <button class="ui button green" [routerLink]="['/orders',room.orderId]" skipLocationChange>Xem Hóa Đơn Tạm Thời/</button> -->
+    <button class="ui button green" [routerLink]="['/orders',room.orderId,'yes']" skipLocationChange>Xem Hóa Đơn Tạm Thời</button>
     <button class="ui button blue" [routerLink]="['/hotel-services',room.orderId]" skipLocationChange>Thêm Dịch Vụ</button>
     <button class="ui button violet" (click)="markAsDirtyOrClean(room)">{{ room.status == 1 ? 'Báo Phòng Dơ' : 'Báo Phòng Sạch'}}</button>
   </div>

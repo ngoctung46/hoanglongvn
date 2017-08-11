@@ -49,7 +49,7 @@ export class RoomCardComponent implements OnInit {
   }
 
   checkOut(room: Room): void {
-    this.router.navigate(['/orders', room.orderId], { skipLocationChange: true });
+    this.router.navigate(['/orders', room.orderId, 'no'], { skipLocationChange: true });
   }
 
   clean(room: Room): void {

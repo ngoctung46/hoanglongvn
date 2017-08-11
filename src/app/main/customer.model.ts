@@ -11,6 +11,8 @@ export class Customer {
     public expirationDate: string;
     public issueCity: string;
     public issueCountry: string;
+    public birthDate: string;
+    public birthPlace: string;
     constructor(obj?: any) {
         this.$key               = obj && obj.$key                   || '';
         this.$ref               = obj && obj.$ref                   || '';
@@ -24,5 +26,7 @@ export class Customer {
         this.expirationDate     = obj && obj.expirationDate         || '';
         this.issueCity          = obj && obj.issueCity              || '';
         this.issueCountry       = obj && obj.issueCountry           || '';
+        this.birthDate          = obj && obj.birthDate             || '';
+        this.birthPlace         = obj && obj.birthPlace             || '';
     }
 }

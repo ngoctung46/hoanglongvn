@@ -29,7 +29,7 @@ const mainRoutes: Routes = [
         component: CustomerComponent
     },
     {
-        path: 'orders/:id',
+        path: 'orders/:id/:edit',
         component: OrderComponent
     },
     {

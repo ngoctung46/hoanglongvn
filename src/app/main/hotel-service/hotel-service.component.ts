@@ -16,9 +16,8 @@ export class HotelServiceComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.orderId = params['orderId'];
+      this.orderId = params['orderId'];    
     });
-
     this.hotelServiceModal.show();
     (<any>$('.ui.dropdown')).dropdown();
   }
