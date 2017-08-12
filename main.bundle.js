@@ -531,6 +531,7 @@ var OrderComponent = (function () {
     };
     OrderComponent.prototype.close = function () {
         var _this = this;
+        this.total = this.total - this.discount + this.adjustment;
         this.orderService.updateOrder(this.orderId, {
             total: this.total,
             checkOutTime: new Date().toString(),
