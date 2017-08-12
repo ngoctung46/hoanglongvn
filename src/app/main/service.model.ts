@@ -1,9 +1,11 @@
 export class Service {
+    public $key: string;
     public description: string;
     public price: number;
     public unit: string;
     public quantity: number;
     constructor(obj?: any) {
+        this.$key       = obj && obj.$key || '';
         this.description = obj && obj.description || '';
         this.price = obj && obj.price || 0.0;
         this.unit = obj && obj.unit || '';

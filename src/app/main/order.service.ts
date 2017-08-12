@@ -12,16 +12,22 @@ export class OrderService {
   getOrder(key: string): Observable<any> {
     return this.db.object(`/orders/${key}`);
   }
+  updateService(orderId: string, key: string, data: any) {
+    return this.db.list(`/orders/${orderId}/services`).update(key, data);
+  }
   addService(key: string, service: Service): any {
     return this.db.list(`/orders/${key}/services`).push(service);
   }
-  getServices(key: string): Observable<Service[]> {
-    return this.db.list(`/orders/${key}/services`);
+  getServices(key: string): Observable<any> {
+    return this.db.list(`/orders/${key}/services`).map(services => services.map(service => service));
   }
   removeService(orderId: string, key: string) {
     this.db.list(`/orders/${orderId}/services`).remove(key);
   }
   updateOrder(key: string, data: any): void {
     this.db.list('/orders').update(key, data);
+  }
+  getOrders(): Observable<any[]> {
+    return this.db.list('/orders');
   }
 }

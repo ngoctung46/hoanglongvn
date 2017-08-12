@@ -7,34 +7,25 @@ import { CustomerComponent } from './customer/customer.component';
 import { HotelServiceComponent } from './hotel-service/hotel-service.component';
 const mainRoutes: Routes = [
     {
-        path: 'main',
-        component: MainComponent
-        // children: [
-        //     {
-        //         path: 'orders/:id',
-        //         component: OrderComponent
-        //     },
-        //     {
-        //         path: 'customer-check-in/:customerId/:roomId',
-        //         component: CustomerComponent
-        //     },
-        //     {
-        //         path: 'hotel-services/:orderId',
-        //         component: HotelServiceComponent
-        //     }
-        // ]
+        path: '',
+        redirectTo: 'main',
+        pathMatch: 'full'
     },
     {
-        path: 'customer-check-in/:customerId/:roomId',
-        component: CustomerComponent
+        path: 'main',
+        component: MainComponent,
+    },
+    {
+        path: 'hotel-services/:orderId',
+        component: HotelServiceComponent
     },
     {
         path: 'orders/:id/:edit',
         component: OrderComponent
     },
     {
-        path: 'hotel-services/:orderId',
-        component: HotelServiceComponent
+        path: 'customer-check-in/:customerId/:roomId',
+        component: CustomerComponent
     }
 ];
 

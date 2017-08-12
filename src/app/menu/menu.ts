@@ -10,7 +10,7 @@ export const MENU: MenuItem[] = [
         ]),
     new MenuItem(
         'Reports',
-        '/reports',
+        '/report',
         [
             new MenuItem('Daily Report','daily-report'),
             new MenuItem('Monthly Report', 'monthly-report'),

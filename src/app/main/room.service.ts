@@ -12,5 +12,8 @@ export class RoomService {
   updateRoom(key: string, data: any): void {
     this.db.list('/rooms').update(key, data);
   }
+  getRoom(key: string): Observable<Room> {
+    return this.db.object(`rooms/${key}`);
+  }
 
 }

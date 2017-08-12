@@ -1,3 +1,7 @@
-<p>
-  daily-report works!
-</p>
+
+<h1 class="ui center aligned"> Báo Cáo Theo Ngày</h1>
+Từ Ngày: <ng2-datepicker [options]="options" [(ngModel)]="fromDate"></ng2-datepicker>
+Đến Ngày: <ng2-datepicker [options]="options" [(ngModel)]="toDate"></ng2-datepicker>
+<div class="ui button green" (click)="setDate()">Xem</div> 
+<app-report-table *ngIf="filterList.length > 0" [orders]="filterList"></app-report-table>
+

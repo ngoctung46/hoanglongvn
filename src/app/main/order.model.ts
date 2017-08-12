@@ -8,6 +8,7 @@ export class Order {
     public checkOutTime: string;
     public services: Service[];
     public discount: number;
+    public adjustment: number;
     public total: number;
     constructor(obj?: any) {
         this.customerId     = obj && obj.customerId       || '';
@@ -16,6 +17,7 @@ export class Order {
         this.checkOutTime   = obj && obj.checkOutTime     || '';
         this.services       = obj && obj.services         || [];
         this.discount       = obj && obj.discount         || 0.0;
+        this.adjustment     = obj && obj.adjustment       || 0.0;
         this.total          = obj && obj.total            || 0.0;
     }
 

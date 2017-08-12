@@ -4,13 +4,13 @@
       Hoang  Long  Hotel  Manager  Application
     </a>
     <ng-container *ngFor="let menuItem of menu">
-    <a *ngIf="!menuItem.subMenu" [routerLink]="menuItem.url" class="item">{{ menuItem.name }}</a>
-    <div *ngIf="menuItem.subMenu" class="ui simple dropdown item">
+    <a [routerLink]="menuItem.url" class="item">{{ menuItem.name }}</a>
+    <!-- <div *ngIf="menuItem.subMenu" [routerLink]="menuItem.url" class="ui simple dropdown item">
       {{ menuItem.name }} <i class="dropdown icon"></i>
       <div class="menu">
-        <a *ngFor="let subItem of menuItem.subMenu" class="item" [routerLink]="[menuItem.url]">{{ subItem.name }}</a>
+        <a *ngFor="let subItem of menuItem.subMenu" class="item" [routerLink]="[subItem.url]">{{ subItem.name }}</a>
       </div>
-    </div>
+    </div> -->
     </ng-container>
   </div>
 </div>

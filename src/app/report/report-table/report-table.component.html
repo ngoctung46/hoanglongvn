@@ -1,0 +1,42 @@
+
+<!-- <h1 class="ui center aligned"> Báo Cáo Thu Theo Ngày</h1> -->
+<!-- Từ Ngày: <ng2-datepicker [options]="options" [(ngModel)]="fromDate"></ng2-datepicker>
+Đến Ngày: <ng2-datepicker [options]="options" [(ngModel)]="toDate"></ng2-datepicker>
+<div class="ui button green" (click)="setDate()">Xem</div>
+
+<h2 class="ui header"> Báo cáo thu từ ngày {{ fromDate?.formatted }} tới {{ toDate?.formatted }}</h2> -->
+<table class="ui celled striped table">
+  <thead>
+    <tr>
+      <th>Phòng</th>
+      <th>Khoản Thu</th>
+      <th class="right aligned">Giảm Giá</th>
+      <th class="right aligned">Điều Chỉnh</th>
+      <th class="right aligned">Tổng Cộng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders;let i = index;">
+      <td>{{ order.roomId }}</td>
+       <td class="collapsing">
+        <div class="ui list">
+          <div class="item" *ngFor="let service of order.services">
+            <div class="header">{{ service?.description }}</div>
+            Giá: {{ service?.price | number }}- Số Lượng: {{ service?.quantity | number }} {{ service?.unit }}
+          </div>    
+        </div>
+      </td> 
+      
+        <td class="right aligned">{{ order.discount | number }}</td>
+        <td class="right aligned">{{ order.adjustment | number }}</td>
+        <td class="right aligned">{{ order.total | number }}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <th></th>
+      <th></th>
+      <th class="right aligned"></th>
+      <th class="right aligned">Tổng Cộng</th>
+      <th class="right aligned">{{ total | number}}</th>
+  </tfoot>
+</table>

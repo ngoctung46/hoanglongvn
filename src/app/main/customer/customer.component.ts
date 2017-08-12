@@ -70,7 +70,7 @@ export class CustomerComponent implements OnInit {
       }
       this.customerModal.show({observeChanges: true});
     });
-    this.cityList = KOREA_CITIES.concat(VIETNAM_CITIES.map(x => x.city));
+    this.cityList = KOREA_CITIES.concat(VIETNAM_CITIES.map(x => x.province)).concat(VIETNAM_CITIES.map(x => x.city));
     this.countryList = COUNTRIES;
   }
 
@@ -97,8 +97,8 @@ export class CustomerComponent implements OnInit {
         services: [
           new Service({
             description: 'Tiền Phòng',
-            price: 400000,
-            unit: 'đêm',
+            price: price,
+            unit: 'ngày',
             quantity: 1
           })
         ]

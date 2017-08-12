@@ -10,6 +10,8 @@ import { RouterModule } from '@angular/router';
 import { ReportModule } from './report/report.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DatePickerModule } from 'ng2-datepicker';
+
 import * as $ from 'jquery';
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import * as $ from 'jquery';
     MenuModule,
     MainModule,
     ReportModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DatePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

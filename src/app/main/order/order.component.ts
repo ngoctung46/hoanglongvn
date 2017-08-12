@@ -33,7 +33,7 @@ export class OrderComponent implements OnInit {
   minutes: number;
   discount: number = 0.0;
   roomId: string;
-  editting: string;
+  editting: string ='yes';
   adjustment = 0.0;
   constructor(
     private orderService: OrderService,
@@ -65,28 +65,38 @@ export class OrderComponent implements OnInit {
             if (hours > 4) {
               this.price = services[0].price;
               this.quantity = 1;
-              this.unit = 'day';
+              this.unit = 'ngày';
             } else if (hours > 3) {
               this.price = services[0].price = 210000;
               this.quantity = 4;
-              this.unit = 'hours';
+              this.unit = 'giờ';
             } else if (hours > 2) {
               this.price = services[0].price = 190000;
               this.quantity = 3;
-              this.unit = 'hours';
+              this.unit = 'giờ';
             } else if (hours > 1) {
               this.price = services[0].price = 150000;
               this.quantity = 2;
-              this.unit = 'hours';
+              this.unit = 'giờ';
             } else {
               this.price = services[0].price = 100000;
               this.quantity = 1;
-              this.unit = 'hour';
+              this.unit = 'giờ';
             }
+            this.orderService.updateService(this.orderId, services[0].$key, {
+              price: this.price,
+              quantity: this.quantity,
+              unit: this.unit
+            });
           } else {
             this.price *= this.day;
             this.quantity = this.day;
-            this.unit = 'days';
+            this.unit = 'ngày';
+            this.orderService.updateService(this.orderId, services[0].$key, {
+              price: this.price,
+              quantity: this.quantity,
+              unit: this.unit
+            });
           }
           this.total = this.price;
           for (let index = 1; index < services.length; index++) {
@@ -98,14 +108,15 @@ export class OrderComponent implements OnInit {
     });
     setTimeout(() => {
       this.orderModal.show({ observeChanges: true });
-    }, 500);
+    }, 1000);
   }
 
   close() {
     this.orderService.updateOrder(this.orderId, {
       total: this.total,
       checkOutTime: new Date().toString(),
-      discount: this.discount
+      discount: this.discount,
+      adjustment: this.adjustment
     });
     console.log(this.roomId);
     this.roomService.updateRoom(this.roomId, {
@@ -115,12 +126,13 @@ export class OrderComponent implements OnInit {
     });
     setTimeout(() => {
       this.orderModal.hide();;
-    }, 1000);
+    }, 2000);
     this.orderModal.hide();
     location.reload();
   }
   hide() {
     this.orderModal.hide();
+    location.reload();
   }
   remove(key: string) {
     this.orderService.removeService(this.orderId, key);

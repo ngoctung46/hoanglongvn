@@ -1,33 +1,30 @@
-import { NgModule }                from '@angular/core';
-import { RouterModule, Routes }    from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { ReportComponent } from './report.component';
 import { DailyReportComponent } from './daily-report/daily-report.component';
 import { MonthlyReportComponent } from './monthly-report/monthly-report.component';
 import { PeriodicalReportComponent } from './periodical-report/periodical-report.component';
 const reportRoutes: Routes = [
-    { 
-        path: 'reports',
-        component: ReportComponent
-        // children: [
-        //     {
-        //         path: 'daily-report',
-        //         component: DailyReportComponent
-        //     },
-        //     {
-        //         path: 'montly-report',
-        //         component: MonthlyReportComponent
-        //     },
-        //     {
-        //         path: 'periodical-report',
-        //         component: PeriodicalReportComponent
-        //     }
-        // ]
-    },
-    {
-        path: 'reports/daily-report',
+  {
+    path: '',
+    component: ReportComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'daily-report',
+        pathMatch: 'full'
+      },
+      {
+        path: 'daily-report',
         component: DailyReportComponent
-    }
+      },
+      {
+        path: 'monthly-report',
+        component: MonthlyReportComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
@@ -40,4 +37,4 @@ const reportRoutes: Routes = [
     RouterModule
   ]
 })
-export class ReportRoutingModule {}
+export class ReportRoutingModule { }
