@@ -14,6 +14,7 @@ export class MonthlyReportComponent implements OnInit {
   orders: any[] = [];
   date: Date;
   filterList: any[] = [];
+  total = [];
   constructor(private orderService: OrderService, private roomService: RoomService) {
     this.orderService.getOrders().subscribe(orders => {
       this.orders = orders.filter(order => order.checkOutTime !== '');
@@ -60,6 +61,43 @@ export class MonthlyReportComponent implements OnInit {
         this.filterList.push(this.orders[index]);
       }
     }
+    this.filterList = this.filterList.map(order => {
+      let date = new Date(order.checkOutTime);
+      let dateString = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
+      let service = 0.0;
+      order.services.forEach(element => {
+        service += element.price * element.quantity;
+      });
+      return {
+        date: dateString,
+        service: service,
+        adjustment: order.adjustment,
+        discount: order.discount,
+        total: order.total
+      }
+    });
+    this.filterList = this.groupBy(this.filterList, function (item) {
+      return [item.date];
+    });
+    this.filterList.forEach(arr => {
+      let subTotal = 0.0;
+      arr.forEach(item => {
+        subTotal += item.total;
+      });
+      this.total.push(subTotal);
+    });
   }
-
+  groupBy(array, f) {
+    var groups = {};
+    array.forEach(function (o) {
+      var group = JSON.stringify(f(o));
+      groups[group] = groups[group] || [];
+      groups[group].push(o);
+    });
+    return Object.keys(groups).map(function (group) {
+      return groups[group];
+    })
+  }
+ 
+  
 }
