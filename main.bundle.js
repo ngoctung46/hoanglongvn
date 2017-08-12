@@ -695,7 +695,6 @@ var RoomCardComponent = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SERVICES; });
 var Service = (function () {
     function Service(obj) {
-        this.$key = obj && obj.$key || '';
         this.description = obj && obj.description || '';
         this.price = obj && obj.price || 0.0;
         this.unit = obj && obj.unit || '';
