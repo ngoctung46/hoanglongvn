@@ -1,21 +1,21 @@
 webpackJsonp([1,5],{
 
-/***/ 154:
+/***/ 157:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_model__ = __webpack_require__(271);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customer_service__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__room_service__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__order_service__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__order_model__ = __webpack_require__(275);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__service_model__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__cities__ = __webpack_require__(269);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__country__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_model__ = __webpack_require__(393);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__customer_service__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__room_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__order_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__order_model__ = __webpack_require__(397);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__service_model__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__cities__ = __webpack_require__(391);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__country__ = __webpack_require__(392);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -84,19 +84,19 @@ var CustomerComponent = (function () {
         this.customerId = '';
         this.roomId = '';
         this.customerForm = fb.group({
-            'firstName': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required],
-            'lastName': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required],
-            'birthDate': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required, dateValidator])],
+            'firstName': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required],
+            'lastName': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required],
+            'birthDate': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, dateValidator])],
             'birthPlace': [''],
-            'birthCountry': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required],
-            'id': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required],
-            'issueDate': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required, dateValidator])],
-            'expirationDate': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required, dateValidator])],
-            'issueCountry': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required],
+            'birthCountry': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required],
+            'id': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required],
+            'issueDate': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, dateValidator])],
+            'expirationDate': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].compose([__WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required, dateValidator])],
+            'issueCountry': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required],
             'issueCity': [''],
             'streetAddress': [''],
             'city': [''],
-            'country': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* Validators */].required]
+            'country': ['', __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* Validators */].required]
         });
     }
     CustomerComponent.prototype.ngOnInit = function () {
@@ -121,7 +121,7 @@ var CustomerComponent = (function () {
             }
             _this.customerModal.show({ observeChanges: true });
         });
-        this.cityList = __WEBPACK_IMPORTED_MODULE_10__cities__["a" /* KOREA_CITIES */].concat(__WEBPACK_IMPORTED_MODULE_10__cities__["b" /* VIETNAM_CITIES */].map(function (x) { return x.city; }));
+        this.cityList = __WEBPACK_IMPORTED_MODULE_10__cities__["a" /* KOREA_CITIES */].concat(__WEBPACK_IMPORTED_MODULE_10__cities__["b" /* VIETNAM_CITIES */].map(function (x) { return x.province; })).concat(__WEBPACK_IMPORTED_MODULE_10__cities__["b" /* VIETNAM_CITIES */].map(function (x) { return x.city; }));
         this.countryList = __WEBPACK_IMPORTED_MODULE_11__country__["a" /* COUNTRIES */];
     };
     CustomerComponent.prototype.onSubmit = function (value) {
@@ -160,8 +160,8 @@ var CustomerComponent = (function () {
                             services: [
                                 new __WEBPACK_IMPORTED_MODULE_9__service_model__["a" /* Service */]({
                                     description: 'Tiền Phòng',
-                                    price: 400000,
-                                    unit: 'đêm',
+                                    price: price,
+                                    unit: 'ngày',
                                     quantity: 1
                                 })
                             ]
@@ -192,16 +192,16 @@ var CustomerComponent = (function () {
         return 300000;
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* ViewChild */])('customerModal'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('customerModal'),
         __metadata("design:type", Object)
     ], CustomerComponent.prototype, "customerModal", void 0);
     CustomerComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-customer',
-            template: __webpack_require__(405),
-            styles: [__webpack_require__(344)]
+            template: __webpack_require__(529),
+            styles: [__webpack_require__(466)]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_6__angular_common__["c" /* Location */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_common__["c" /* Location */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__room_service__["a" /* RoomService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__room_service__["a" /* RoomService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["d" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_7__order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__order_service__["a" /* OrderService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__customer_service__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__customer_service__["a" /* CustomerService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* ActivatedRoute */]) === "function" && _f || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_6__angular_common__["g" /* Location */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_common__["g" /* Location */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__room_service__["a" /* RoomService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__room_service__["a" /* RoomService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_forms__["e" /* FormBuilder */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_7__order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__order_service__["a" /* OrderService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__customer_service__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__customer_service__["a" /* CustomerService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__angular_router__["b" /* ActivatedRoute */]) === "function" && _f || Object])
     ], CustomerComponent);
     return CustomerComponent;
     var _a, _b, _c, _d, _e, _f;
@@ -217,14 +217,14 @@ function dateValidator(control) {
 
 /***/ }),
 
-/***/ 155:
+/***/ 158:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_model__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__order_service__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_model__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__order_service__ = __webpack_require__(29);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HotelServiceComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -261,14 +261,14 @@ var HotelServiceComponent = (function () {
         location.reload();
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* ViewChild */])('hotelServiceModal'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('hotelServiceModal'),
         __metadata("design:type", Object)
     ], HotelServiceComponent.prototype, "hotelServiceModal", void 0);
     HotelServiceComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-hotel-service',
-            template: __webpack_require__(406),
-            styles: [__webpack_require__(345)]
+            template: __webpack_require__(530),
+            styles: [__webpack_require__(467)]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__order_service__["a" /* OrderService */]) === "function" && _b || Object])
     ], HotelServiceComponent);
@@ -280,13 +280,13 @@ var HotelServiceComponent = (function () {
 
 /***/ }),
 
-/***/ 156:
+/***/ 159:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__room_service__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_service__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__room_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_service__ = __webpack_require__(48);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MainComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -310,14 +310,14 @@ var MainComponent = (function () {
         this.rooms = this.roomService.getRooms();
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* HostBinding */])('attr.class'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_7" /* HostBinding */])('attr.class'),
         __metadata("design:type", Object)
     ], MainComponent.prototype, "cssClass", void 0);
     MainComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-main',
-            template: __webpack_require__(407),
-            styles: [__webpack_require__(346)]
+            template: __webpack_require__(531),
+            styles: [__webpack_require__(468)]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__room_service__["a" /* RoomService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__room_service__["a" /* RoomService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__customer_service__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__customer_service__["a" /* CustomerService */]) === "function" && _b || Object])
     ], MainComponent);
@@ -329,30 +329,30 @@ var MainComponent = (function () {
 
 /***/ }),
 
-/***/ 157:
+/***/ 160:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__main_component__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__room_card_room_card_component__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__room_list_room_list_component__ = __webpack_require__(276);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__room_service__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng_semantic_ng_semantic__ = __webpack_require__(265);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_forms__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2__ = __webpack_require__(288);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__environments_environment__ = __webpack_require__(166);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__customer_customer_component__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__customer_service__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__order_order_component__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__order_service__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__customer_customer_search_form_component__ = __webpack_require__(273);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__customer_customer_info_component__ = __webpack_require__(272);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__hotel_service_hotel_service_component__ = __webpack_require__(155);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__main_routing_module__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__main_component__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__room_card_room_card_component__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__room_list_room_list_component__ = __webpack_require__(398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__room_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng_semantic_ng_semantic__ = __webpack_require__(385);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_forms__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2__ = __webpack_require__(410);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__environments_environment__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__customer_customer_component__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__customer_service__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__order_order_component__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__order_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__customer_customer_search_form_component__ = __webpack_require__(395);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__customer_customer_info_component__ = __webpack_require__(394);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__hotel_service_hotel_service_component__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__main_routing_module__ = __webpack_require__(396);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainModule", function() { return MainModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -388,7 +388,7 @@ var MainModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */],
                 __WEBPACK_IMPORTED_MODULE_7__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_6_ng_semantic_ng_semantic__["a" /* NgSemanticModule */],
-                __WEBPACK_IMPORTED_MODULE_7__angular_forms__["b" /* ReactiveFormsModule */],
+                __WEBPACK_IMPORTED_MODULE_7__angular_forms__["c" /* ReactiveFormsModule */],
                 __WEBPACK_IMPORTED_MODULE_8_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_10__environments_environment__["a" /* environment */].firebase),
                 __WEBPACK_IMPORTED_MODULE_9_angularfire2_database__["b" /* AngularFireDatabaseModule */],
                 __WEBPACK_IMPORTED_MODULE_18__main_routing_module__["a" /* MainRoutingModule */]
@@ -418,16 +418,16 @@ var MainModule = (function () {
 
 /***/ }),
 
-/***/ 158:
+/***/ 161:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__order_service__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_service__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__room_service__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__order_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__customer_service__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__room_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap__ = __webpack_require__(337);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -453,6 +453,7 @@ var OrderComponent = (function () {
         this.route = route;
         this.IsCheckOut = false;
         this.discount = 0.0;
+        this.editting = 'yes';
         this.adjustment = 0.0;
     }
     OrderComponent.prototype.ngOnInit = function () {
@@ -477,33 +478,43 @@ var OrderComponent = (function () {
                         if (hours > 4) {
                             _this.price = services[0].price;
                             _this.quantity = 1;
-                            _this.unit = 'day';
+                            _this.unit = 'ngày';
                         }
                         else if (hours > 3) {
                             _this.price = services[0].price = 210000;
                             _this.quantity = 4;
-                            _this.unit = 'hours';
+                            _this.unit = 'giờ';
                         }
                         else if (hours > 2) {
                             _this.price = services[0].price = 190000;
                             _this.quantity = 3;
-                            _this.unit = 'hours';
+                            _this.unit = 'giờ';
                         }
                         else if (hours > 1) {
                             _this.price = services[0].price = 150000;
                             _this.quantity = 2;
-                            _this.unit = 'hours';
+                            _this.unit = 'giờ';
                         }
                         else {
                             _this.price = services[0].price = 100000;
                             _this.quantity = 1;
-                            _this.unit = 'hour';
+                            _this.unit = 'giờ';
                         }
+                        _this.orderService.updateService(_this.orderId, services[0].$key, {
+                            price: _this.price,
+                            quantity: _this.quantity,
+                            unit: _this.unit
+                        });
                     }
                     else {
                         _this.price *= _this.day;
                         _this.quantity = _this.day;
-                        _this.unit = 'days';
+                        _this.unit = 'ngày';
+                        _this.orderService.updateService(_this.orderId, services[0].$key, {
+                            price: _this.price,
+                            quantity: _this.quantity,
+                            unit: _this.unit
+                        });
                     }
                     _this.total = _this.price;
                     for (var index = 1; index < services.length; index++) {
@@ -522,7 +533,8 @@ var OrderComponent = (function () {
         this.orderService.updateOrder(this.orderId, {
             total: this.total,
             checkOutTime: new Date().toString(),
-            discount: this.discount
+            discount: this.discount,
+            adjustment: this.adjustment
         });
         console.log(this.roomId);
         this.roomService.updateRoom(this.roomId, {
@@ -539,19 +551,20 @@ var OrderComponent = (function () {
     };
     OrderComponent.prototype.hide = function () {
         this.orderModal.hide();
+        location.reload();
     };
     OrderComponent.prototype.remove = function (key) {
         this.orderService.removeService(this.orderId, key);
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* ViewChild */])('orderModal'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('orderModal'),
         __metadata("design:type", Object)
     ], OrderComponent.prototype, "orderModal", void 0);
     OrderComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-order',
-            template: __webpack_require__(408),
-            styles: [__webpack_require__(347)]
+            template: __webpack_require__(532),
+            styles: [__webpack_require__(469)]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__order_service__["a" /* OrderService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__room_service__["a" /* RoomService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__room_service__["a" /* RoomService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__customer_service__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__customer_service__["a" /* CustomerService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* ActivatedRoute */]) === "function" && _d || Object])
     ], OrderComponent);
@@ -563,19 +576,19 @@ var OrderComponent = (function () {
 
 /***/ }),
 
-/***/ 159:
+/***/ 162:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__room_model__ = __webpack_require__(277);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__room_service__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customer_service__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__order_service__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__room_model__ = __webpack_require__(399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__room_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customer_service__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__order_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__(24);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoomCardComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -634,36 +647,36 @@ var RoomCardComponent = (function () {
         this.roomService.updateRoom(room.$key, { status: room.status });
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* ViewChild */])('customerModal'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('customerModal'),
         __metadata("design:type", Object)
     ], RoomCardComponent.prototype, "customerModal", void 0);
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* ViewChild */])('searchForm'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('searchForm'),
         __metadata("design:type", Object)
     ], RoomCardComponent.prototype, "searchForm", void 0);
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* ViewChild */])('infoModal'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('infoModal'),
         __metadata("design:type", Object)
     ], RoomCardComponent.prototype, "infoModal", void 0);
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* ViewChild */])('orderModal'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('orderModal'),
         __metadata("design:type", Object)
     ], RoomCardComponent.prototype, "orderModal", void 0);
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* HostBinding */])('attr.class'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_7" /* HostBinding */])('attr.class'),
         __metadata("design:type", Object)
     ], RoomCardComponent.prototype, "cssClass", void 0);
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["p" /* Input */])(),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Input */])(),
         __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__room_model__["a" /* Room */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__room_model__["a" /* Room */]) === "function" && _a || Object)
     ], RoomCardComponent.prototype, "room", void 0);
     RoomCardComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-room-card',
-            template: __webpack_require__(409),
-            styles: [__webpack_require__(348)]
+            template: __webpack_require__(533),
+            styles: [__webpack_require__(470)]
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["d" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__room_service__["a" /* RoomService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__room_service__["a" /* RoomService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__customer_service__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__customer_service__["a" /* CustomerService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__order_service__["a" /* OrderService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__angular_router__["b" /* ActivatedRoute */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_8__angular_common__["c" /* Location */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__angular_common__["c" /* Location */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_7__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__angular_router__["c" /* Router */]) === "function" && _j || Object])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* FormBuilder */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_forms__["e" /* FormBuilder */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__room_service__["a" /* RoomService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__room_service__["a" /* RoomService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__customer_service__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__customer_service__["a" /* CustomerService */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_5__order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__order_service__["a" /* OrderService */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_7__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__angular_router__["b" /* ActivatedRoute */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_8__angular_common__["g" /* Location */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__angular_common__["g" /* Location */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_7__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__angular_router__["c" /* Router */]) === "function" && _j || Object])
     ], RoomCardComponent);
     return RoomCardComponent;
     var _a, _b, _c, _d, _e, _f, _g, _h, _j;
@@ -673,7 +686,7 @@ var RoomCardComponent = (function () {
 
 /***/ }),
 
-/***/ 160:
+/***/ 163:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -681,6 +694,7 @@ var RoomCardComponent = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SERVICES; });
 var Service = (function () {
     function Service(obj) {
+        this.$key = obj && obj.$key || '';
         this.description = obj && obj.description || '';
         this.price = obj && obj.price || 0.0;
         this.unit = obj && obj.unit || '';
@@ -749,13 +763,13 @@ var SERVICES = [
 
 /***/ }),
 
-/***/ 161:
+/***/ 164:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menu__ = __webpack_require__(281);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menu__ = __webpack_require__(403);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -777,7 +791,7 @@ var MenuService = (function () {
         return Promise.resolve(__WEBPACK_IMPORTED_MODULE_1__menu__["a" /* MENU */]);
     };
     MenuService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* Injectable */])(),
         __metadata("design:paramtypes", [])
     ], MenuService);
     return MenuService;
@@ -787,11 +801,11 @@ var MenuService = (function () {
 
 /***/ }),
 
-/***/ 162:
+/***/ 165:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PageNotFoundComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -809,10 +823,10 @@ var PageNotFoundComponent = (function () {
     PageNotFoundComponent.prototype.ngOnInit = function () {
     };
     PageNotFoundComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-page-not-found',
-            template: __webpack_require__(412),
-            styles: [__webpack_require__(351)]
+            template: __webpack_require__(536),
+            styles: [__webpack_require__(473)]
         }),
         __metadata("design:paramtypes", [])
     ], PageNotFoundComponent);
@@ -823,11 +837,15 @@ var PageNotFoundComponent = (function () {
 
 /***/ }),
 
-/***/ 163:
+/***/ 166:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main_order_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__main_room_service__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__main_customer_service__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_datepicker__ = __webpack_require__(84);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DailyReportComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -839,32 +857,190 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
 var DailyReportComponent = (function () {
-    function DailyReportComponent() {
+    function DailyReportComponent(orderService, roomService, customerService) {
+        var _this = this;
+        this.orderService = orderService;
+        this.roomService = roomService;
+        this.customerService = customerService;
+        this.fromDate = new __WEBPACK_IMPORTED_MODULE_4_ng2_datepicker__["b" /* DateModel */]();
+        this.toDate = new __WEBPACK_IMPORTED_MODULE_4_ng2_datepicker__["b" /* DateModel */]();
+        this.orders = [];
+        this.filterList = [];
+        this.orderService.getOrders().subscribe(function (orders) {
+            _this.orders = orders.filter(function (order) { return order.checkOutTime !== ''; });
+            _this.date = new Date(_this.orders[0].checkOutTime);
+            var _loop_1 = function (i) {
+                _this.roomService.getRoom(orders[i].roomId).subscribe(function (room) {
+                    orders[i].roomId = room.name;
+                });
+                _this.orderService.getServices(orders[i].$key).subscribe(function (services) {
+                    orders[i].services = services;
+                });
+            };
+            for (var i = 0; i < orders.length; i++) {
+                _loop_1(i);
+            }
+        });
+        this.options = new __WEBPACK_IMPORTED_MODULE_4_ng2_datepicker__["c" /* DatePickerOptions */]();
+        this.options.maxDate = new Date();
+        this.options.format = 'DD/MM/YYYY';
+        this.options.todayText = 'Hôm Nay';
+        this.options.selectYearText = 'Chọn Năm';
+        this.options.clearText = 'Xóa';
+        this.options.style = 'bold';
+        this.options.initialDate = new Date();
+        this.fromDate.day = new Date().getDate.toString();
+        this.fromDate.month = new Date().getMonth.toString();
+        this.fromDate.year = new Date().getFullYear.toString();
+        this.toDate.day = new Date().getDate.toString();
+        this.toDate.month = new Date().getMonth.toString();
+        this.toDate.year = new Date().getFullYear.toString();
     }
     DailyReportComponent.prototype.ngOnInit = function () {
+        this.setDate();
+    };
+    DailyReportComponent.prototype.setDate = function () {
+        this.filterList = [];
+        var fromDay = Number.parseInt(this.fromDate.day);
+        var fromMonth = Number.parseInt(this.fromDate.month) - 1;
+        var fromYear = Number.parseInt(this.fromDate.year);
+        var toDay = Number.parseInt(this.toDate.day);
+        var toMonth = Number.parseInt(this.toDate.month) - 1;
+        var toYear = Number.parseInt(this.toDate.year);
+        var length = this.orders.length;
+        for (var index = 0; index < length; index++) {
+            var date = new Date(this.orders[index].checkOutTime);
+            var day = date.getDate();
+            var month = date.getMonth();
+            var year = date.getFullYear();
+            var valid = date.getDate() >= fromDay && date.getMonth() >= fromMonth && date.getFullYear() >= fromYear
+                && date.getDate() <= toDay && date.getMonth() <= toMonth && date.getFullYear() <= toYear;
+            if (valid) {
+                this.filterList.push(this.orders[index]);
+            }
+        }
     };
     DailyReportComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-daily-report',
-            template: __webpack_require__(413),
-            styles: [__webpack_require__(352)]
+            template: __webpack_require__(537),
+            styles: [__webpack_require__(474)]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__main_order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__main_order_service__["a" /* OrderService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__main_room_service__["a" /* RoomService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__main_room_service__["a" /* RoomService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__main_customer_service__["a" /* CustomerService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__main_customer_service__["a" /* CustomerService */]) === "function" && _c || Object])
     ], DailyReportComponent);
     return DailyReportComponent;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=daily-report.component.js.map
 
 /***/ }),
 
-/***/ 164:
+/***/ 167:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main_order_service__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ng2_datepicker__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__main_order_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__main_room_service__ = __webpack_require__(39);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MonthlyReportComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var MonthlyReportComponent = (function () {
+    function MonthlyReportComponent(orderService, roomService) {
+        var _this = this;
+        this.orderService = orderService;
+        this.roomService = roomService;
+        this.fromDate = new __WEBPACK_IMPORTED_MODULE_1_ng2_datepicker__["b" /* DateModel */]();
+        this.toDate = new __WEBPACK_IMPORTED_MODULE_1_ng2_datepicker__["b" /* DateModel */]();
+        this.orders = [];
+        this.filterList = [];
+        this.orderService.getOrders().subscribe(function (orders) {
+            _this.orders = orders.filter(function (order) { return order.checkOutTime !== ''; });
+            var _loop_1 = function (i) {
+                _this.roomService.getRoom(orders[i].roomId).subscribe(function (room) {
+                    orders[i].roomId = room.name;
+                });
+                _this.orderService.getServices(orders[i].$key).subscribe(function (services) {
+                    orders[i].services = services;
+                });
+            };
+            for (var i = 0; i < orders.length; i++) {
+                _loop_1(i);
+            }
+        });
+        this.options = new __WEBPACK_IMPORTED_MODULE_1_ng2_datepicker__["c" /* DatePickerOptions */]();
+        this.options.maxDate = new Date();
+        this.options.format = 'MM/YYYY';
+        this.options.todayText = 'Tháng';
+        this.options.selectYearText = 'Chọn Năm';
+        this.options.clearText = 'Xóa';
+        this.options.style = 'bold';
+        this.options.initialDate = new Date();
+        this.fromDate.month = new Date().getMonth.toString();
+        this.fromDate.year = new Date().getFullYear.toString();
+        this.toDate.month = new Date().getMonth.toString();
+        this.toDate.year = new Date().getFullYear.toString();
+    }
+    MonthlyReportComponent.prototype.ngOnInit = function () {
+        this.setDate();
+    };
+    MonthlyReportComponent.prototype.setDate = function () {
+        this.filterList = [];
+        var fromMonth = Number.parseInt(this.fromDate.month) - 1;
+        var fromYear = Number.parseInt(this.fromDate.year);
+        var toMonth = Number.parseInt(this.toDate.month) - 1;
+        var toYear = Number.parseInt(this.toDate.year);
+        var length = this.orders.length;
+        for (var index = 0; index < length; index++) {
+            var date = new Date(this.orders[index].checkOutTime);
+            var month = date.getMonth();
+            var year = date.getFullYear();
+            var valid = date.getMonth() === fromMonth && date.getFullYear() === fromYear;
+            if (valid) {
+                this.filterList.push(this.orders[index]);
+            }
+        }
+    };
+    MonthlyReportComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
+            selector: 'app-monthly-report',
+            template: __webpack_require__(538),
+            styles: [__webpack_require__(475)]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__main_order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__main_order_service__["a" /* OrderService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__main_room_service__["a" /* RoomService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__main_room_service__["a" /* RoomService */]) === "function" && _b || Object])
+    ], MonthlyReportComponent);
+    return MonthlyReportComponent;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=monthly-report.component.js.map
+
+/***/ }),
+
+/***/ 168:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main_order_service__ = __webpack_require__(29);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -880,14 +1056,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ReportComponent = (function () {
     function ReportComponent(orderService) {
         this.orderService = orderService;
+        this.cssClass = "ui main container";
     }
     ReportComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.orderService.getOrders().subscribe(function (orders) {
+            _this.orders = orders.filter(function (order) { return order.checkOutTime !== ''; });
+        });
     };
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_7" /* HostBinding */])("attr.css"),
+        __metadata("design:type", Object)
+    ], ReportComponent.prototype, "cssClass", void 0);
     ReportComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-report',
-            template: __webpack_require__(416),
-            styles: [__webpack_require__(355)]
+            template: __webpack_require__(541),
+            styles: [__webpack_require__(478)]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__main_order_service__["a" /* OrderService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__main_order_service__["a" /* OrderService */]) === "function" && _a || Object])
     ], ReportComponent);
@@ -899,19 +1084,21 @@ var ReportComponent = (function () {
 
 /***/ }),
 
-/***/ 165:
+/***/ 169:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__report_component__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__main_order_service__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__daily_report_daily_report_component__ = __webpack_require__(163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__monthly_report_monthly_report_component__ = __webpack_require__(282);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__periodical_report_periodical_report_component__ = __webpack_require__(283);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reports_routing_module__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__report_component__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__main_order_service__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__daily_report_daily_report_component__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__monthly_report_monthly_report_component__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__periodical_report_periodical_report_component__ = __webpack_require__(404);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__reports_routing_module__ = __webpack_require__(406);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_datepicker__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__report_table_report_table_component__ = __webpack_require__(405);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportModule", function() { return ReportModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -927,6 +1114,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var ReportModule = (function () {
     function ReportModule() {
     }
@@ -934,13 +1123,15 @@ var ReportModule = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* NgModule */])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_common__["a" /* CommonModule */],
-                __WEBPACK_IMPORTED_MODULE_7__reports_routing_module__["a" /* ReportRoutingModule */]
+                __WEBPACK_IMPORTED_MODULE_7__reports_routing_module__["a" /* ReportRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_8_ng2_datepicker__["a" /* DatePickerModule */]
             ],
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_2__report_component__["a" /* ReportComponent */],
                 __WEBPACK_IMPORTED_MODULE_4__daily_report_daily_report_component__["a" /* DailyReportComponent */],
                 __WEBPACK_IMPORTED_MODULE_5__monthly_report_monthly_report_component__["a" /* MonthlyReportComponent */],
-                __WEBPACK_IMPORTED_MODULE_6__periodical_report_periodical_report_component__["a" /* PeriodicalReportComponent */]
+                __WEBPACK_IMPORTED_MODULE_6__periodical_report_periodical_report_component__["a" /* PeriodicalReportComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__report_table_report_table_component__["a" /* ReportTableComponent */]
             ],
             providers: [__WEBPACK_IMPORTED_MODULE_3__main_order_service__["a" /* OrderService */]]
         })
@@ -952,7 +1143,7 @@ var ReportModule = (function () {
 
 /***/ }),
 
-/***/ 166:
+/***/ 170:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -972,15 +1163,73 @@ var environment = {
 
 /***/ }),
 
-/***/ 255:
+/***/ 29:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(40);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var OrderService = (function () {
+    function OrderService(db) {
+        this.db = db;
+    }
+    OrderService.prototype.addOrder = function (order) {
+        return this.db.list('/orders').push(order).then(function (item) { return item.key; });
+    };
+    OrderService.prototype.getOrder = function (key) {
+        return this.db.object("/orders/" + key);
+    };
+    OrderService.prototype.updateService = function (orderId, key, data) {
+        return this.db.list("/orders/" + orderId + "/services").update(key, data);
+    };
+    OrderService.prototype.addService = function (key, service) {
+        return this.db.list("/orders/" + key + "/services").push(service);
+    };
+    OrderService.prototype.getServices = function (key) {
+        return this.db.list("/orders/" + key + "/services").map(function (services) { return services.map(function (service) { return service; }); });
+    };
+    OrderService.prototype.removeService = function (orderId, key) {
+        this.db.list("/orders/" + orderId + "/services").remove(key);
+    };
+    OrderService.prototype.updateOrder = function (key, data) {
+        this.db.list('/orders').update(key, data);
+    };
+    OrderService.prototype.getOrders = function () {
+        return this.db.list('/orders');
+    };
+    OrderService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
+    ], OrderService);
+    return OrderService;
+    var _a;
+}());
+
+//# sourceMappingURL=order.service.js.map
+
+/***/ }),
+
+/***/ 375:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"./main/main.module": [
-		157
+		160
 	],
 	"./report/report.module": [
-		165
+		169
 	]
 };
 function webpackAsyncContext(req) {
@@ -994,20 +1243,20 @@ webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
 module.exports = webpackAsyncContext;
-webpackAsyncContext.id = 255;
+webpackAsyncContext.id = 375;
 
 
 /***/ }),
 
-/***/ 256:
+/***/ 376:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(264);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(268);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(384);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_module__ = __webpack_require__(390);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(170);
 
 
 
@@ -1020,13 +1269,13 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 266:
+/***/ 388:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__page_not_found_page_not_found_component__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__page_not_found_page_not_found_component__ = __webpack_require__(165);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1038,9 +1287,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var appRoutes = [
-    { path: '', redirectTo: '/main', pathMatch: 'full' },
+    { path: '', redirectTo: 'main', pathMatch: 'full' },
     { path: 'main', loadChildren: './main/main.module#MainModule' },
-    { path: 'reports', loadChildren: './report/report.module#ReportModule' },
+    { path: 'report', loadChildren: './report/report.module#ReportModule' },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_2__page_not_found_page_not_found_component__["a" /* PageNotFoundComponent */] }
 ];
 var AppRoutingModule = (function () {
@@ -1063,12 +1312,12 @@ var AppRoutingModule = (function () {
 
 /***/ }),
 
-/***/ 267:
+/***/ 389:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(40);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1095,14 +1344,14 @@ var AppComponent = (function () {
         console.log(this.item);
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* HostBinding */])('attr.class'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_7" /* HostBinding */])('attr.class'),
         __metadata("design:type", Object)
     ], AppComponent.prototype, "cssClass", void 0);
     AppComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-root',
-            template: __webpack_require__(404),
-            styles: [__webpack_require__(343)]
+            template: __webpack_require__(528),
+            styles: [__webpack_require__(465)]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
     ], AppComponent);
@@ -1114,21 +1363,65 @@ var AppComponent = (function () {
 
 /***/ }),
 
-/***/ 268:
+/***/ 39:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(267);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__menu_menu_module__ = __webpack_require__(280);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__main_main_module__ = __webpack_require__(157);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__report_report_module__ = __webpack_require__(165);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__page_not_found_page_not_found_component__ = __webpack_require__(162);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_routing_module__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(40);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoomService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var RoomService = (function () {
+    function RoomService(db) {
+        this.db = db;
+    }
+    RoomService.prototype.getRooms = function () {
+        return this.db.list('/rooms');
+    };
+    RoomService.prototype.updateRoom = function (key, data) {
+        this.db.list('/rooms').update(key, data);
+    };
+    RoomService.prototype.getRoom = function (key) {
+        return this.db.object("rooms/" + key);
+    };
+    RoomService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* Injectable */])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
+    ], RoomService);
+    return RoomService;
+    var _a;
+}());
+
+//# sourceMappingURL=room.service.js.map
+
+/***/ }),
+
+/***/ 390:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__(389);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__menu_menu_module__ = __webpack_require__(402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__main_main_module__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_router__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__report_report_module__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__page_not_found_page_not_found_component__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_routing_module__ = __webpack_require__(388);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ng2_datepicker__ = __webpack_require__(84);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1136,6 +1429,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -1164,7 +1458,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_5__menu_menu_module__["a" /* MenuModule */],
                 __WEBPACK_IMPORTED_MODULE_6__main_main_module__["MainModule"],
                 __WEBPACK_IMPORTED_MODULE_8__report_report_module__["ReportModule"],
-                __WEBPACK_IMPORTED_MODULE_10__app_routing_module__["a" /* AppRoutingModule */]
+                __WEBPACK_IMPORTED_MODULE_10__app_routing_module__["a" /* AppRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_11_ng2_datepicker__["a" /* DatePickerModule */]
             ],
             providers: [],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
@@ -1177,7 +1472,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 269:
+/***/ 391:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1574,7 +1869,7 @@ var KOREA_CITIES = ["Seoul", "Incheon", "Paju", "Cheonan", "Yongin", "Kwanghui-d
 
 /***/ }),
 
-/***/ 270:
+/***/ 392:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1828,7 +2123,7 @@ var COUNTRIES = [
 
 /***/ }),
 
-/***/ 271:
+/***/ 393:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1857,12 +2152,12 @@ var Customer = (function () {
 
 /***/ }),
 
-/***/ 272:
+/***/ 394:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__room_card_room_card_component__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__room_card_room_card_component__ = __webpack_require__(162);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerInfoComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1889,15 +2184,15 @@ var CustomerInfoComponent = (function () {
         this.infoModal.hide();
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* ViewChild */])('infoModal'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('infoModal'),
         __metadata("design:type", Object)
     ], CustomerInfoComponent.prototype, "infoModal", void 0);
     CustomerInfoComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-customer-info',
             template: "\n    <sm-modal title=\"Checked in Customer Info\" icon=\"user circle outline\" #infoModal>\n        <modal-content>\n\n            <a class=\"ui teal label \">\n                Customer Name: \n            </a>\n              <a class=\"ui orange label\">\n                Tung \n            </a>\n\n        </modal-content>\n        <modal-actions>\n            <button class=\"ui blue button\" (click)=\"hide()\">Close</button>\n        </modal-actions>\n    </sm-modal>\n    ",
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injector */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* Injector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* Injector */]) === "function" && _a || Object])
     ], CustomerInfoComponent);
     return CustomerInfoComponent;
     var _a;
@@ -1907,11 +2202,11 @@ var CustomerInfoComponent = (function () {
 
 /***/ }),
 
-/***/ 273:
+/***/ 395:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerSearchFormComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1936,15 +2231,15 @@ var CustomerSearchFormComponent = (function () {
         this.searchModal.hide();
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["p" /* Input */])(),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Input */])(),
         __metadata("design:type", Object)
     ], CustomerSearchFormComponent.prototype, "roomId", void 0);
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["e" /* ViewChild */])('searchModal'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('searchModal'),
         __metadata("design:type", Object)
     ], CustomerSearchFormComponent.prototype, "searchModal", void 0);
     CustomerSearchFormComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-customer-search-form',
             template: "\n    <sm-modal title=\"Nh\u1EADn Kh\u00E1ch\" icon=\"user circle outline\" #searchModal>\n        <modal-content>\n            <form class=\"ui form\">\n            <div class=\"field\">\n                <label>Nh\u1EADp m\u00E3 s\u1ED1:</label>\n                <input type=\"text\" name=\"customerId\" id=\"customerId\" placeholder=\"M\u00E3 S\u1ED1 gi\u1EA5y t\u1EDD c\u1EE7a kh\u00E1ch ....\" [(ngModel)]=\"customerId\">\n            </div>\n            </form>\n        </modal-content>\n        <modal-actions>\n            <button type=\"submit\" class=\"ui button primary\" \n                    [class.disabled]=\"customerId==''\" \n                    (click)=\"hide();\"\n                    [routerLink]=\"['/customer-check-in', customerId, roomId]\" skipLocationChange>T\u00ECm</button>\n        </modal-actions>\n    </sm-modal>\n    ",
         }),
@@ -1957,16 +2252,16 @@ var CustomerSearchFormComponent = (function () {
 
 /***/ }),
 
-/***/ 274:
+/***/ 396:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__main_component__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__order_order_component__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customer_customer_component__ = __webpack_require__(154);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__hotel_service_hotel_service_component__ = __webpack_require__(155);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__main_component__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__order_order_component__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__customer_customer_component__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__hotel_service_hotel_service_component__ = __webpack_require__(158);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MainRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1982,34 +2277,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 var mainRoutes = [
     {
-        path: 'main',
-        component: __WEBPACK_IMPORTED_MODULE_2__main_component__["a" /* MainComponent */]
-        // children: [
-        //     {
-        //         path: 'orders/:id',
-        //         component: OrderComponent
-        //     },
-        //     {
-        //         path: 'customer-check-in/:customerId/:roomId',
-        //         component: CustomerComponent
-        //     },
-        //     {
-        //         path: 'hotel-services/:orderId',
-        //         component: HotelServiceComponent
-        //     }
-        // ]
+        path: '',
+        redirectTo: 'main',
+        pathMatch: 'full'
     },
     {
-        path: 'customer-check-in/:customerId/:roomId',
-        component: __WEBPACK_IMPORTED_MODULE_4__customer_customer_component__["a" /* CustomerComponent */]
+        path: 'main',
+        component: __WEBPACK_IMPORTED_MODULE_2__main_component__["a" /* MainComponent */],
+    },
+    {
+        path: 'hotel-services/:orderId',
+        component: __WEBPACK_IMPORTED_MODULE_5__hotel_service_hotel_service_component__["a" /* HotelServiceComponent */]
     },
     {
         path: 'orders/:id/:edit',
         component: __WEBPACK_IMPORTED_MODULE_3__order_order_component__["a" /* OrderComponent */]
     },
     {
-        path: 'hotel-services/:orderId',
-        component: __WEBPACK_IMPORTED_MODULE_5__hotel_service_hotel_service_component__["a" /* HotelServiceComponent */]
+        path: 'customer-check-in/:customerId/:roomId',
+        component: __WEBPACK_IMPORTED_MODULE_4__customer_customer_component__["a" /* CustomerComponent */]
     }
 ];
 var MainRoutingModule = (function () {
@@ -2032,7 +2318,7 @@ var MainRoutingModule = (function () {
 
 /***/ }),
 
-/***/ 275:
+/***/ 397:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2045,6 +2331,7 @@ var Order = (function () {
         this.checkOutTime = obj && obj.checkOutTime || '';
         this.services = obj && obj.services || [];
         this.discount = obj && obj.discount || 0.0;
+        this.adjustment = obj && obj.adjustment || 0.0;
         this.total = obj && obj.total || 0.0;
     }
     Order.prototype.finalizeRoomPrice = function (days, hours, minutes) {
@@ -2085,12 +2372,12 @@ var Order = (function () {
 
 /***/ }),
 
-/***/ 276:
+/***/ 398:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(40);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoomListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2110,18 +2397,18 @@ var RoomListComponent = (function () {
     RoomListComponent.prototype.ngOnInit = function () {
     };
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["p" /* Input */])(),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Input */])(),
         __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["c" /* FirebaseListObservable */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["c" /* FirebaseListObservable */]) === "function" && _a || Object)
     ], RoomListComponent.prototype, "rooms", void 0);
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* HostBinding */])('attr.class'),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_7" /* HostBinding */])('attr.class'),
         __metadata("design:type", Object)
     ], RoomListComponent.prototype, "cssClass", void 0);
     RoomListComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-room-list',
-            template: __webpack_require__(410),
-            styles: [__webpack_require__(349)]
+            template: __webpack_require__(534),
+            styles: [__webpack_require__(471)]
         }),
         __metadata("design:paramtypes", [])
     ], RoomListComponent);
@@ -2133,7 +2420,7 @@ var RoomListComponent = (function () {
 
 /***/ }),
 
-/***/ 277:
+/***/ 399:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2157,7 +2444,7 @@ var Room = (function () {
 
 /***/ }),
 
-/***/ 278:
+/***/ 400:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2175,13 +2462,13 @@ var MenuItem = (function () {
 
 /***/ }),
 
-/***/ 279:
+/***/ 401:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menu_service__ = __webpack_require__(161);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__menu_service__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2208,10 +2495,10 @@ var MenuComponent = (function () {
         });
     };
     MenuComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-menu',
-            template: __webpack_require__(411),
-            styles: [__webpack_require__(350)]
+            template: __webpack_require__(535),
+            styles: [__webpack_require__(472)]
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__menu_service__["a" /* MenuService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__menu_service__["a" /* MenuService */]) === "function" && _a || Object])
     ], MenuComponent);
@@ -2223,15 +2510,15 @@ var MenuComponent = (function () {
 
 /***/ }),
 
-/***/ 280:
+/***/ 402:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menu_component__ = __webpack_require__(279);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__menu_service__ = __webpack_require__(161);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__menu_component__ = __webpack_require__(401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__menu_service__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(28);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MenuModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2265,11 +2552,11 @@ var MenuModule = (function () {
 
 /***/ }),
 
-/***/ 281:
+/***/ 403:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menu_item_model__ = __webpack_require__(278);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__menu_item_model__ = __webpack_require__(400);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MENU; });
 
 var MENU = [
@@ -2278,7 +2565,7 @@ var MENU = [
         new __WEBPACK_IMPORTED_MODULE_0__menu_item_model__["a" /* MenuItem */]('Rooms', '/room'),
         new __WEBPACK_IMPORTED_MODULE_0__menu_item_model__["a" /* MenuItem */]('Services', '/room')
     ]),
-    new __WEBPACK_IMPORTED_MODULE_0__menu_item_model__["a" /* MenuItem */]('Reports', '/reports', [
+    new __WEBPACK_IMPORTED_MODULE_0__menu_item_model__["a" /* MenuItem */]('Reports', '/report', [
         new __WEBPACK_IMPORTED_MODULE_0__menu_item_model__["a" /* MenuItem */]('Daily Report', 'daily-report'),
         new __WEBPACK_IMPORTED_MODULE_0__menu_item_model__["a" /* MenuItem */]('Monthly Report', 'monthly-report'),
         new __WEBPACK_IMPORTED_MODULE_0__menu_item_model__["a" /* MenuItem */]('Periodical Report', 'periodical-report')
@@ -2288,47 +2575,11 @@ var MENU = [
 
 /***/ }),
 
-/***/ 282:
+/***/ 404:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MonthlyReportComponent; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-var MonthlyReportComponent = (function () {
-    function MonthlyReportComponent() {
-    }
-    MonthlyReportComponent.prototype.ngOnInit = function () {
-    };
-    MonthlyReportComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
-            selector: 'app-monthly-report',
-            template: __webpack_require__(414),
-            styles: [__webpack_require__(353)]
-        }),
-        __metadata("design:paramtypes", [])
-    ], MonthlyReportComponent);
-    return MonthlyReportComponent;
-}());
-
-//# sourceMappingURL=monthly-report.component.js.map
-
-/***/ }),
-
-/***/ 283:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PeriodicalReportComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2346,10 +2597,10 @@ var PeriodicalReportComponent = (function () {
     PeriodicalReportComponent.prototype.ngOnInit = function () {
     };
     PeriodicalReportComponent = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["f" /* Component */])({
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
             selector: 'app-periodical-report',
-            template: __webpack_require__(415),
-            styles: [__webpack_require__(354)]
+            template: __webpack_require__(539),
+            styles: [__webpack_require__(476)]
         }),
         __metadata("design:paramtypes", [])
     ], PeriodicalReportComponent);
@@ -2360,14 +2611,59 @@ var PeriodicalReportComponent = (function () {
 
 /***/ }),
 
-/***/ 284:
+/***/ 405:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__report_component__ = __webpack_require__(164);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__daily_report_daily_report_component__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportTableComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ReportTableComponent = (function () {
+    function ReportTableComponent() {
+        this.orders = [];
+        this.total = 0.0;
+    }
+    ReportTableComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.orders.forEach(function (order) { return _this.total += order.total; });
+    };
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Input */])(),
+        __metadata("design:type", Array)
+    ], ReportTableComponent.prototype, "orders", void 0);
+    ReportTableComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* Component */])({
+            selector: 'app-report-table',
+            template: __webpack_require__(540),
+            styles: [__webpack_require__(477)]
+        }),
+        __metadata("design:paramtypes", [])
+    ], ReportTableComponent);
+    return ReportTableComponent;
+}());
+
+//# sourceMappingURL=report-table.component.js.map
+
+/***/ }),
+
+/***/ 406:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__report_component__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__daily_report_daily_report_component__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__monthly_report_monthly_report_component__ = __webpack_require__(167);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportRoutingModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2379,28 +2675,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var reportRoutes = [
     {
-        path: 'reports',
-        component: __WEBPACK_IMPORTED_MODULE_2__report_component__["a" /* ReportComponent */]
-        // children: [
-        //     {
-        //         path: 'daily-report',
-        //         component: DailyReportComponent
-        //     },
-        //     {
-        //         path: 'montly-report',
-        //         component: MonthlyReportComponent
-        //     },
-        //     {
-        //         path: 'periodical-report',
-        //         component: PeriodicalReportComponent
-        //     }
-        // ]
-    },
-    {
-        path: 'reports/daily-report',
-        component: __WEBPACK_IMPORTED_MODULE_3__daily_report_daily_report_component__["a" /* DailyReportComponent */]
+        path: '',
+        component: __WEBPACK_IMPORTED_MODULE_2__report_component__["a" /* ReportComponent */],
+        children: [
+            {
+                path: '',
+                redirectTo: 'daily-report',
+                pathMatch: 'full'
+            },
+            {
+                path: 'daily-report',
+                component: __WEBPACK_IMPORTED_MODULE_3__daily_report_daily_report_component__["a" /* DailyReportComponent */]
+            },
+            {
+                path: 'monthly-report',
+                component: __WEBPACK_IMPORTED_MODULE_4__monthly_report_monthly_report_component__["a" /* MonthlyReportComponent */]
+            }
+        ]
     }
 ];
 var ReportRoutingModule = (function () {
@@ -2423,7 +2717,7 @@ var ReportRoutingModule = (function () {
 
 /***/ }),
 
-/***/ 343:
+/***/ 465:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2441,7 +2735,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 344:
+/***/ 466:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2459,7 +2753,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 345:
+/***/ 467:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2477,7 +2771,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 346:
+/***/ 468:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2495,7 +2789,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 347:
+/***/ 469:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2513,7 +2807,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 348:
+/***/ 470:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2531,7 +2825,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 349:
+/***/ 471:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2549,7 +2843,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 350:
+/***/ 472:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2567,7 +2861,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 351:
+/***/ 473:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2585,7 +2879,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 352:
+/***/ 474:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2603,7 +2897,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 353:
+/***/ 475:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2621,7 +2915,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 354:
+/***/ 476:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2639,7 +2933,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 355:
+/***/ 477:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(14)(false);
@@ -2657,156 +2951,31 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 37:
+/***/ 478:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(14)(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ 48:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(38);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var OrderService = (function () {
-    function OrderService(db) {
-        this.db = db;
-    }
-    OrderService.prototype.addOrder = function (order) {
-        return this.db.list('/orders').push(order).then(function (item) { return item.key; });
-    };
-    OrderService.prototype.getOrder = function (key) {
-        return this.db.object("/orders/" + key);
-    };
-    OrderService.prototype.addService = function (key, service) {
-        return this.db.list("/orders/" + key + "/services").push(service);
-    };
-    OrderService.prototype.getServices = function (key) {
-        return this.db.list("/orders/" + key + "/services");
-    };
-    OrderService.prototype.removeService = function (orderId, key) {
-        this.db.list("/orders/" + orderId + "/services").remove(key);
-    };
-    OrderService.prototype.updateOrder = function (key, data) {
-        this.db.list('/orders').update(key, data);
-    };
-    OrderService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
-    ], OrderService);
-    return OrderService;
-    var _a;
-}());
-
-//# sourceMappingURL=order.service.js.map
-
-/***/ }),
-
-/***/ 404:
-/***/ (function(module, exports) {
-
-module.exports = "<app-menu></app-menu>\n<router-outlet></router-outlet>\n"
-
-/***/ }),
-
-/***/ 405:
-/***/ (function(module, exports) {
-
-module.exports = "<sm-modal title=\"Customer Information.\" #customerModal>\n  <modal-content *ngIf=\"customer\">\n    <form class=\"ui form\" [formGroup]=\"customerForm\">\n      <div class=\"field\">\n        <div class=\"four fields\">\n          <div class=\"field\">\n            <label for=\"idNumber\">Số CMND/Hộ Chiếu</label>\n            <input type=\"text\" name=\"Số CMND/Hộ Chiếu/...\" placeholder=\"ID Number\" [class.error]=\"!customerForm.controls['id'].valid\"\n              [formControl]=\"customerForm.controls['id']\" [(ngModel)]=\"customer.id\" [disabled]=\"doesExist\">\n            <div *ngIf=\"customerForm.controls['id'].hasError('required')&&customerForm.controls['id'].dirty\" class=\"ui pointing red basic label\">Yêu cầu phải có mã số giấy tờ </div>\n          </div>\n          <div class=\"field\">\n            <label for=\"issueDate\">Ngày Cấp</label>\n            <input type=\"text\" name=\"issueDate\" placeholder=\"Ngày Cấp\" [class.error]=\"!customerForm.controls['issueDate'].valid\" [formControl]=\"customerForm.controls['issueDate']\"\n              [(ngModel)]=\"customer.issueDate\">\n            <div *ngIf=\"customerForm.controls['issueDate'].hasError('required')&&customerForm.controls['issueDate'].dirty\" class=\"ui pointing red basic label\">Yêu cầu phải có ngày cấp</div>\n            <div *ngIf=\"customerForm.controls['issueDate'].hasError('invalidDate')\" class=\"ui pointing red basic label\">Ngày cấp phải theo định dạng dd/mm/yyyy (VD: 30/12/2015)</div>\n          </div>\n          <div class=\"field\">\n            <label>Ngày Hết Hạn</label>\n            <input type=\"text\" name=\"expirationDate\" placeholder=\"Ngày Hết Hạn\" [class.error]=\"!customerForm.controls['expirationDate'].valid\"\n              [formControl]=\"customerForm.controls['expirationDate']\" [(ngModel)]=\"customer.expirationDate\">\n            <div *ngIf=\"customerForm.controls['expirationDate'].hasError('required')&&customerForm.controls['expirationDate'].dirty\"\n              class=\"ui pointing red basic label\">Yêu cầu phải có ngày hết hạn</div>\n            <div *ngIf=\"customerForm.controls['expirationDate'].hasError('invalidDate')\" class=\"ui pointing red basic label\">Ngày hết hạn phải theo định dạnh dd/mm/yyyy (VD: 30/12/2015)</div>\n\n          </div>\n          <div class=\"field\">\n            <label>Thành Phố Cấp:</label>\n            <select [(ngModel)]=\"customer.issueCity\" (focus)=\"showDropDown()\" class=\"ui fluid search selection dropdown\" [formControl]=\"customerForm.controls['issueCity']\">\n                <option *ngFor=\"let city of cityList\" [ngValue]=\"city\">{{ city }}</option>\n              </select >\n                <!-- <input type=\"text\" placeholder=\"Thành Phố Cấp\" \n                [formControl]=\"customerForm.controls['issueCity']\"\n                [class.error]=\"!customerForm.controls['issueCity'].valid\"\n                [(ngModel)]=\"customer.issueCity\"> -->\n          </div>\n          <div class=\"field\">\n            <label>Quốc Gia Cấp: </label>\n            <select [(ngModel)]=\"customer.issueCountry\" (focus)=\"showDropDown()\" class=\"ui fluid search selection dropdown\" [formControl]=\"customerForm.controls['issueCountry']\">\n                <option *ngFor=\"let country of countryList\" [ngValue]=\"country.name\">{{ country.name }}</option>\n              </select >\n          \n              <!-- <input type=\"text\" placeholder=\"Quốc Gia Cấp\" \n                [formControl]=\"customerForm.controls['issueCountry']\"\n                [class.error]=\"!customerForm.controls['issueCountry'].valid\"\n                [(ngModel)]=\"customer.issueCountry\"> -->\n            <div *ngIf=\"customerForm.controls['issueCountry'].hasError('required')&&customerForm.controls['issueCountry'].dirty\" \n                  class=\"ui pointing red basic label\">Yêu cầu nhập quốc gia cấp </div>\n          </div>         \n        </div>\n      </div>\n      <div class=\"field\">\n        <label>Họ</label>\n        <div class=\"two fields\">\n          <div class=\"field\">\n            <input type=\"text\" name=\"lastName\" placeholder=\"Họ\" \n                  [class.error]=\"!customerForm.controls['lastName'].valid\" \n                  [formControl]=\"customerForm.controls['lastName']\"\n                  [(ngModel)]=\"customer.lastName\">\n            <div *ngIf=\"customerForm.controls['lastName'].hasError('required')&&customerForm.controls['firstName'].dirty\" \n                  class=\"ui pointing red basic label\">Yêu cầu phải có họ</div>\n          </div>\n          <div class=\"field\">\n            <input type=\"text\" name=\"firstName\" placeholder=\"Tên\" \n                  [class.error]=\"!customerForm.controls['firstName'].valid\"\n                  [formControl]=\"customerForm.controls['firstName']\"\n                  [(ngModel)]=\"customer.firstName\">\n            <div *ngIf=\"customerForm.controls['firstName'].hasError('required')&&customerForm.controls['lastName'].dirty\" \n                  class=\"ui pointing red basic label\">Yêu cầu phải có tên</div>\n          </div>\n        </div>\n        <div class=\"three fields\">\n          <div class=\"field\">\n            <label for=\"birthDate\">Ngày Sinh</label>\n            <input type=\"text\" name=\"birthDate\" placeholder=\"Ngày Sinh\" \n                  [class.error]=\"!customerForm.controls['birthDate'].valid\" \n                  [formControl]=\"customerForm.controls['birthDate']\"\n                  [(ngModel)]=\"customer.birthDate\">\n            <div *ngIf=\"customerForm.controls['birthDate'].hasError('required')&&customerForm.controls['birthDate'].dirty\" \n                  class=\"ui pointing red basic label\">Yêu cầu phải có ngày sinh</div>\n             <div *ngIf=\"customerForm.controls['birthDate'].hasError('invalidDate')\" \n                  class=\"ui pointing red basic label\">Ngày sinh phải theo định dạng dd/mm/yyyy (VD: 30/12/2015)</div> \n          </div>\n          <div class=\"field\">\n            <label>Thành Phố</label>\n            <select [(ngModel)]=\"customer.birthPlace\"\n                (focus)=\"showDropDown()\" class=\"ui fluid search selection dropdown\" \n                [formControl]=\"customerForm.controls['birthPlace']\" >\n                <option *ngFor=\"let city of cityList\" [ngValue]=\"city\">{{ city }}</option>\n              </select >\n            <!-- <input type=\"text\" name=\"birthPlace\" placeholder=\"Nơi Sinh\" \n                    [class.error]=\"!customerForm.controls['birthPlace'].valid\"\n                    [formControl]=\"customerForm.controls['birthPlace']\"\n                    [(ngModel)]=\"customer.birthPlace\"> -->\n            <!-- <div *ngIf=\"customerForm.controls['birthPlace'].hasError('required')&&customerForm.controls['birthPlace'].dirty\"\n                    class=\"ui pointing red basic label\">Yêu cầu phải có nơi sinh</div> -->\n          </div>\n          <div class=\"field\">\n            <label>Quốc Gia</label>\n            <select [(ngModel)]=\"customer.birthCountry\"\n                (focus)=\"showDropDown()\" class=\"ui fluid search selection dropdown\" \n                [formControl]=\"customerForm.controls['birthCountry']\" >\n                <option *ngFor=\"let country of countryList\" [ngValue]=\"country.name\">{{ country.name }}</option>\n              </select >\n            <!-- <input type=\"text\" name=\"birthPlace\" placeholder=\"Nơi Sinh\" \n                    [class.error]=\"!customerForm.controls['birthPlace'].valid\"\n                    [formControl]=\"customerForm.controls['birthPlace']\"\n                    [(ngModel)]=\"customer.birthPlace\"> -->\n            <div *ngIf=\"customerForm.controls['birthPlace'].hasError('required')&&customerForm.controls['birthPlace'].dirty\"\n                    class=\"ui pointing red basic label\">Yêu cầu phải có nơi sinh</div>\n          </div>\n        </div>\n        <div class=\"field\">\n          <label>Địa Chỉ:</label>\n          <input type=\"text\" name=\"street address\" placeholder=\"Địa Chỉ\" \n                [class.error]=\"!customerForm.controls['streetAddress'].valid\"\n                [formControl]=\"customerForm.controls['streetAddress']\"\n                [(ngModel)]=\"customer.streetAddress\">\n        </div>\n        <div class=\"two fields\">\n          <div class=\"field\">\n            <label>Thành Phố</label>\n             <select [(ngModel)]=\"customer.city\"\n                (focus)=\"showDropDown()\" class=\"ui fluid search selection dropdown\" \n                [formControl]=\"customerForm.controls['city']\" >\n                <option *ngFor=\"let city of cityList\" [ngValue]=\"city\">{{ city }}</option>\n              </select >\n            <!-- <input type=\"text\" placeholder=\"Thành Phố\" \n                [formControl]=\"customerForm.controls['city']\"\n                [class.error]=\"!customerForm.controls['city'].valid\"\n                [(ngModel)]=\"customer.city\"> -->\n          </div>\n          <div class=\"field\">\n            <label>Quốc Gia</label>\n             <select [(ngModel)]=\"customer.country\"\n                (focus)=\"showDropDown()\" class=\"ui fluid search selection dropdown\" \n                [formControl]=\"customerForm.controls['country']\" >\n                <option *ngFor=\"let country of countryList\" [ngValue]=\"country.name\">{{ country.name }}</option>\n              </select >\n            <!-- <input type=\"text\" placeholder=\"Quốc Gia\" \n                [formControl]=\"customerForm.controls['country']\"\n                [class.error]=\"!customerForm.controls['country'].valid\"\n                [(ngModel)]=\"customer.country\"> -->\n            <div *ngIf=\"customerForm.controls['country'].hasError('required')&&customerForm.controls['country'].dirty\" \n                class=\"ui pointing red basic label\">Country is required</div>\n          </div>\n        </div>\n      </div>\n    </form>\n    <!-- <div class=\"ui message info\">{{ customerForm.value | json }} DOES EXIST{{ doesExist }}</div> -->\n  </modal-content>\n  <modal-actions>\n    <button class=\"ui button primary\" \n            (click)=\"onSubmit(customerForm.value);customerModal.hide()\"\n            [class.disabled]=\"!customerForm.valid && !doesExist\">Nhận Khách</button>\n  </modal-actions>\n</sm-modal>"
-
-/***/ }),
-
-/***/ 406:
-/***/ (function(module, exports) {
-
-module.exports = "<sm-modal title=\"Add Service\" icon=\"user circle outline\" #hotelServiceModal>\n  <modal-content>\n\n  <select [(ngModel)]=\"service\" class=\"ui fluid search selection dropdown\">\n    <option *ngFor=\"let s of services\" [ngValue]=\"s\">{{ s.description }}</option>\n  </select >\n  <br/>\n  <div class=\"ui right labeled input\">\n    <div class=\"ui right labeled input\">\n    <div class=\"ui label\">Tên Dịch Vụ</div>\n    <input type=\"text\" [(ngModel)]=\"service.description\">\n  </div>\n    <div class=\"ui label\">Số Lượng</div>\n    <input type=\"text\" [(ngModel)]=\"service.quantity\">\n    <div class=\"ui basic label\">{{ service.unit}}</div>\n  </div>\n  <div class=\"ui right labeled input\">\n    <div class=\"ui label\">Giá</div>\n    <input type=\"text\" [(ngModel)]=\"service.price\">\n  </div>  \n  </modal-content>\n  <modal-actions>\n    <button class=\"ui blue button\" (click)=\"add()\">Thêm</button>\n  </modal-actions>\n</sm-modal>"
-
-/***/ }),
-
-/***/ 407:
-/***/ (function(module, exports) {
-
-module.exports = "<app-room-list [rooms]=\"rooms\"></app-room-list>\r\n"
-
-/***/ }),
-
-/***/ 408:
-/***/ (function(module, exports) {
-
-module.exports = "<sm-modal title=\"Khách Sạn Hoàng Long - 40 Hậu Giang Phường 4, Quận Tân Bình, Tp. Hồ Chí Minh\" #orderModal>\n  <modal-content>\n    <h2 class=\"ui center aligned icon header\">\n      <i class=\"money icon\"></i> Hóa Đơn Tạm Tính\n    </h2>\n    <div class=\"ui large header\">Thông Tin Khách Hàng:</div>\n    <p>Tên: {{ (customer | async)?.lastName }} {{ (customer | async)?.firstName }}</p>\n    <p>Địa Chỉ: {{ (customer | async)?.streetAddress }} - {{ (customer | async)?.city }} - {{ (customer | async)?.country }}</p>\n    <p>Ngày Sinh: {{ (customer | async)?.birthDate }} - Tại: {{ (customer | async)?.birthPlace }}, {{(customer | async)?.birthCountry }}\n      <p>Số CMND/Hộ Chiếu/Thẻ Tạm Trú: {{ (customer | async)?.id }} - Ngày Cấp: {{ (customer | async)?.issueDate }} - Ngày Hết\n        Hạn: {{ (customer | async)?.expirationDate }} </p>\n      <p>Nơi Cấp: {{ (customer | async)?.issueCity }} - {{ (customer | async)?.issueCountry }} </p>\n      <p>Nhận Phòng Lúc: {{ (order | async)?.checkInTime }}</p>\n      <p>Thời gian đã ở : {{ day }} ngày, {{ hour }} giờ, and {{ minutes }} phút\n        <table class=\"ui teal table\">\n          <thead>\n            <tr>\n              <th>Tên Dịch Vụ</th>\n              <th class=\"right aligned\">Giá</th>\n              <th class=\"right aligned\">Số Lượng/Đơn Vị</th>\n              <th class=\"right aligned\">Thành Tiền</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let service of services | async; let i = index; \">\n              <ng-template #other_content>\n                <td>{{ service.description }}</td>\n                <td class=\"right aligned\" *ngIf=\"price\">{{ price | number}}</td>\n                <td class=\"right aligned\" *ngIf=\"quantity\">{{ quantity }} {{ unit }}</td>\n                <td class=\"right aligned\" *ngIf=\"price\">{{ price | number}} <i class=\"ui red window close icon\" (click)=\"remove(service.$key)\"></i></td>\n              </ng-template>\n              <ng-container *ngIf=\"i > 0;else other_content\">\n                <td>{{ service.description }}</td>\n                <td class=\"right aligned\">{{ service.price | number}}</td>\n                <td class=\"right aligned\">{{ service.quantity }} {{ service.unit }}</td>\n                <td class=\"right aligned\">{{ service.price * service.quantity | number}} <i class=\"ui red window close icon\" (click)=\"remove(service.$key)\"></i></td>\n              </ng-container>\n            </tr>\n          </tbody>\n          <tfoot>\n            <tr>\n              <th></th>\n              <th></th>\n              <th class=\"right aligned\">\n                <h4 class=\"ui teal header\">Giảm Giá</h4>\n              </th>\n              <th class=\"right aligned\">\n                <div class=\"ui right labeled input\">\n                  <input type=\"text\" placeholder=\"Nhập số tiền..\" [(ngModel)]=\"discount\" [class.disabled]=\"editting=='yes'\">\n                  <div class=\"ui basic label\">\n                    $\n                  </div>\n                </div>\n              </th>\n            </tr>\n            <tr>\n              <th></th>\n              <th></th>\n              <th class=\"right aligned\">\n                <h4 class=\"ui teal header\">Điều Chỉnh:</h4>\n              </th>\n              <th class=\"right aligned\">\n                <div class=\"ui right labeled input\">\n                  <input type=\"text\" [class.disabled]=\"editting=='yes'\" placeholder=\"Điều chỉnh hóa đơn..\" [(ngModel)]=\"adjustment\">\n                  <div class=\"ui basic label\">\n                    $\n                  </div>\n                </div>\n              </th>\n            </tr>\n            <tr>\n              <th></th>\n              <th></th>\n              <th class=\"right aligned\">\n                <h4 class=\"ui teal header\">Tổng Cộng</h4>\n              </th>\n              <th class=\"right aligned\">\n                <h4 class=\"ui teal header\" *ngIf=\"total\">{{ (total - discount -- adjustment) | number}} VNĐ</h4>\n              </th>\n            </tr>\n          </tfoot>\n        </table>\n  </modal-content>\n  <modal-actions>\n    <button class=\"ui blue button\" *ngIf=\"editting=='no'\" (click)=\"close()\">Checkout</button>\n    <button class=\"ui blue button\" *ngIf=\"editting=='yes'\" (click)=\"hide()\">Đóng</button>\n  </modal-actions>\n</sm-modal>"
-
-/***/ }),
-
-/***/ 409:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"content\" [class.occupied]=\"room.isOccupied\" [class.dirty]=\"room.status==2\">\n  <div class=\"ui huge header aligned center\">\n    Phòng: {{ room.name }}\n  </div>\n  <div class=\"ui violet header meta\">\n    Loại Phòng: {{ room.type == 1 ? 'Phòng Đơn' : 'Phòng Đôi' }} <img class=\"right floated mini ui image\" src=\"assets/images/{{room.imgUrl}}\">\n  </div>\n  <div class=\"ui blue header\">\n    Tình Trạng: <span class=\"ui basic green label right floated\" [class.green]=\"!room.isOccupied\" [class.red]=\"room.isOccupied\"> {{ room.isOccupied ? 'Có Khách' : 'Trống' }}</span>\n  </div>\n  <div class=\"ui pink header\">\n    Tình trạng vệ sinh: <span class=\"ui basic green label right floated\" [class.blue]=\"room.status==2\"> {{ room.status == 1 ? 'Sạch' : 'Dơ' }}</span>\n  </div>\n</div>\n<div *ngIf=\"!room.isOccupied && room.status == 1\" class=\"ui bottom attached button blue\" (click)=\"showCustomerSearchModal();setSelected(room)\">\n  <i class=\"add icon\"></i> Nhận Phòng\n</div>\n<div *ngIf=\"room.isOccupied\" class=\"ui two bottom attached buttons\">\n  <button class=\"ui button green\" (click)=\"servicePopup.show($event, {position: 'bottom center'})\">Menu Phụ</button>\n  <div class=\"ui red button\" (click)=\"checkOut(room)\">Trả Phòng</div>\n</div>\n<div *ngIf=\"!room.isOccupied && room.status==2\" class=\"ui bottom attached button orange\" (click)=\"clean(room)\">\n  <i class=\"paint brush icon\"></i> Phòng Đã Dọn\n</div>\n<app-customer-search-form [roomId]=\"room.$key\" #searchForm></app-customer-search-form>\n\n<sm-popup #customerPopup>\n  <div class=\"ui icon buttons\">\n    <button class=\"ui basic button orange\">View</button>\n    <button class=\"ui basic button teal\">Edit</button>\n  </div>\n</sm-popup>\n\n<sm-popup #servicePopup>\n  <div class=\"ui icon buttons\">\n    <button class=\"ui button green\" [routerLink]=\"['/orders',room.orderId,'yes']\" skipLocationChange>Xem Hóa Đơn Tạm Thời</button>\n    <button class=\"ui button blue\" [routerLink]=\"['/hotel-services',room.orderId]\" skipLocationChange>Thêm Dịch Vụ</button>\n    <button class=\"ui button violet\" (click)=\"markAsDirtyOrClean(room)\">{{ room.status == 1 ? 'Báo Phòng Dơ' : 'Báo Phòng Sạch'}}</button>\n  </div>\n</sm-popup>"
-
-/***/ }),
-
-/***/ 410:
-/***/ (function(module, exports) {
-
-module.exports = "<app-room-card *ngFor=\"let room of rooms | async\" [room]=\"room\"></app-room-card>\n"
-
-/***/ }),
-
-/***/ 411:
-/***/ (function(module, exports) {
-
-module.exports = "<div class=\"ui fixed inverted menu\">\n  <div class=\"ui container\">\n    <a href=\"#\" class=\"header item\">\n      Hoang  Long  Hotel  Manager  Application\n    </a>\n    <ng-container *ngFor=\"let menuItem of menu\">\n    <a *ngIf=\"!menuItem.subMenu\" [routerLink]=\"menuItem.url\" class=\"item\">{{ menuItem.name }}</a>\n    <div *ngIf=\"menuItem.subMenu\" class=\"ui simple dropdown item\">\n      {{ menuItem.name }} <i class=\"dropdown icon\"></i>\n      <div class=\"menu\">\n        <a *ngFor=\"let subItem of menuItem.subMenu\" class=\"item\" [routerLink]=\"[menuItem.url]\">{{ subItem.name }}</a>\n      </div>\n    </div>\n    </ng-container>\n  </div>\n</div>"
-
-/***/ }),
-
-/***/ 412:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  page-not-found works!\n</p>\n"
-
-/***/ }),
-
-/***/ 413:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  daily-report works!\n</p>\n"
-
-/***/ }),
-
-/***/ 414:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  monthly-report works!\n</p>\n"
-
-/***/ }),
-
-/***/ 415:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  periodical-report works!\n</p>\n"
-
-/***/ }),
-
-/***/ 416:
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  report works!\n</p>\n"
-
-/***/ }),
-
-/***/ 51:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__ = __webpack_require__(120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Rx__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CustomerService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2844,7 +3013,7 @@ var CustomerService = (function () {
         });
     };
     CustomerService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["i" /* Injectable */])(),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
     ], CustomerService);
     return CustomerService;
@@ -2855,53 +3024,365 @@ var CustomerService = (function () {
 
 /***/ }),
 
-/***/ 52:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ 524:
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(38);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RoomService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
+var map = {
+	"./af": 217,
+	"./af.js": 217,
+	"./ar": 224,
+	"./ar-dz": 218,
+	"./ar-dz.js": 218,
+	"./ar-kw": 219,
+	"./ar-kw.js": 219,
+	"./ar-ly": 220,
+	"./ar-ly.js": 220,
+	"./ar-ma": 221,
+	"./ar-ma.js": 221,
+	"./ar-sa": 222,
+	"./ar-sa.js": 222,
+	"./ar-tn": 223,
+	"./ar-tn.js": 223,
+	"./ar.js": 224,
+	"./az": 225,
+	"./az.js": 225,
+	"./be": 226,
+	"./be.js": 226,
+	"./bg": 227,
+	"./bg.js": 227,
+	"./bn": 228,
+	"./bn.js": 228,
+	"./bo": 229,
+	"./bo.js": 229,
+	"./br": 230,
+	"./br.js": 230,
+	"./bs": 231,
+	"./bs.js": 231,
+	"./ca": 232,
+	"./ca.js": 232,
+	"./cs": 233,
+	"./cs.js": 233,
+	"./cv": 234,
+	"./cv.js": 234,
+	"./cy": 235,
+	"./cy.js": 235,
+	"./da": 236,
+	"./da.js": 236,
+	"./de": 239,
+	"./de-at": 237,
+	"./de-at.js": 237,
+	"./de-ch": 238,
+	"./de-ch.js": 238,
+	"./de.js": 239,
+	"./dv": 240,
+	"./dv.js": 240,
+	"./el": 241,
+	"./el.js": 241,
+	"./en-au": 242,
+	"./en-au.js": 242,
+	"./en-ca": 243,
+	"./en-ca.js": 243,
+	"./en-gb": 244,
+	"./en-gb.js": 244,
+	"./en-ie": 245,
+	"./en-ie.js": 245,
+	"./en-nz": 246,
+	"./en-nz.js": 246,
+	"./eo": 247,
+	"./eo.js": 247,
+	"./es": 249,
+	"./es-do": 248,
+	"./es-do.js": 248,
+	"./es.js": 249,
+	"./et": 250,
+	"./et.js": 250,
+	"./eu": 251,
+	"./eu.js": 251,
+	"./fa": 252,
+	"./fa.js": 252,
+	"./fi": 253,
+	"./fi.js": 253,
+	"./fo": 254,
+	"./fo.js": 254,
+	"./fr": 257,
+	"./fr-ca": 255,
+	"./fr-ca.js": 255,
+	"./fr-ch": 256,
+	"./fr-ch.js": 256,
+	"./fr.js": 257,
+	"./fy": 258,
+	"./fy.js": 258,
+	"./gd": 259,
+	"./gd.js": 259,
+	"./gl": 260,
+	"./gl.js": 260,
+	"./gom-latn": 261,
+	"./gom-latn.js": 261,
+	"./he": 262,
+	"./he.js": 262,
+	"./hi": 263,
+	"./hi.js": 263,
+	"./hr": 264,
+	"./hr.js": 264,
+	"./hu": 265,
+	"./hu.js": 265,
+	"./hy-am": 266,
+	"./hy-am.js": 266,
+	"./id": 267,
+	"./id.js": 267,
+	"./is": 268,
+	"./is.js": 268,
+	"./it": 269,
+	"./it.js": 269,
+	"./ja": 270,
+	"./ja.js": 270,
+	"./jv": 271,
+	"./jv.js": 271,
+	"./ka": 272,
+	"./ka.js": 272,
+	"./kk": 273,
+	"./kk.js": 273,
+	"./km": 274,
+	"./km.js": 274,
+	"./kn": 275,
+	"./kn.js": 275,
+	"./ko": 276,
+	"./ko.js": 276,
+	"./ky": 277,
+	"./ky.js": 277,
+	"./lb": 278,
+	"./lb.js": 278,
+	"./lo": 279,
+	"./lo.js": 279,
+	"./lt": 280,
+	"./lt.js": 280,
+	"./lv": 281,
+	"./lv.js": 281,
+	"./me": 282,
+	"./me.js": 282,
+	"./mi": 283,
+	"./mi.js": 283,
+	"./mk": 284,
+	"./mk.js": 284,
+	"./ml": 285,
+	"./ml.js": 285,
+	"./mr": 286,
+	"./mr.js": 286,
+	"./ms": 288,
+	"./ms-my": 287,
+	"./ms-my.js": 287,
+	"./ms.js": 288,
+	"./my": 289,
+	"./my.js": 289,
+	"./nb": 290,
+	"./nb.js": 290,
+	"./ne": 291,
+	"./ne.js": 291,
+	"./nl": 293,
+	"./nl-be": 292,
+	"./nl-be.js": 292,
+	"./nl.js": 293,
+	"./nn": 294,
+	"./nn.js": 294,
+	"./pa-in": 295,
+	"./pa-in.js": 295,
+	"./pl": 296,
+	"./pl.js": 296,
+	"./pt": 298,
+	"./pt-br": 297,
+	"./pt-br.js": 297,
+	"./pt.js": 298,
+	"./ro": 299,
+	"./ro.js": 299,
+	"./ru": 300,
+	"./ru.js": 300,
+	"./sd": 301,
+	"./sd.js": 301,
+	"./se": 302,
+	"./se.js": 302,
+	"./si": 303,
+	"./si.js": 303,
+	"./sk": 304,
+	"./sk.js": 304,
+	"./sl": 305,
+	"./sl.js": 305,
+	"./sq": 306,
+	"./sq.js": 306,
+	"./sr": 308,
+	"./sr-cyrl": 307,
+	"./sr-cyrl.js": 307,
+	"./sr.js": 308,
+	"./ss": 309,
+	"./ss.js": 309,
+	"./sv": 310,
+	"./sv.js": 310,
+	"./sw": 311,
+	"./sw.js": 311,
+	"./ta": 312,
+	"./ta.js": 312,
+	"./te": 313,
+	"./te.js": 313,
+	"./tet": 314,
+	"./tet.js": 314,
+	"./th": 315,
+	"./th.js": 315,
+	"./tl-ph": 316,
+	"./tl-ph.js": 316,
+	"./tlh": 317,
+	"./tlh.js": 317,
+	"./tr": 318,
+	"./tr.js": 318,
+	"./tzl": 319,
+	"./tzl.js": 319,
+	"./tzm": 321,
+	"./tzm-latn": 320,
+	"./tzm-latn.js": 320,
+	"./tzm.js": 321,
+	"./uk": 322,
+	"./uk.js": 322,
+	"./ur": 323,
+	"./ur.js": 323,
+	"./uz": 325,
+	"./uz-latn": 324,
+	"./uz-latn.js": 324,
+	"./uz.js": 325,
+	"./vi": 326,
+	"./vi.js": 326,
+	"./x-pseudo": 327,
+	"./x-pseudo.js": 327,
+	"./yo": 328,
+	"./yo.js": 328,
+	"./zh-cn": 329,
+	"./zh-cn.js": 329,
+	"./zh-hk": 330,
+	"./zh-hk.js": 330,
+	"./zh-tw": 331,
+	"./zh-tw.js": 331
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
 };
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 524;
 
-
-var RoomService = (function () {
-    function RoomService(db) {
-        this.db = db;
-    }
-    RoomService.prototype.getRooms = function () {
-        return this.db.list('/rooms');
-    };
-    RoomService.prototype.updateRoom = function (key, data) {
-        this.db.list('/rooms').update(key, data);
-    };
-    RoomService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]) === "function" && _a || Object])
-    ], RoomService);
-    return RoomService;
-    var _a;
-}());
-
-//# sourceMappingURL=room.service.js.map
 
 /***/ }),
 
-/***/ 682:
+/***/ 528:
+/***/ (function(module, exports) {
+
+module.exports = "<app-menu></app-menu>\n<router-outlet></router-outlet>\n"
+
+/***/ }),
+
+/***/ 529:
+/***/ (function(module, exports) {
+
+module.exports = "<sm-modal title=\"Customer Information.\" #customerModal>\n  <modal-content *ngIf=\"customer\">\n    <form class=\"ui form\" [formGroup]=\"customerForm\">\n      <div class=\"field\">\n        <div class=\"four fields\">\n          <div class=\"field\">\n            <label for=\"idNumber\">Số CMND/Hộ Chiếu</label>\n            <input type=\"text\" name=\"Số CMND/Hộ Chiếu/...\" placeholder=\"ID Number\" [class.error]=\"!customerForm.controls['id'].valid\"\n              [formControl]=\"customerForm.controls['id']\" [(ngModel)]=\"customer.id\" [disabled]=\"doesExist\">\n            <div *ngIf=\"customerForm.controls['id'].hasError('required')&&customerForm.controls['id'].dirty\" class=\"ui pointing red basic label\">Yêu cầu phải có mã số giấy tờ </div>\n          </div>\n          <div class=\"field\">\n            <label for=\"issueDate\">Ngày Cấp</label>\n            <input type=\"text\" name=\"issueDate\" placeholder=\"Ngày Cấp\" [class.error]=\"!customerForm.controls['issueDate'].valid\" [formControl]=\"customerForm.controls['issueDate']\"\n              [(ngModel)]=\"customer.issueDate\">\n            <div *ngIf=\"customerForm.controls['issueDate'].hasError('required')&&customerForm.controls['issueDate'].dirty\" class=\"ui pointing red basic label\">Yêu cầu phải có ngày cấp</div>\n            <div *ngIf=\"customerForm.controls['issueDate'].hasError('invalidDate')\" class=\"ui pointing red basic label\">Ngày cấp phải theo định dạng dd/mm/yyyy (VD: 30/12/2015)</div>\n          </div>\n          <div class=\"field\">\n            <label>Ngày Hết Hạn</label>\n            <input type=\"text\" name=\"expirationDate\" placeholder=\"Ngày Hết Hạn\" [class.error]=\"!customerForm.controls['expirationDate'].valid\"\n              [formControl]=\"customerForm.controls['expirationDate']\" [(ngModel)]=\"customer.expirationDate\">\n            <div *ngIf=\"customerForm.controls['expirationDate'].hasError('required')&&customerForm.controls['expirationDate'].dirty\"\n              class=\"ui pointing red basic label\">Yêu cầu phải có ngày hết hạn</div>\n            <div *ngIf=\"customerForm.controls['expirationDate'].hasError('invalidDate')\" class=\"ui pointing red basic label\">Ngày hết hạn phải theo định dạnh dd/mm/yyyy (VD: 30/12/2015)</div>\n\n          </div>\n          <div class=\"field\">\n            <label>Tỉnh/Thành Phố Cấp:</label>\n            <select [(ngModel)]=\"customer.issueCity\" (focus)=\"showDropDown()\" class=\"ui fluid search selection dropdown\" [formControl]=\"customerForm.controls['issueCity']\">\n                <option *ngFor=\"let city of cityList\" [ngValue]=\"city\">{{ city }}</option>\n              </select >\n                <!-- <input type=\"text\" placeholder=\"Thành Phố Cấp\" \n                [formControl]=\"customerForm.controls['issueCity']\"\n                [class.error]=\"!customerForm.controls['issueCity'].valid\"\n                [(ngModel)]=\"customer.issueCity\"> -->\n          </div>\n          <div class=\"field\">\n            <label>Quốc Gia Cấp: </label>\n            <select [(ngModel)]=\"customer.issueCountry\" (focus)=\"showDropDown()\" class=\"ui fluid search selection dropdown\" [formControl]=\"customerForm.controls['issueCountry']\">\n                <option *ngFor=\"let country of countryList\" [ngValue]=\"country.name\">{{ country.name }}</option>\n              </select >\n          \n              <!-- <input type=\"text\" placeholder=\"Quốc Gia Cấp\" \n                [formControl]=\"customerForm.controls['issueCountry']\"\n                [class.error]=\"!customerForm.controls['issueCountry'].valid\"\n                [(ngModel)]=\"customer.issueCountry\"> -->\n            <div *ngIf=\"customerForm.controls['issueCountry'].hasError('required')&&customerForm.controls['issueCountry'].dirty\" \n                  class=\"ui pointing red basic label\">Yêu cầu nhập quốc gia cấp </div>\n          </div>         \n        </div>\n      </div>\n      <div class=\"field\">\n        <label>Họ</label>\n        <div class=\"two fields\">\n          <div class=\"field\">\n            <input type=\"text\" name=\"lastName\" placeholder=\"Họ\" \n                  [class.error]=\"!customerForm.controls['lastName'].valid\" \n                  [formControl]=\"customerForm.controls['lastName']\"\n                  [(ngModel)]=\"customer.lastName\">\n            <div *ngIf=\"customerForm.controls['lastName'].hasError('required')&&customerForm.controls['firstName'].dirty\" \n                  class=\"ui pointing red basic label\">Yêu cầu phải có họ</div>\n          </div>\n          <div class=\"field\">\n            <input type=\"text\" name=\"firstName\" placeholder=\"Tên\" \n                  [class.error]=\"!customerForm.controls['firstName'].valid\"\n                  [formControl]=\"customerForm.controls['firstName']\"\n                  [(ngModel)]=\"customer.firstName\">\n            <div *ngIf=\"customerForm.controls['firstName'].hasError('required')&&customerForm.controls['lastName'].dirty\" \n                  class=\"ui pointing red basic label\">Yêu cầu phải có tên</div>\n          </div>\n        </div>\n        <div class=\"three fields\">\n          <div class=\"field\">\n            <label for=\"birthDate\">Ngày Sinh</label>\n            <input type=\"text\" name=\"birthDate\" placeholder=\"Ngày Sinh\" \n                  [class.error]=\"!customerForm.controls['birthDate'].valid\" \n                  [formControl]=\"customerForm.controls['birthDate']\"\n                  [(ngModel)]=\"customer.birthDate\">\n            <div *ngIf=\"customerForm.controls['birthDate'].hasError('required')&&customerForm.controls['birthDate'].dirty\" \n                  class=\"ui pointing red basic label\">Yêu cầu phải có ngày sinh</div>\n             <div *ngIf=\"customerForm.controls['birthDate'].hasError('invalidDate')\" \n                  class=\"ui pointing red basic label\">Ngày sinh phải theo định dạng dd/mm/yyyy (VD: 30/12/2015)</div> \n          </div>\n          <div class=\"field\">\n            <label>Tỉnh/Thành Phố</label>\n            <select [(ngModel)]=\"customer.birthPlace\"\n                (focus)=\"showDropDown()\" class=\"ui fluid search selection dropdown\" \n                [formControl]=\"customerForm.controls['birthPlace']\" >\n                <option *ngFor=\"let city of cityList\" [ngValue]=\"city\">{{ city }}</option>\n              </select >\n            <!-- <input type=\"text\" name=\"birthPlace\" placeholder=\"Nơi Sinh\" \n                    [class.error]=\"!customerForm.controls['birthPlace'].valid\"\n                    [formControl]=\"customerForm.controls['birthPlace']\"\n                    [(ngModel)]=\"customer.birthPlace\"> -->\n            <!-- <div *ngIf=\"customerForm.controls['birthPlace'].hasError('required')&&customerForm.controls['birthPlace'].dirty\"\n                    class=\"ui pointing red basic label\">Yêu cầu phải có nơi sinh</div> -->\n          </div>\n          <div class=\"field\">\n            <label>Quốc Gia</label>\n            <select [(ngModel)]=\"customer.birthCountry\"\n                (focus)=\"showDropDown()\" class=\"ui fluid search selection dropdown\" \n                [formControl]=\"customerForm.controls['birthCountry']\" >\n                <option *ngFor=\"let country of countryList\" [ngValue]=\"country.name\">{{ country.name }}</option>\n              </select >\n            <!-- <input type=\"text\" name=\"birthPlace\" placeholder=\"Nơi Sinh\" \n                    [class.error]=\"!customerForm.controls['birthPlace'].valid\"\n                    [formControl]=\"customerForm.controls['birthPlace']\"\n                    [(ngModel)]=\"customer.birthPlace\"> -->\n            <div *ngIf=\"customerForm.controls['birthPlace'].hasError('required')&&customerForm.controls['birthPlace'].dirty\"\n                    class=\"ui pointing red basic label\">Yêu cầu phải có nơi sinh</div>\n          </div>\n        </div>\n        <div class=\"field\">\n          <label>Địa Chỉ:</label>\n          <input type=\"text\" name=\"street address\" placeholder=\"Địa Chỉ\" \n                [class.error]=\"!customerForm.controls['streetAddress'].valid\"\n                [formControl]=\"customerForm.controls['streetAddress']\"\n                [(ngModel)]=\"customer.streetAddress\">\n        </div>\n        <div class=\"two fields\">\n          <div class=\"field\">\n            <label>Tỉnh/Thành Phố</label>\n             <select [(ngModel)]=\"customer.city\"\n                (focus)=\"showDropDown()\" class=\"ui fluid search selection dropdown\" \n                [formControl]=\"customerForm.controls['city']\" >\n                <option *ngFor=\"let city of cityList\" [ngValue]=\"city\">{{ city }}</option>\n              </select >\n            <!-- <input type=\"text\" placeholder=\"Thành Phố\" \n                [formControl]=\"customerForm.controls['city']\"\n                [class.error]=\"!customerForm.controls['city'].valid\"\n                [(ngModel)]=\"customer.city\"> -->\n          </div>\n          <div class=\"field\">\n            <label>Quốc Gia</label>\n             <select [(ngModel)]=\"customer.country\"\n                (focus)=\"showDropDown()\" class=\"ui fluid search selection dropdown\" \n                [formControl]=\"customerForm.controls['country']\" >\n                <option *ngFor=\"let country of countryList\" [ngValue]=\"country.name\">{{ country.name }}</option>\n              </select >\n            <!-- <input type=\"text\" placeholder=\"Quốc Gia\" \n                [formControl]=\"customerForm.controls['country']\"\n                [class.error]=\"!customerForm.controls['country'].valid\"\n                [(ngModel)]=\"customer.country\"> -->\n            <div *ngIf=\"customerForm.controls['country'].hasError('required')&&customerForm.controls['country'].dirty\" \n                class=\"ui pointing red basic label\">Country is required</div>\n          </div>\n        </div>\n      </div>\n    </form>\n    <!-- <div class=\"ui message info\">{{ customerForm.value | json }} DOES EXIST{{ doesExist }}</div> -->\n  </modal-content>\n  <modal-actions>\n    <button class=\"ui button primary\" \n            (click)=\"onSubmit(customerForm.value);customerModal.hide()\"\n            [class.disabled]=\"!customerForm.valid && !doesExist\">Nhận Khách</button>\n  </modal-actions>\n</sm-modal>"
+
+/***/ }),
+
+/***/ 530:
+/***/ (function(module, exports) {
+
+module.exports = "<sm-modal title=\"Add Service\" icon=\"user circle outline\" #hotelServiceModal>\n  <modal-content>\n\n  <select [(ngModel)]=\"service\" class=\"ui fluid search selection dropdown\">\n    <option *ngFor=\"let s of services\" [ngValue]=\"s\">{{ s.description }}</option>\n  </select >\n  <br/>\n  <div class=\"ui right labeled input\">\n    <div class=\"ui right labeled input\">\n    <div class=\"ui label\">Tên Dịch Vụ</div>\n    <input type=\"text\" [(ngModel)]=\"service.description\">\n  </div>\n    <div class=\"ui label\">Số Lượng</div>\n    <input type=\"text\" [(ngModel)]=\"service.quantity\">\n    <div class=\"ui basic label\">{{ service.unit}}</div>\n  </div>\n  <div class=\"ui right labeled input\">\n    <div class=\"ui label\">Giá</div>\n    <input type=\"text\" [(ngModel)]=\"service.price\">\n  </div>  \n  </modal-content>\n  <modal-actions>\n    <button class=\"ui blue button\" (click)=\"add()\">Thêm</button>\n  </modal-actions>\n</sm-modal>"
+
+/***/ }),
+
+/***/ 531:
+/***/ (function(module, exports) {
+
+module.exports = "<app-room-list [rooms]=\"rooms\"></app-room-list>\r\n"
+
+/***/ }),
+
+/***/ 532:
+/***/ (function(module, exports) {
+
+module.exports = "<sm-modal title=\"Khách Sạn Hoàng Long - 40 Hậu Giang Phường 4, Quận Tân Bình, Tp. Hồ Chí Minh\" #orderModal>\n  <modal-content>\n    <h2 class=\"ui center aligned icon header\">\n      <i class=\"money icon\"></i> Hóa Đơn Tạm Tính\n    </h2>\n    <div class=\"ui large header\">Thông Tin Khách Hàng:</div>\n    <p>Tên: {{ (customer | async)?.lastName }} {{ (customer | async)?.firstName }}</p>\n    <p>Địa Chỉ: {{ (customer | async)?.streetAddress }} - {{ (customer | async)?.city }} - {{ (customer | async)?.country }}</p>\n    <p>Ngày Sinh: {{ (customer | async)?.birthDate }} - Tại: {{ (customer | async)?.birthPlace }}, {{(customer | async)?.birthCountry }}\n      <p>Số CMND/Hộ Chiếu/Thẻ Tạm Trú: {{ (customer | async)?.id }} - Ngày Cấp: {{ (customer | async)?.issueDate }} - Ngày Hết\n        Hạn: {{ (customer | async)?.expirationDate }} </p>\n      <p>Nơi Cấp: {{ (customer | async)?.issueCity }} - {{ (customer | async)?.issueCountry }} </p>\n      <p>Nhận Phòng Lúc: {{ (order | async)?.checkInTime }}</p>\n      <p>Thời gian đã ở : {{ day }} ngày, {{ hour }} giờ, and {{ minutes }} phút\n        <table class=\"ui teal table\">\n          <thead>\n            <tr>\n              <th>Tên Dịch Vụ</th>\n              <th class=\"right aligned\">Giá</th>\n              <th class=\"right aligned\">Số Lượng/Đơn Vị</th>\n              <th class=\"right aligned\">Thành Tiền</th>\n            </tr>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let service of services | async; let i = index; \">\n              <ng-template #other_content>\n                <td>{{ service.description }}</td>\n                <td class=\"right aligned\" *ngIf=\"price\">{{ price | number}}</td>\n                <td class=\"right aligned\" *ngIf=\"quantity\">{{ quantity }} {{ unit }}</td>\n                <td class=\"right aligned\" *ngIf=\"price\">{{ price | number}} <i class=\"ui red window close icon\" (click)=\"remove(service.$key)\"></i></td>\n              </ng-template>\n              <ng-container *ngIf=\"i > 0;else other_content\">\n                <td>{{ service.description }}</td>\n                <td class=\"right aligned\">{{ service.price | number}}</td>\n                <td class=\"right aligned\">{{ service.quantity }} {{ service.unit }}</td>\n                <td class=\"right aligned\">{{ service.price * service.quantity | number}} <i class=\"ui red window close icon\" (click)=\"remove(service.$key)\"></i></td>\n              </ng-container>\n            </tr>\n          </tbody>\n          <tfoot>\n            <tr *ngIf=\"editting=='yes'\">\n              <th></th>\n              <th></th>\n              <th class=\"right aligned\">\n                <h4 class=\"ui teal header\" *ngIf=\"editting=='yes'\">Giảm Giá</h4>\n              </th>\n              <th class=\"right aligned\">\n                <div class=\"ui right labeled input\" *ngIf=\"editting=='yes'\">\n                  <input type=\"number\"  placeholder=\"Nhập số tiền..\" [(ngModel)]=\"discount\" [class.disabled]=\"editting=='yes'\">\n                  <div class=\"ui basic label\">\n                    $\n                  </div>\n                </div>\n              </th>\n            </tr>\n            <tr *ngIf=\"editting=='yes'\">\n              <th></th>\n              <th></th>\n              <th class=\"right aligned\">\n                <h4 class=\"ui teal header\">Điều Chỉnh:</h4>\n              </th>\n              <th class=\"right aligned\">\n                <div class=\"ui right labeled input\">\n                  <input type=\"number\" placeholder=\"Điều chỉnh hóa đơn..\" [(ngModel)]=\"adjustment\">\n                  <div class=\"ui basic label\">\n                    $\n                  </div>\n                </div>\n              </th>\n            </tr>\n            <tr>\n              <th></th>\n              <th></th>\n              <th class=\"right aligned\">\n                <h4 class=\"ui teal header\">Tổng Cộng</h4>\n              </th>\n              <th class=\"right aligned\">\n                <h4 class=\"ui teal header\" *ngIf=\"total\">{{ (total - discount -- adjustment) | number}} VNĐ</h4>\n              </th>\n            </tr>\n          </tfoot>\n        </table>\n  </modal-content>\n  <modal-actions>\n    <button class=\"ui blue button\" *ngIf=\"editting=='no'\" (click)=\"close()\">Checkout</button>\n    <button class=\"ui blue button\" *ngIf=\"editting=='yes'\" (click)=\"hide()\">Đóng</button>\n  </modal-actions>\n</sm-modal>"
+
+/***/ }),
+
+/***/ 533:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"content\" [class.occupied]=\"room.isOccupied\" [class.dirty]=\"room.status==2\">\n  <div class=\"ui huge header aligned center\">\n    Phòng: {{ room.name }}\n  </div>\n  <div class=\"ui violet header meta\">\n    Loại Phòng: {{ room.type == 1 ? 'Phòng Đơn' : 'Phòng Đôi' }} <img class=\"right floated mini ui image\" src=\"assets/images/{{room.imgUrl}}\">\n  </div>\n  <div class=\"ui blue header\">\n    Tình Trạng: <span class=\"ui basic green label right floated\" [class.green]=\"!room.isOccupied\" [class.red]=\"room.isOccupied\"> {{ room.isOccupied ? 'Có Khách' : 'Trống' }}</span>\n  </div>\n  <div class=\"ui pink header\">\n    Tình trạng vệ sinh: <span class=\"ui basic green label right floated\" [class.blue]=\"room.status==2\"> {{ room.status == 1 ? 'Sạch' : 'Dơ' }}</span>\n  </div>\n</div>\n<div *ngIf=\"!room.isOccupied && room.status == 1\" class=\"ui bottom attached button blue\" (click)=\"showCustomerSearchModal();setSelected(room)\">\n  <i class=\"add icon\"></i> Nhận Phòng\n</div>\n<div *ngIf=\"room.isOccupied\" class=\"ui two bottom attached buttons\">\n  <button class=\"ui button green\" (click)=\"servicePopup.show($event, {position: 'bottom center'})\">Menu Phụ</button>\n  <div class=\"ui red button\" (click)=\"checkOut(room)\">Trả Phòng</div>\n</div>\n<div *ngIf=\"!room.isOccupied && room.status==2\" class=\"ui bottom attached button orange\" (click)=\"clean(room)\">\n  <i class=\"paint brush icon\"></i> Phòng Đã Dọn\n</div>\n<app-customer-search-form [roomId]=\"room.$key\" #searchForm></app-customer-search-form>\n\n<sm-popup #customerPopup>\n  <div class=\"ui icon buttons\">\n    <button class=\"ui basic button orange\">View</button>\n    <button class=\"ui basic button teal\">Edit</button>\n  </div>\n</sm-popup>\n\n<sm-popup #servicePopup>\n  <div class=\"ui icon buttons\">\n    <button class=\"ui button green\" [routerLink]=\"['/orders',room.orderId,'yes']\" skipLocationChange>Xem Hóa Đơn Tạm Thời</button>\n    <button class=\"ui button blue\" [routerLink]=\"['/hotel-services',room.orderId]\" skipLocationChange>Thêm Dịch Vụ</button>\n    <button class=\"ui button violet\" (click)=\"markAsDirtyOrClean(room)\">{{ room.status == 1 ? 'Báo Phòng Dơ' : 'Báo Phòng Sạch'}}</button>\n  </div>\n</sm-popup>"
+
+/***/ }),
+
+/***/ 534:
+/***/ (function(module, exports) {
+
+module.exports = "<app-room-card *ngFor=\"let room of rooms | async\" [room]=\"room\"></app-room-card>\n"
+
+/***/ }),
+
+/***/ 535:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui fixed inverted menu\">\n  <div class=\"ui container\">\n    <a href=\"#\" class=\"header item\">\n      Hoang  Long  Hotel  Manager  Application\n    </a>\n    <ng-container *ngFor=\"let menuItem of menu\">\n    <a [routerLink]=\"menuItem.url\" class=\"item\">{{ menuItem.name }}</a>\n    <!-- <div *ngIf=\"menuItem.subMenu\" [routerLink]=\"menuItem.url\" class=\"ui simple dropdown item\">\n      {{ menuItem.name }} <i class=\"dropdown icon\"></i>\n      <div class=\"menu\">\n        <a *ngFor=\"let subItem of menuItem.subMenu\" class=\"item\" [routerLink]=\"[subItem.url]\">{{ subItem.name }}</a>\n      </div>\n    </div> -->\n    </ng-container>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ 536:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  page-not-found works!\n</p>\n"
+
+/***/ }),
+
+/***/ 537:
+/***/ (function(module, exports) {
+
+module.exports = "\n<h1 class=\"ui center aligned\"> Báo Cáo Theo Ngày</h1>\nTừ Ngày: <ng2-datepicker [options]=\"options\" [(ngModel)]=\"fromDate\"></ng2-datepicker>\nĐến Ngày: <ng2-datepicker [options]=\"options\" [(ngModel)]=\"toDate\"></ng2-datepicker>\n<div class=\"ui button green\" (click)=\"setDate()\">Xem</div> \n<app-report-table *ngIf=\"filterList.length > 0\" [orders]=\"filterList\"></app-report-table>\n\n"
+
+/***/ }),
+
+/***/ 538:
+/***/ (function(module, exports) {
+
+module.exports = "\n<h1 class=\"ui center aligned\"> Báo Cáo Theo Tháng</h1>\nBáo Cáo Tháng: <ng2-datepicker [options]=\"options\" [(ngModel)]=\"fromDate\"></ng2-datepicker>\n<div class=\"ui button green\" (click)=\"setDate()\">Xem</div> \n<app-report-table *ngIf=\"filterList.length > 0\" [orders]=\"filterList\"></app-report-table>\n\n"
+
+/***/ }),
+
+/***/ 539:
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  periodical-report works!\n</p>\n"
+
+/***/ }),
+
+/***/ 540:
+/***/ (function(module, exports) {
+
+module.exports = "\n<!-- <h1 class=\"ui center aligned\"> Báo Cáo Thu Theo Ngày</h1> -->\n<!-- Từ Ngày: <ng2-datepicker [options]=\"options\" [(ngModel)]=\"fromDate\"></ng2-datepicker>\nĐến Ngày: <ng2-datepicker [options]=\"options\" [(ngModel)]=\"toDate\"></ng2-datepicker>\n<div class=\"ui button green\" (click)=\"setDate()\">Xem</div>\n\n<h2 class=\"ui header\"> Báo cáo thu từ ngày {{ fromDate?.formatted }} tới {{ toDate?.formatted }}</h2> -->\n<table class=\"ui celled striped table\">\n  <thead>\n    <tr>\n      <th>Phòng</th>\n      <th>Khoản Thu</th>\n      <th class=\"right aligned\">Giảm Giá</th>\n      <th class=\"right aligned\">Điều Chỉnh</th>\n      <th class=\"right aligned\">Tổng Cộng</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor=\"let order of orders;let i = index;\">\n      <td>{{ order.roomId }}</td>\n       <td class=\"collapsing\">\n        <div class=\"ui list\">\n          <div class=\"item\" *ngFor=\"let service of order.services\">\n            <div class=\"header\">{{ service?.description }}</div>\n            Giá: {{ service?.price | number }}- Số Lượng: {{ service?.quantity | number }} {{ service?.unit }}\n          </div>    \n        </div>\n      </td> \n      \n        <td class=\"right aligned\">{{ order.discount | number }}</td>\n        <td class=\"right aligned\">{{ order.adjustment | number }}</td>\n        <td class=\"right aligned\">{{ order.total | number }}</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <th></th>\n      <th></th>\n      <th class=\"right aligned\"></th>\n      <th class=\"right aligned\">Tổng Cộng</th>\n      <th class=\"right aligned\">{{ total | number}}</th>\n  </tfoot>\n</table>\n"
+
+/***/ }),
+
+/***/ 541:
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ui main container\">\n  <div class=\"ui secondary pointing menu\">\n    <a [routerLink]=\"['daily-report']\" [routerLinkActive]=\"['active']\" class=\"item\">\n    Báo Cáo Ngày\n  </a>\n    <a class=\"item\" [routerLink]=\"['monthly-report']\" [routerLinkActive]=\"['active']\">\n    Báo Cáo Tháng\n  </a>\n  </div>\n</div>\n<router-outlet></router-outlet>"
+
+/***/ }),
+
+/***/ 808:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(256);
+module.exports = __webpack_require__(376);
 
 
 /***/ })
 
-},[682]);
+},[808]);
 //# sourceMappingURL=main.bundle.js.map
