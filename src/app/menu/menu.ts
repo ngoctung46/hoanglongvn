@@ -1,19 +1,19 @@
 import { MenuItem } from './menu-item.model';
 export const MENU: MenuItem[] = [
-    new MenuItem('Home',''),
+    new MenuItem('Trang Chính',''),
     new MenuItem(
-        'Manage',
+        'Quản Lý',
         '/manage',
         [
-            new MenuItem('Rooms', '/room'),
-            new MenuItem('Services','/room')
+            new MenuItem('Phòng', '/room'),
+            new MenuItem('Dịch Vụ','/room')
         ]),
     new MenuItem(
-        'Reports',
+        'Báo Cáo',
         '/report',
         [
-            new MenuItem('Daily Report','daily-report'),
-            new MenuItem('Monthly Report', 'monthly-report'),
-            new MenuItem('Periodical Report', 'periodical-report')
+            new MenuItem('Báo Cáo Ngày','daily-report'),
+            new MenuItem('Báo Cáo Tháng', 'monthly-report'),
+            new MenuItem('Báo Cáo Năm', 'periodical-report')
         ])
 ];

@@ -33,7 +33,7 @@ export class OrderComponent implements OnInit {
   minutes: number;
   discount: number = 0.0;
   roomId: string;
-  editting: string ='yes';
+  editting: string;
   adjustment = 0.0;
   constructor(
     private orderService: OrderService,
@@ -53,6 +53,7 @@ export class OrderComponent implements OnInit {
         this.roomId = order.roomId;
         this.timeDiff = (new Date().getTime() - new Date(order.checkInTime).getTime()) / 1000;
         this.day = Math.floor(this.timeDiff / 86400);
+        console.log("DAY" + this.day);
         this.timeDiff -= this.day * 86400;
         this.hour = Math.floor(this.timeDiff / 3600) % 24;
         this.timeDiff -= this.hour * 3600;
@@ -89,6 +90,7 @@ export class OrderComponent implements OnInit {
               unit: this.unit
             });
           } else {
+            this.price = services[0].price;
             this.price *= this.day;
             this.quantity = this.day;
             this.unit = 'ngày';
@@ -103,7 +105,7 @@ export class OrderComponent implements OnInit {
             const element = services[index];
             this.total += element.price * element.quantity;
           }
-        });
+        }, () => console.log("ERROR GETTING SERVICES"));
       });
     });
     setTimeout(() => {
@@ -112,6 +114,7 @@ export class OrderComponent implements OnInit {
   }
 
   close() {
+    this.total = this.total - this.discount + this.adjustment;
     this.orderService.updateOrder(this.orderId, {
       total: this.total,
       checkOutTime: new Date().toString(),

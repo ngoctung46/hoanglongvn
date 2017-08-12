@@ -21,6 +21,10 @@ export class OrderService {
   getServices(key: string): Observable<any> {
     return this.db.list(`/orders/${key}/services`).map(services => services.map(service => service));
   }
+
+  getAllServices(key: string): Observable<any[]> {
+    return this.db.list(`/orders/${key}/services`);
+  }
   removeService(orderId: string, key: string) {
     this.db.list(`/orders/${orderId}/services`).remove(key);
   }

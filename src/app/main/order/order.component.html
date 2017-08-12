@@ -38,14 +38,14 @@
             </tr>
           </tbody>
           <tfoot>
-            <tr *ngIf="editting=='yes'">
+            <tr *ngIf="editting=='no'">
               <th></th>
               <th></th>
               <th class="right aligned">
-                <h4 class="ui teal header" *ngIf="editting=='yes'">Giảm Giá</h4>
+                <h4 class="ui teal header">Giảm Giá</h4>
               </th>
               <th class="right aligned">
-                <div class="ui right labeled input" *ngIf="editting=='yes'">
+                <div class="ui right labeled input">
                   <input type="number"  placeholder="Nhập số tiền.." [(ngModel)]="discount" [class.disabled]="editting=='yes'">
                   <div class="ui basic label">
                     $
@@ -53,7 +53,7 @@
                 </div>
               </th>
             </tr>
-            <tr *ngIf="editting=='yes'">
+            <tr *ngIf="editting=='no'">
               <th></th>
               <th></th>
               <th class="right aligned">
