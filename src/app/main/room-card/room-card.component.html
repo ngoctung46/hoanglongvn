@@ -33,8 +33,21 @@
 
 <sm-popup #servicePopup>
   <div class="ui icon buttons">
+    <button class="ui button orange" (click)="moveRoomModal.show()">Chuyển Phòng</button>
     <button class="ui button green" [routerLink]="['/orders',room.orderId,'yes']" skipLocationChange>Xem Hóa Đơn Tạm Thời</button>
     <button class="ui button blue" [routerLink]="['/hotel-services',room.orderId]" skipLocationChange>Thêm Dịch Vụ</button>
     <button class="ui button violet" (click)="markAsDirtyOrClean(room)">{{ room.status == 1 ? 'Báo Phòng Dơ' : 'Báo Phòng Sạch'}}</button>
   </div>
 </sm-popup>
+
+<sm-modal title="Thêm Dịch Vụ" icon="user circle outline" #moveRoomModal>
+    <modal-content>  
+    <div class="ui label">Chọn Phòng Muốn Chuyển:</div>
+    <select [(ngModel)]="moveRoom" class="ui fluid search selection dropdown">
+      <option *ngFor="let room of rooms" [ngValue]="room">{{ room.name }}</option>
+    </select>
+    </modal-content>
+    <modal-actions>
+      <button class="ui blue button" (click)="move()">Chuyển Phòng</button>
+    </modal-actions>
+  </sm-modal>

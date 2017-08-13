@@ -59,6 +59,7 @@ export class DailyReportComponent implements OnInit {
   }
 
   setDate() {
+    this.total = 0.0;
     this.filterList = [];
     const fromDay = Number.parseInt(this.fromDate.day);
     const fromMonth = Number.parseInt(this.fromDate.month) - 1;

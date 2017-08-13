@@ -1,1 +1,27 @@
+<div class="ui statistics">
+        <div class="statistic ui blue">
+          <div class="value">
+            {{ vacantRooms }}
+          </div>
+          <div class="label">
+            Phòng Trống:
+          </div>
+        </div>
+        <div class="statistic ui red">
+          <div class="value">
+            {{ occupiedRooms }}
+          </div>
+          <div class="label">
+            Phòng Có Khách
+          </div>
+        </div>
+        <div class="statistic ui green">
+          <div class="value">
+            {{ dirtyRooms }}
+          </div>
+          <div class="label">
+            PHòng Dơ
+          </div>
+        </div>
+      </div>
 <app-room-list [rooms]="rooms"></app-room-list>

@@ -23,6 +23,7 @@ export class RoomCardComponent implements OnInit {
   @ViewChild('searchForm') searchForm;
   @ViewChild('infoModal') infoModal;
   @ViewChild('orderModal') orderModal;
+  @ViewChild('moveRoomModal') moveRoomModal;
   @HostBinding('attr.class') cssClass = 'card';
   @Input() room: Room;
   isDirty: boolean;
@@ -30,6 +31,8 @@ export class RoomCardComponent implements OnInit {
   customerId = '';
   order: Order;
   orderId = '';
+  moveRoom: Room;
+  rooms: Room[];
 
   constructor(public fb: FormBuilder,
     public roomService: RoomService,
@@ -42,6 +45,7 @@ export class RoomCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.roomService.getRooms().subscribe(rooms => this.rooms = rooms.filter(x => !x.isOccupied));
   }
 
   setSelected(room: Room) {
@@ -66,6 +70,16 @@ export class RoomCardComponent implements OnInit {
     if (room.status == 1) room.status = 2;
     else room.status = 1;
     this.roomService.updateRoom(room.$key, { status: room.status });
+  }
+
+  move() {
+    this.moveRoom.orderId = this.room.orderId;
+    this.moveRoom.isOccupied = true;
+    this.roomService.updateRoom(this.moveRoom.$key, { orderId: this.room.orderId, isOccupied: true});
+    this.room.isOccupied = false;
+    this.room.orderId = ``;
+    this.roomService.updateRoom(this.room.$key, {orderId: '', isOccupied: false });
+    this.moveRoomModal.hide();  
   }
 
  

@@ -12,6 +12,9 @@ import { Customer} from './customer.model';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  vacantRooms: number = 0;
+  occupiedRooms: number = 0;
+  dirtyRooms: number = 0 ;
   @HostBinding('attr.class') cssClass = 'ui main container';
   rooms: FirebaseListObservable<Room[]>;
   constructor(
@@ -21,5 +24,10 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.rooms = this.roomService.getRooms();
+    this.roomService.getRooms().subscribe( rooms => {
+      this.vacantRooms = rooms.filter( x => !x.isOccupied).length || 0;
+      this.occupiedRooms = rooms.filter( x => x.isOccupied).length;
+      this.dirtyRooms = rooms.filter( x => x.status == 2).length;
+    });
   }
 }
