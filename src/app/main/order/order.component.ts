@@ -7,6 +7,7 @@ import { Order } from '../order.model';
 import { Customer } from '../customer.model';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { Service } from '../service.model';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -20,11 +21,11 @@ export class OrderComponent implements OnInit {
   customer: Observable<Customer>;
   order: Observable<Order>;
   orderId: string;
-  total: number;
+  total: number = 0.0;
   room: Room;
   price: number;
   unit: string;
-  quantity: number;
+  quantity: number = 0.0;
   services: Observable<any[]>;
   loading: boolean;
   timeDiff: number;
@@ -35,6 +36,12 @@ export class OrderComponent implements OnInit {
   roomId: string;
   editting: string;
   adjustment = 0.0;
+  totalDay = 0.0;
+  pendingUpdate: any;
+  pendingAdd: any;
+  chekedOut = false;
+  displayQty: number = 1;
+  updateService: any;
   constructor(
     private orderService: OrderService,
     private roomService: RoomService,
@@ -50,86 +57,75 @@ export class OrderComponent implements OnInit {
       this.editting = params['edit'];
       this.order = this.orderService.getOrder(params['id']);
       this.order.subscribe((order: Order) => {
-        this.roomId = order.roomId;
-        this.timeDiff = (new Date().getTime() - new Date(order.checkInTime).getTime()) / 1000;
-        this.day = Math.floor(this.timeDiff / 86400);
-        console.log("DAY" + this.day);
-        this.timeDiff -= this.day * 86400;
-        this.hour = Math.floor(this.timeDiff / 3600) % 24;
-        this.timeDiff -= this.hour * 3600;
-        this.minutes = Math.floor(this.timeDiff / 60) % 60;
         this.customer = this.customerService.getCustomer(order.customerId);
         this.services = this.orderService.getServices(params['id']);
         this.services.subscribe(services => {
-          const hours = this.hour + this.minutes / 60;
-          if (this.day <= 0) {
-            if (hours > 4) {
-              this.price = services[0].price;
-              this.quantity = 1;
-              this.unit = 'ngày';
-            } else if (hours > 3) {
-              this.price = services[0].price = 210000;
-              this.quantity = 4;
-              this.unit = 'giờ';
-            } else if (hours > 2) {
-              this.price = services[0].price = 190000;
-              this.quantity = 3;
-              this.unit = 'giờ';
-            } else if (hours > 1) {
-              this.price = services[0].price = 150000;
-              this.quantity = 2;
-              this.unit = 'giờ';
-            } else {
-              this.price = services[0].price = 100000;
-              this.quantity = 1;
-              this.unit = 'giờ';
+          this.updateService = services[0];
+          const currentDate = new Date();
+          const checkInDate = new Date(order.checkInTime);
+          const currentDay =  currentDate.getDate();
+          const currentMonth = currentDate.getMonth();
+          const currentYear = currentDate.getFullYear();
+          const currentHour =  currentDate.getHours();
+          const currentMinutes = currentDate.getMinutes();
+          const checkInDay = checkInDate.getDate();
+          const checkInMonth = checkInDate.getMonth();
+          const checkInYear = checkInDate.getFullYear();
+          const checkInHour = checkInDate.getHours();
+          const checkInMinutes = checkInDate.getMinutes();
+          this.roomId = order.roomId;
+          const stayingHour = (currentHour - checkInHour) < 0 ? (currentHour - checkInHour) + 24 : currentHour - checkInHour;
+          const stayingDay = (currentHour - checkInHour) < 0 ? currentDay - checkInDay - 1 : currentDay - checkInDay;
+          this.day = stayingDay;
+          this.hour = (currentMinutes - checkInMinutes) < 0 ? stayingHour -1 : stayingHour ;
+          this.minutes = (currentMinutes - checkInMinutes) < 0 ? (currentMinutes - checkInMinutes) + 60 : currentMinutes;
+          if (stayingDay <= 0 && stayingHour < 4) {
+            const totalTime = (((currentHour - checkInHour) * 60) + (currentMinutes - checkInMinutes));
+            let totalHour = Math.trunc(totalTime / 60);
+            const totalMinute = totalTime % 60;
+            if (totalMinute >= 15) {
+              totalHour++;
             }
-            this.orderService.updateService(this.orderId, services[0].$key, {
-              price: this.price,
-              quantity: this.quantity,
-              unit: this.unit
-            });
+            this.pendingUpdate = this.calculateHourlyRate(services[0], totalHour);
           } else {
-            this.price = services[0].price;
-            this.price *= this.day;
-            this.quantity = this.day;
-            this.unit = 'ngày';
-            this.orderService.updateService(this.orderId, services[0].$key, {
-              price: this.price,
-              quantity: this.quantity,
-              unit: this.unit
-            });
+            this.calculateDailyRate(services[0], currentHour, currentMinutes, stayingDay);
           }
-          this.total = this.price;
           for (let index = 1; index < services.length; index++) {
             const element = services[index];
             this.total += element.price * element.quantity;
           }
-        }, () => console.log("ERROR GETTING SERVICES"));
+          this.total += this.price * this.quantity;
+          if(this.pendingAdd) {
+            this.total += this.pendingAdd.price * this.pendingAdd.quantity;
+          }
+          this.orderModal.show({ observeChanges: true });
+
+        });
       });
     });
-    setTimeout(() => {
-      this.orderModal.show({ observeChanges: true });
-    }, 1000);
   }
 
   close() {
-    this.total = this.total - this.discount + this.adjustment;
+    this.total = this.total - this.discount || 0.0 + this.adjustment || 0.0;
     this.orderService.updateOrder(this.orderId, {
       total: this.total,
       checkOutTime: new Date().toString(),
       discount: this.discount,
       adjustment: this.adjustment
     });
-    console.log(this.roomId);
     this.roomService.updateRoom(this.roomId, {
       orderId: '',
       status: 2,
       isOccupied: false
     });
-    setTimeout(() => {
-      this.orderModal.hide();;
-    }, 2000);
+    this.orderService.updateService(this.orderId, this.updateService.$key, {
+      price: this.price,
+      quantity: this.quantity,
+      unit: this.unit
+    });
+    if (this.pendingAdd) {
+      this.addService(this.pendingAdd);
+    }
     this.orderModal.hide();
     location.reload();
   }
@@ -139,5 +135,88 @@ export class OrderComponent implements OnInit {
   }
   remove(key: string) {
     this.orderService.removeService(this.orderId, key);
+  }
+  calculateHourlyRate(service: any, totalHour: number, recalculate = false): any {
+    let price = 0.0, unit = '', quantity = 0.0;
+    if (totalHour > 4) {
+      return null;
+    } else {
+      if (totalHour > 3) {
+        unit = `giờ`;
+        quantity = 1;
+        this.displayQty = 4;
+        if (service.price === 400000) {
+          price = 280000;
+        } else {
+          price = 210000;
+        }
+      } else if (totalHour > 2) {
+        this.displayQty = 3;
+        unit = `giờ`;
+        quantity = 1;
+        if (service.price === 400000) {
+          price = 240000;
+        } else {
+          quantity = 1;
+        }
+      } else if (totalHour > 1) {
+        unit = `giờ`;
+        quantity = 1;
+        this.displayQty = 2;
+        if (service.price === 400000) {
+          price = 190000;
+        } else {
+          price = 150000;
+        }
+      } else {
+        unit = `giờ`;
+        quantity = 1;
+        this.displayQty = 1
+        if (service.price === 400000) {
+          price = 120000;
+        } else {
+          price = 100000;
+        }
+      }
+      if (!recalculate) {
+        this.price = price;
+        this.unit = unit;
+        this.quantity = quantity;
+      }
+      const updateService = new Service({ description: `Tiền Phòng Theo Giờ`, price: price, unit: unit, quantity: quantity });
+      // this.updateService(updateService, service.key);
+      return updateService;
+    }
+  }
+  calculateDailyRate(service: any,
+    checkOutHour: number,
+    checkOutMinutes: number,
+    totalDay: number) {
+    let price = 0.0, unit = '';
+    this.price = price = service.price;
+    this.unit = unit = `ngày`;
+    this.quantity = totalDay;
+    if(this.hour > 4) this.quantity ++;
+    if (checkOutHour > 12 && checkOutMinutes >= 30) {
+      const totalTime = (((checkOutHour - 12) * 60) + (checkOutMinutes));
+      let totalHour = Math.trunc(totalTime / 60);
+      const totalMinute = totalTime % 60;
+      if (totalMinute >= 15) {
+        totalHour++;
+      }
+      if (totalHour > 4) {
+        this.quantity++;
+      } else {
+        this.pendingAdd = this.calculateHourlyRate(service, totalHour, true);
+      }
+    }
+    const update = new Service({ description: 'Tiền giờ theo ngày', price: price, unit: unit, quantity: this.quantity });
+
+    //this.updateService(updateService, service.key);
+    this.pendingUpdate = update;
+  }
+
+  addService(service: Service) {
+    this.orderService.addService(this.orderId, service);
   }
 }

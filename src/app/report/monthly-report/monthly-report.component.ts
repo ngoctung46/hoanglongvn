@@ -66,7 +66,11 @@ export class MonthlyReportComponent implements OnInit {
       let dateString = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
       let service = 0.0;
       order.services.forEach(element => {
-        service += element.price * element.quantity;
+        if (element.unit === `giờ`) {
+          service += element.price;
+        } else {
+          service += element.price * element.quantity;
+        }
       });
       return {
         date: dateString,
@@ -98,6 +102,6 @@ export class MonthlyReportComponent implements OnInit {
       return groups[group];
     })
   }
- 
-  
+
+
 }

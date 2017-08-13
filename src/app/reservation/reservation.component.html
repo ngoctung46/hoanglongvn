@@ -1,0 +1,25 @@
+<div class="ui main container">
+  <form class="ui form">
+  <div class="field">
+    <label>Tên Khoản Thu/Chi</label>
+    <input type="text" name="first-name" placeholder="Khoản thu/chi" [(ngModel)]="description">
+  </div>
+  <div class="field">
+    <label>Số Tiền</label>
+    <input type="number" name="last-name" placeholder="Số Tiền" [(ngModel)]="amount">
+  </div>  
+</form>
+<button class="ui button red" [disabled]="description==='' || amount === 0.0" (click)="save();">Lưu</button>
+</div>
+
+<div class="ui tiny modal">
+  <div class="header">Header</div>
+  <div class="content">
+    <p></p>
+  </div>
+  <div class="actions">
+    <div class="ui approve button">Approve</div>
+    <div class="ui button">Neutral</div>
+    <div class="ui cancel button">Cancel</div>
+  </div>
+</div>

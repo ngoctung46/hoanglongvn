@@ -6,7 +6,8 @@
     <div class="ui large header">Thông Tin Khách Hàng:</div>
     <p>Tên: {{ (customer | async)?.lastName }} {{ (customer | async)?.firstName }}</p>
     <p>Địa Chỉ: {{ (customer | async)?.streetAddress }} - {{ (customer | async)?.city }} - {{ (customer | async)?.country }}</p>
-    <p>Ngày Sinh: {{ (customer | async)?.birthDate }} - Tại: {{ (customer | async)?.birthPlace }}, {{(customer | async)?.birthCountry }}
+    <p>Ngày Sinh: {{ (customer | async)?.birthDate }} - Tại: {{ (customer | async)?.birthPlace }}, {{(customer | async)?.birthCountry
+      }}
       <p>Số CMND/Hộ Chiếu/Thẻ Tạm Trú: {{ (customer | async)?.id }} - Ngày Cấp: {{ (customer | async)?.issueDate }} - Ngày Hết
         Hạn: {{ (customer | async)?.expirationDate }} </p>
       <p>Nơi Cấp: {{ (customer | async)?.issueCity }} - {{ (customer | async)?.issueCountry }} </p>
@@ -26,8 +27,8 @@
               <ng-template #other_content>
                 <td>{{ service.description }}</td>
                 <td class="right aligned" *ngIf="price">{{ price | number}}</td>
-                <td class="right aligned" *ngIf="quantity">{{ quantity }} {{ unit }}</td>
-                <td class="right aligned" *ngIf="price">{{ price | number}} <i class="ui red window close icon" (click)="remove(service.$key)"></i></td>
+                <td class="right aligned" *ngIf="quantity">{{ unit=='ngày' ? quantity : displayQty }} {{ unit }}</td>
+                <td class="right aligned" *ngIf="price">{{ price * quantity | number}} <i class="ui red window close icon" (click)="remove(service.$key)"></i></td>
               </ng-template>
               <ng-container *ngIf="i > 0;else other_content">
                 <td>{{ service.description }}</td>
@@ -35,6 +36,12 @@
                 <td class="right aligned">{{ service.quantity }} {{ service.unit }}</td>
                 <td class="right aligned">{{ service.price * service.quantity | number}} <i class="ui red window close icon" (click)="remove(service.$key)"></i></td>
               </ng-container>
+            </tr>
+            <tr *ngIf="pendingAdd">
+                <td>{{ pendingAdd.description }}</td>
+                <td class="right aligned">{{ pendingAdd.price | number}}</td>
+                <td class="right aligned">{{ displayQty }} {{ pendingAdd.unit }}</td>
+                <td class="right aligned">{{ pendingAdd.price * pendingAdd.quantity | number}} <i class="ui red window close icon" (click)="remove(service.$key)"></i></td>
             </tr>
           </tbody>
           <tfoot>
@@ -46,7 +53,7 @@
               </th>
               <th class="right aligned">
                 <div class="ui right labeled input">
-                  <input type="number"  placeholder="Nhập số tiền.." [(ngModel)]="discount" [class.disabled]="editting=='yes'">
+                  <input type="number" placeholder="Nhập số tiền.." [(ngModel)]="discount" [class.disabled]="editting=='yes'">
                   <div class="ui basic label">
                     $
                   </div>
@@ -82,7 +89,7 @@
         </table>
   </modal-content>
   <modal-actions>
-    <button class="ui blue button" *ngIf="editting=='no'" (click)="close()">Checkout</button>
+    <button class="ui blue button" *ngIf="editting=='no'" (click)="close()">Xác Nhận</button>
     <button class="ui blue button" *ngIf="editting=='yes'" (click)="hide()">Đóng</button>
   </modal-actions>
 </sm-modal>

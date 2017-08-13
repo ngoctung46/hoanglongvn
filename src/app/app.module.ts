@@ -11,12 +11,15 @@ import { ReportModule } from './report/report.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DatePickerModule } from 'ng2-datepicker';
+import { ReservationService } from './reservation/reservation.service';
 
 import * as $ from 'jquery';
+import { ReservationComponent } from './reservation/reservation.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import * as $ from 'jquery';
     AppRoutingModule,
     DatePickerModule
   ],
-  providers: [],
+  providers: [ ReservationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
