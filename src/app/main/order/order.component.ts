@@ -63,10 +63,10 @@ export class OrderComponent implements OnInit {
           this.updateService = services[0];
           const currentDate = new Date();
           const checkInDate = new Date(order.checkInTime);
-          const currentDay =  currentDate.getDate();
+          const currentDay = currentDate.getDate();
           const currentMonth = currentDate.getMonth();
           const currentYear = currentDate.getFullYear();
-          const currentHour =  currentDate.getHours();
+          const currentHour = currentDate.getHours();
           const currentMinutes = currentDate.getMinutes();
           const checkInDay = checkInDate.getDate();
           const checkInMonth = checkInDate.getMonth();
@@ -77,7 +77,7 @@ export class OrderComponent implements OnInit {
           const stayingHour = (currentHour - checkInHour) < 0 ? (currentHour - checkInHour) + 24 : currentHour - checkInHour;
           const stayingDay = (currentHour - checkInHour) < 0 ? currentDay - checkInDay - 1 : currentDay - checkInDay;
           this.day = stayingDay;
-          this.hour = (currentMinutes - checkInMinutes) < 0 ? stayingHour -1 : stayingHour ;
+          this.hour = (currentMinutes - checkInMinutes) < 0 ? stayingHour - 1 : stayingHour;
           this.minutes = (currentMinutes - checkInMinutes) < 0 ? (currentMinutes - checkInMinutes) + 60 : currentMinutes;
           if (stayingDay <= 0 && stayingHour < 4) {
             const totalTime = (((currentHour - checkInHour) * 60) + (currentMinutes - checkInMinutes));
@@ -95,7 +95,7 @@ export class OrderComponent implements OnInit {
             this.total += element.price * element.quantity;
           }
           this.total += this.price * this.quantity;
-          if(this.pendingAdd) {
+          if (this.pendingAdd) {
             this.total += this.pendingAdd.price * this.pendingAdd.quantity;
           }
           this.orderModal.show({ observeChanges: true });
@@ -157,7 +157,7 @@ export class OrderComponent implements OnInit {
         if (service.price === 400000) {
           price = 240000;
         } else {
-          quantity = 1;
+          price = 190000;
         }
       } else if (totalHour > 1) {
         unit = `giờ`;
@@ -196,19 +196,20 @@ export class OrderComponent implements OnInit {
     this.price = price = service.price;
     this.unit = unit = `ngày`;
     this.quantity = totalDay;
-    if(this.hour > 4) this.quantity ++;
-    if (checkOutHour > 12 && checkOutMinutes >= 30) {
-      const totalTime = (((checkOutHour - 12) * 60) + (checkOutMinutes));
-      let totalHour = Math.trunc(totalTime / 60);
-      const totalMinute = totalTime % 60;
-      if (totalMinute >= 15) {
-        totalHour++;
-      }
-      if (totalHour > 4) {
-        this.quantity++;
-      } else {
-        this.pendingAdd = this.calculateHourlyRate(service, totalHour, true);
-      }
+    if (this.hour > 4) this.quantity++;
+    if (checkOutHour >= 12) {
+        const totalTime = (((checkOutHour - 12) * 60) + (checkOutMinutes));
+        let totalHour = Math.trunc(totalTime / 60);
+        const totalMinute = totalTime % 60;
+        if (totalMinute >= 15) {
+          totalHour++;
+        }
+        if (totalHour > 4) {
+          this.quantity++;
+        } else {
+          this.pendingAdd = this.calculateHourlyRate(service, totalHour, true);
+        }
+      
     }
     const update = new Service({ description: 'Tiền giờ theo ngày', price: price, unit: unit, quantity: this.quantity });
 
