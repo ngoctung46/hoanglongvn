@@ -13,8 +13,12 @@ export class MonthlyReportComponent implements OnInit {
   options: DatePickerOptions;
   orders: any[] = [];
   date: Date;
+  details = true;
   filterList: any[] = [];
   total = [];
+  reportList: any[] = [];
+  choosen = false;
+  totalAll = 0.0;
   constructor(private orderService: OrderService, private roomService: RoomService) {
     this.orderService.getOrders().subscribe(orders => {
       this.orders = orders.filter(order => order.checkOutTime !== '');
@@ -42,7 +46,7 @@ export class MonthlyReportComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setDate();
+    //this.setDate();
   }
 
   setDate() {
@@ -63,7 +67,7 @@ export class MonthlyReportComponent implements OnInit {
     }
     this.filterList = this.filterList.map(order => {
       let date = new Date(order.checkOutTime);
-      let dateString = date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
+      let dateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
       let service = 0.0;
       order.services.forEach(element => {
         if (element.unit === `giờ`) {
@@ -90,6 +94,33 @@ export class MonthlyReportComponent implements OnInit {
       });
       this.total.push(subTotal);
     });
+
+    this.filterList.sort(x => x.date);
+
+    this.filterList.forEach( list => {
+      let adjustment = 0.0;
+      let discount = 0.0;
+      let service = 0.0;
+      let total = 0.0;
+      let date = '';
+      list.forEach( item => {
+        date = item.date;
+        adjustment += item.adjustment || 0;
+        discount += item.discount || 0;
+        service += item.service || 0;
+        total += item.total || 0;
+      });
+      this.reportList.push({
+        date: date,
+        adjustment: adjustment,
+        discount: discount,
+        service: service,
+        total: total
+      });
+      this.totalAll += total;
+    });
+    this.choosen = true;
+
   }
   groupBy(array, f) {
     var groups = {};

@@ -30,7 +30,7 @@
     </div>
   </div>
 </div>
-<table class="ui celled striped table">
+<table class="ui green celled striped table">
   <thead>
     <tr>
       <th>Phòng</th>
@@ -76,7 +76,7 @@
   <tbody>
     <tr *ngFor="let reservation of reservations">
       <td>{{ reservation.description }}</td>
-      <td class="right aligned">{{ reservation.amount }}</td>
+      <td class="right aligned">{{ reservation.amount | number }}<i class="ui red window close icon" (click)="remove(reservation.$key)"></i></td>
     </tr>
   </tbody>
   <tfoot>

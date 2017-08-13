@@ -21,4 +21,7 @@ export class ReservationService {
     this.reservations.push(data);
     // (<any>$('.tiny.modal')).modal('show');
   }
+  deleteResevation(key: string) {
+    this.reservations.remove(key);
+  }
 }

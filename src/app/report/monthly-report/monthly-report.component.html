@@ -2,6 +2,7 @@
 Báo Cáo Tháng:
 <ng2-datepicker [options]="options" [(ngModel)]="fromDate"></ng2-datepicker>
 <div class="ui button green" (click)="setDate()">Xem</div>
+<p></p>
 <!-- <ng-container *ngFor = "let list of filterList">
   <app-report-table *ngFor="let orders of list"  [orders]="orders"></app-report-table>
 </ng-container> -->
@@ -10,30 +11,83 @@ Báo Cáo Tháng:
 <ul *ngFor = "let detailList of filterList">
   <li *ngFor = "let item of detailList">{{ item | json }}</li>
 </ul> -->
-<table class="ui celled striped table" *ngFor="let orders of filterList; let j = index">
-  <thead>
-    <tr>
-      <th>Ngày</th>
-      <th class="right aligned">Tổng Thu Dịch Vụ</th>
-      <th class="right aligned">Tổng Giảm Giá</th>
-      <th class="right aligned">Tổng Điều Chỉnh</th>
-      <th class="right aligned">Tổng Cộng Trong Ngày</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let order of orders;let i = index;">
-      <td>{{ order.date }}</td>
-      <td class="right aligned">{{ order.service | number }}</td>
-      <td class="right aligned">{{ order.discount | number }}</td>
-      <td class="right aligned">{{ order.adjustment | number }}</td>
-      <td class="right aligned">{{ order.total | number }}</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <th></th>
-    <th></th>
-    <th class="right aligned"></th>
-    <th class="right aligned ui red header">Tổng Cộng</th>
-    <th class="right aligned ui red header">{{ total[j] | number}}</th>
-  </tfoot>
-</table>
+<div class="ui two top attached buttons" *ngIf="choosen">
+  <div class="ui button orange" (click)="details = false">Tổng Hợp</div>
+  <div class="ui button purple" (click)="details = true">Chi Tiếp</div>
+</div>
+<div class="ui attached segment" *ngIf="choosen">
+  <ng-container *ngIf="details">
+    <div class="statistic ui blue">
+      <div class="value">
+        {{ totalAll | number }}
+      </div>
+      <div class="label">
+      Tổng Tiền Tháng
+      </div>
+    </div>
+    <table class="ui celled striped table" *ngFor="let orders of filterList; let j = index">
+      <thead>
+        <tr>
+          <th>Ngày</th>
+          <th class="right aligned">Tổng Thu Dịch Vụ</th>
+          <th class="right aligned">Tổng Giảm Giá</th>
+          <th class="right aligned">Tổng Điều Chỉnh</th>
+          <th class="right aligned">Tổng Cộng Trong Ngày</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders;let i = index;">
+          <td>{{ order.date }}</td>
+          <td class="right aligned">{{ order.service | number }}</td>
+          <td class="right aligned">{{ order.discount | number }}</td>
+          <td class="right aligned">{{ order.adjustment | number }}</td>
+          <td class="right aligned">{{ order.total | number }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <th></th>
+        <th></th>
+        <th class="right aligned"></th>
+        <th class="right aligned ui red header">Tổng Cộng</th>
+        <th class="right aligned ui red header">{{ total[j] | number}}</th>
+      </tfoot>
+    </table>
+  </ng-container>
+  <ng-container *ngIf="!details">
+    <div class="statistic ui blue">
+      <div class="value">
+        {{ totalAll | number }}
+      </div>
+      <div class="label">
+      Tổng Tiền Tháng
+      </div>
+    </div>
+    <table class="ui celled striped table" *ngFor="let order of reportList; let j = index">
+      <thead>
+        <tr>
+          <th>Ngày</th>
+          <th class="right aligned">Tổng Thu Dịch Vụ</th>
+          <th class="right aligned">Tổng Giảm Giá</th>
+          <th class="right aligned">Tổng Điều Chỉnh</th>
+          <th class="right aligned">Tổng Cộng Trong Ngày</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ order.date }}</td>
+          <td class="right aligned">{{ order.service | number }}</td>
+          <td class="right aligned">{{ order.discount | number }}</td>
+          <td class="right aligned">{{ order.adjustment | number }}</td>
+          <td class="right aligned">{{ order.total | number }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <th></th>
+        <th></th>
+        <th class="right aligned"></th>
+        <th class="right aligned ui red header">Tổng Cộng</th>
+        <th class="right aligned ui red header">{{ total[j] | number}}</th>
+      </tfoot>
+    </table>
+  </ng-container>
+</div>

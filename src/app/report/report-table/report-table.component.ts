@@ -28,4 +28,8 @@ export class ReportTableComponent implements OnInit {
       this.total += this.orders[i].total;
     };
   }
+
+  remove(key) {
+    this.reservationService.deleteResevation(key);
+  }
 }
