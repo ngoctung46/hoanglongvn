@@ -197,7 +197,7 @@ export class OrderComponent implements OnInit {
     this.unit = unit = `ngày`;
     this.quantity = totalDay;
     if (this.hour > 4 && totalDay <= 0) this.quantity++;
-    if (checkOutHour >= 12) {
+    if (checkOutHour >= 12 && totalDay > 0) {
         const totalTime = (((checkOutHour - 12) * 60) + (checkOutMinutes));
         let totalHour = Math.trunc(totalTime / 60);
         const totalMinute = totalTime % 60;
