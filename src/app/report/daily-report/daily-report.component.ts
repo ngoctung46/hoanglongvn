@@ -6,6 +6,7 @@ import { Order } from '../../main/order.model';
 import { Observable } from 'rxjs/Observable';
 import { Service } from '../../main/service.model';
 import { DateModel, DatePickerOptions } from 'ng2-datepicker';
+import { ReservationService } from '../../reservation/reservation.service';
 @Component({
   selector: 'app-daily-report',
   templateUrl: './daily-report.component.html',
@@ -18,7 +19,12 @@ export class DailyReportComponent implements OnInit {
   orders: any[] = [];
   date: Date;
   filterList: any[] = [];
-  constructor(private orderService: OrderService, private roomService: RoomService, private customerService: CustomerService) {
+  reservationList: any[];
+  total = 0.0;
+  constructor(private orderService: OrderService,
+    private roomService: RoomService,
+    private customerService: CustomerService,
+    private reservationService: ReservationService) {
     this.orderService.getOrders().subscribe(orders => {
       this.orders = orders.filter(order => order.checkOutTime !== '');
       this.date = new Date(this.orders[0].checkOutTime);
@@ -26,7 +32,7 @@ export class DailyReportComponent implements OnInit {
         this.roomService.getRoom(orders[i].roomId).subscribe(room => {
           orders[i].roomId = room.name;
         });
-        this.orderService.getServices(orders[i].$key).subscribe( services => {
+        this.orderService.getServices(orders[i].$key).subscribe(services => {
           orders[i].services = services;
         });
       }
@@ -45,6 +51,7 @@ export class DailyReportComponent implements OnInit {
     this.toDate.day = new Date().getDate.toString();
     this.toDate.month = new Date().getMonth.toString();
     this.toDate.year = new Date().getFullYear.toString();
+
   }
 
   ngOnInit() {
@@ -71,6 +78,12 @@ export class DailyReportComponent implements OnInit {
         this.filterList.push(this.orders[index]);
       }
     }
+    let firstDate = this.toDate.day + toMonth.toString() + this.toDate.year;
+    this.reservationService.getReservationsByDate(firstDate).subscribe(reservations => {
+      this.reservationList = reservations;
+      this.reservationList.forEach(r => this.total += r.amount); 
+    });
+
   }
 
 }

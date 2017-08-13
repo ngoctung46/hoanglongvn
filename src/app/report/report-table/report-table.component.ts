@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { ReservationService } from '../../reservation/reservation.service';
 @Component({
   selector: 'app-report-table',
   templateUrl: './report-table.component.html',
@@ -8,7 +8,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ReportTableComponent implements OnInit {
   @Input() orders: any[] = [];
   total = 0.0;
-  constructor() {
+  @Input() reservations: any = [];
+  @Input() reservationTotal = 0.0;
+  constructor(private reservationService: ReservationService) {
+
   }
 
   ngOnInit() {
@@ -25,5 +28,4 @@ export class ReportTableComponent implements OnInit {
       this.total += this.orders[i].total;
     };
   }
-
 }

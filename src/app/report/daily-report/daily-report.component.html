@@ -3,5 +3,5 @@
 Từ Ngày: <ng2-datepicker [options]="options" [(ngModel)]="fromDate"></ng2-datepicker>
 Đến Ngày: <ng2-datepicker [options]="options" [(ngModel)]="toDate"></ng2-datepicker>
 <div class="ui button green" (click)="setDate()">Xem</div> 
-<app-report-table *ngIf="filterList.length > 0" [orders]="filterList"></app-report-table>
+<app-report-table *ngIf="filterList.length > 0" [orders]="filterList" [reservations]="reservationList" [reservationTotal]="total"></app-report-table>
 

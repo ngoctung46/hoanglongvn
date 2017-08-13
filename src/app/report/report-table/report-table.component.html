@@ -1,10 +1,35 @@
-
 <!-- <h1 class="ui center aligned"> Báo Cáo Thu Theo Ngày</h1> -->
 <!-- Từ Ngày: <ng2-datepicker [options]="options" [(ngModel)]="fromDate"></ng2-datepicker>
 Đến Ngày: <ng2-datepicker [options]="options" [(ngModel)]="toDate"></ng2-datepicker>
 <div class="ui button green" (click)="setDate()">Xem</div>
 
 <h2 class="ui header"> Báo cáo thu từ ngày {{ fromDate?.formatted }} tới {{ toDate?.formatted }}</h2> -->
+<div class="ui statistics floated right" >
+  <div class="statistic ui blue">
+    <div class="value">
+      {{ total | number }}
+    </div>
+    <div class="label">
+      Tổng Tiền Phòng
+    </div>
+  </div>
+  <div class="statistic ui red">
+    <div class="value">
+      {{ reservationTotal | number}}
+    </div>
+    <div class="label">
+      Tổng Thu/Chi
+    </div>
+  </div>
+  <div class="statistic ui teal">
+    <div class="value">
+      {{ total -- reservationTotal | number}}
+    </div>
+    <div class="label">
+      Tổng Tiền Mặt Hiện Có
+    </div>
+  </div>
+</div>
 <table class="ui celled striped table">
   <thead>
     <tr>
@@ -18,25 +43,48 @@
   <tbody>
     <tr *ngFor="let order of orders;let i = index;">
       <td>{{ order.roomId }}</td>
-       <td class="collapsing">
+      <td class="collapsing">
         <div class="ui list">
           <div class="item" *ngFor="let service of order.services">
             <div class="header">{{ service?.description }}</div>
             Giá: {{ service?.price | number }}- Số Lượng: {{ service?.quantity | number }} {{ service?.unit }}
-          </div>    
+          </div>
         </div>
-      </td> 
-      
-        <td class="right aligned">{{ order.discount | number }}</td>
-        <td class="right aligned">{{ order.adjustment | number }}</td>
-        <td class="right aligned">{{ order.total | number }}</td>
+      </td>
+
+      <td class="right aligned">{{ order.discount | number }}</td>
+      <td class="right aligned">{{ order.adjustment | number }}</td>
+      <td class="right aligned">{{ order.total | number }}</td>
     </tr>
   </tbody>
   <tfoot>
     <th></th>
-      <th></th>
-      <th class="right aligned"></th>
-      <th class="right aligned ui red header">Tổng Cộng</th>
-      <th class="right aligned ui red header">{{ total | number}}</th>
+    <th></th>
+    <th class="right aligned"></th>
+    <th class="right aligned ui red header">Tổng Cộng</th>
+    <th class="right aligned ui red header">{{ total | number}}</th>
+  </tfoot>
+</table>
+
+<table class="ui olive table"  *ngFor="let reservation of reservations">
+  <thead>
+    <tr>
+      <th>Tên Khoản Thu/Chi</th>
+      <th class="right aligned">Số Tiền</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngIf="reservations.length > 0">
+    <tr>
+      <td>{{ reservation.description }}</td>
+      <td class="right aligned">{{ reservation.amount }}</td>
+    </tr>
+    </ng-container>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td class="right aligned ui red header">Tổng Cộng</td>
+      <td class="right aligned ui red header">{{ reservationTotal | number }}</td>
+    </tr>
   </tfoot>
 </table>
