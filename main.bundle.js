@@ -622,7 +622,7 @@ var OrderComponent = (function () {
         this.price = price = service.price;
         this.unit = unit = "ng\u00E0y";
         this.quantity = totalDay;
-        if (this.hour > 4)
+        if (this.hour > 4 && totalDay <= 0)
             this.quantity++;
         if (checkOutHour >= 12) {
             var totalTime = (((checkOutHour - 12) * 60) + (checkOutMinutes));
