@@ -1,3 +1,4 @@
+import { BookingService } from './booking/booking.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -15,11 +16,14 @@ import { ReservationService } from './reservation/reservation.service';
 
 import * as $ from 'jquery';
 import { ReservationComponent } from './reservation/reservation.component';
+import { BookingComponent } from './booking/booking.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    ReservationComponent
+    ReservationComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,7 @@ import { ReservationComponent } from './reservation/reservation.component';
     AppRoutingModule,
     DatePickerModule
   ],
-  providers: [ ReservationService],
+  providers: [ ReservationService, BookingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

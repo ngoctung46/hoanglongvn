@@ -3,9 +3,9 @@ export const MENU: MenuItem[] = [
     new MenuItem('Trang Chính',''),
     new MenuItem(
         'Quản Lý',
-        '/reservation',
+        '/manage',
         [
-            new MenuItem('Phòng', 'room'),
+            new MenuItem('Booking', 'booking'),
             new MenuItem('Tiền thu/chi','reservation')
         ]),
     new MenuItem(

@@ -1,0 +1,51 @@
+<div class="ui main container">
+  <form class="ui form" name="bookingForm">
+    <div class="field">
+      <label>Tên Khách Hàng</label>
+      <input type="text" name="name" placeholder="Tên Khách Hàng" [(ngModel)]="name">
+    </div>
+    <div class="field">
+      <label>Số Điện Thoại</label>
+      <input type="number" name="tel" placeholder="Số Điện Thoại" [(ngModel)]="tel">
+    </div>
+    <div class="field">
+      <label>Phòng Muốn đặt</label>
+      <select [(ngModel)]="bookingRoom" class="ui fluid search selection dropdown" name="room">
+          <option *ngFor="let room of rooms" [ngValue]="room">{{ room.name }}</option>
+      </select>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <ng2-datepicker [options]="options" [(ngModel)]="bookingDate" name="datepicker"></ng2-datepicker>
+      </div>
+      <div class="field">
+        Giờ: <select [(ngModel)]="bookingHour" class="ui fluid search selection dropdown" name="bookingHour">
+            <option *ngFor="let hour of hours" [ngValue]="hour">{{ hour }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+        <label>Ghi Chú</label>
+        <input type="text" name="tel" placeholder="Note" [(ngModel)]="note">        
+      </div>
+  </form>
+  <button class="ui button red" [disabled]="name=='' || bookingRoom=='' || bookingDate=='' || hour==''" (click)="save();">Lưu</button>
+</div>
+<h2 class="ui header green">Danh sách đặt phòng</h2>
+<table class="ui red table">
+    <thead>
+      <tr><th>Tên</th>
+      <th>Phòng Đặt</th>
+      <th>Ngày Nhận Phòng</th>
+      <th>Ghi Chú</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor = "let book of bookings | async">
+        <td>{{ book?.name }}</td>
+        <td>{{ book?.room }}</td>
+        <td>{{ book?.date }}-{{book?.hour}}</td>
+        <td class=" right aligned">{{ book?.note }} <i class="ui red window close icon" (click)="remove(book.$key)"></i></td>
+      </tr>
+    </tbody>
+  </table>

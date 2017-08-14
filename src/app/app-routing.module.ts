@@ -1,3 +1,4 @@
+import { BookingComponent } from './booking/booking.component';
 import { NgModule }                from '@angular/core';
 import { RouterModule, Routes }    from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -7,6 +8,7 @@ const appRoutes: Routes = [
   { path: 'main', loadChildren: './main/main.module#MainModule' },
   { path: 'report', loadChildren: './report/report.module#ReportModule' },
   { path: 'reservation', component: ReservationComponent },
+  { path: 'booking', component: BookingComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
