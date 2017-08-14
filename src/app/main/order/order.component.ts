@@ -74,11 +74,17 @@ export class OrderComponent implements OnInit {
           const checkInHour = checkInDate.getHours();
           const checkInMinutes = checkInDate.getMinutes();
           this.roomId = order.roomId;
-          const stayingHour = (currentHour - checkInHour) < 0 ? (currentHour - checkInHour) + 24 : currentHour - checkInHour;
-          const stayingDay = (currentHour - checkInHour) < 0 ? currentDay - checkInDay - 1 : currentDay - checkInDay;
-          this.day = stayingDay;
-          this.hour = (currentMinutes - checkInMinutes) < 0 ? stayingHour - 1 : stayingHour;
-          this.minutes = (currentMinutes - checkInMinutes) < 0 ? (currentMinutes - checkInMinutes) + 60 : currentMinutes;
+          const stayingHour = currentHour - checkInHour;
+          const stayingDay = currentDay - checkInDay;
+          if ( currentMinutes - checkInMinutes < 0) {
+            this.minutes = currentMinutes - checkInMinutes + 60;
+            this.hour = stayingHour - 1;
+          }
+          if (this.hour < 0) {
+            this.hour = stayingHour + 24;
+            this.day = stayingDay - 1;
+          }
+          
           if (stayingDay <= 0 && stayingHour < 4) {
             const totalTime = (((currentHour - checkInHour) * 60) + (currentMinutes - checkInMinutes));
             let totalHour = Math.trunc(totalTime / 60);
