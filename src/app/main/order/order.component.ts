@@ -23,15 +23,16 @@ export class OrderComponent implements OnInit {
   orderId: string;
   total: number = 0.0;
   room: Room;
+  roomName: string;
   price: number;
   unit: string;
   quantity: number = 0.0;
   services: Observable<any[]>;
   loading: boolean;
   timeDiff: number;
-  day: number;
-  hour: number;
-  minutes: number;
+  day: number = 0.0;
+  hour: number = 0.0;
+  minutes: number = 0.0;
   discount: number = 0.0;
   roomId: string;
   editting: string;
@@ -74,17 +75,23 @@ export class OrderComponent implements OnInit {
           const checkInHour = checkInDate.getHours();
           const checkInMinutes = checkInDate.getMinutes();
           this.roomId = order.roomId;
+          this.roomName = this.getRoomName(order.roomId);
           const stayingHour = currentHour - checkInHour;
           const stayingDay = currentDay - checkInDay;
-          if ( currentMinutes - checkInMinutes < 0) {
+          if (currentMinutes - checkInMinutes < 0) {
             this.minutes = currentMinutes - checkInMinutes + 60;
             this.hour = stayingHour - 1;
+          } else {
+            this.minutes = currentMinutes - checkInMinutes;
           }
           if (this.hour < 0) {
             this.hour = stayingHour + 24;
             this.day = stayingDay - 1;
+          } else {
+            this.hour = currentHour - checkInHour;
+            this.day = stayingDay;
           }
-          
+
           if (stayingDay <= 0 && stayingHour < 4) {
             const totalTime = (((currentHour - checkInHour) * 60) + (currentMinutes - checkInMinutes));
             let totalHour = Math.trunc(totalTime / 60);
@@ -194,6 +201,23 @@ export class OrderComponent implements OnInit {
       return updateService;
     }
   }
+
+  getRoomName(key): string {
+    switch (key) {
+      case '1': return '201';
+      case '2': return '302';
+      case '3': return '102';
+      case '4': return '202';
+      case '5': return '302';
+      case '6': return '103';
+      case '7': return '203';
+      case '8': return '303';
+      case '9': return '104';
+      case '10': return '204';
+      case '11': return '304';
+      case '12': return '01';
+    }
+  }
   calculateDailyRate(service: any,
     checkOutHour: number,
     checkOutMinutes: number,
@@ -204,22 +228,19 @@ export class OrderComponent implements OnInit {
     this.quantity = totalDay;
     if (this.hour > 4 && totalDay <= 0) this.quantity++;
     if (checkOutHour >= 12 && totalDay > 0) {
-        const totalTime = (((checkOutHour - 12) * 60) + (checkOutMinutes));
-        let totalHour = Math.trunc(totalTime / 60);
-        const totalMinute = totalTime % 60;
-        if (totalMinute >= 15) {
-          totalHour++;
-        }
-        if (totalHour > 4) {
-          this.quantity++;
-        } else {
-          this.pendingAdd = this.calculateHourlyRate(service, totalHour, true);
-        }
-      
+      const totalTime = (((checkOutHour - 12) * 60) + (checkOutMinutes));
+      let totalHour = Math.trunc(totalTime / 60);
+      const totalMinute = totalTime % 60;
+      if (totalMinute >= 15) {
+        totalHour++;
+      }
+      if (totalHour > 4) {
+        this.quantity++;
+      } else {
+        this.pendingAdd = this.calculateHourlyRate(service, totalHour, true);
+      }
     }
     const update = new Service({ description: 'Tiền giờ theo ngày', price: price, unit: unit, quantity: this.quantity });
-
-    //this.updateService(updateService, service.key);
     this.pendingUpdate = update;
   }
 

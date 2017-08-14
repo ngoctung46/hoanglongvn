@@ -16,10 +16,12 @@
     </div>
     <div class="two fields">
       <div class="field">
+        <label>Ngày</label>
         <ng2-datepicker [options]="options" [(ngModel)]="bookingDate" name="datepicker"></ng2-datepicker>
       </div>
       <div class="field">
-        Giờ: <select [(ngModel)]="bookingHour" class="ui fluid search selection dropdown" name="bookingHour">
+        <label>Giờ:</label>
+       <select [(ngModel)]="bookingHour" class="ui dropdown" name="bookingHour">
             <option *ngFor="let hour of hours" [ngValue]="hour">{{ hour }}</option>
         </select>
       </div>
@@ -28,8 +30,11 @@
         <label>Ghi Chú</label>
         <input type="text" name="tel" placeholder="Note" [(ngModel)]="note">        
       </div>
+       <div class="field">
+         <button class="ui button red" [disabled]="name=='' || bookingRoom=='' || bookingDate=='' || hour==''" (click)="save();">Lưu</button>       
+      </div>
   </form>
-  <button class="ui button red" [disabled]="name=='' || bookingRoom=='' || bookingDate=='' || hour==''" (click)="save();">Lưu</button>
+ 
 </div>
 <h2 class="ui header green">Danh sách đặt phòng</h2>
 <table class="ui red table">
@@ -37,14 +42,16 @@
       <tr><th>Tên</th>
       <th>Phòng Đặt</th>
       <th>Ngày Nhận Phòng</th>
-      <th>Ghi Chú</th>
+      <th>Tình Trạng</th>
+      <th class=" right aligned">Ghi Chú</th>
     </tr>
   </thead>
   <tbody>
       <tr *ngFor = "let book of bookings | async">
         <td>{{ book?.name }}</td>
         <td>{{ book?.room }}</td>
-        <td>{{ book?.date }}-{{book?.hour}}</td>
+        <td>Ngày {{ book?.date.substring(0,2) }} Tháng {{ book?.date.substring(2,4)}} Năm {{ book?.date.substring(4,10)}} Lúc: {{book?.hour}}</td>
+        <td>{{ book?.status == 0 ? 'Chưa Nhận Phòng' : 'Đã Nhận Phòng'}}</td>
         <td class=" right aligned">{{ book?.note }} <i class="ui red window close icon" (click)="remove(book.$key)"></i></td>
       </tr>
     </tbody>

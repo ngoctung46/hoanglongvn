@@ -3,7 +3,7 @@
     <h2 class="ui center aligned icon header">
       <i class="money icon"></i> Hóa Đơn Tạm Tính
     </h2>
-    <div class="ui large header">Thông Tin Khách Hàng:</div>
+    <div class="ui center aligned large header">Phòng: {{ roomName }}</div>    
     <p>Tên: {{ (customer | async)?.lastName }} {{ (customer | async)?.firstName }}</p>
     <p>Địa Chỉ: {{ (customer | async)?.streetAddress }} - {{ (customer | async)?.city }} - {{ (customer | async)?.country }}</p>
     <p>Ngày Sinh: {{ (customer | async)?.birthDate }} - Tại: {{ (customer | async)?.birthPlace }}, {{(customer | async)?.birthCountry

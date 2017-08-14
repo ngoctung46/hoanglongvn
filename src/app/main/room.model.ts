@@ -11,4 +11,6 @@ export class Room {
         public imgUrl: string,
         public orderId = ''
     ) {}
+
+   
 }
