@@ -82,13 +82,13 @@ export class OrderComponent implements OnInit {
             this.minutes = currentMinutes - checkInMinutes + 60;
             this.hour = stayingHour - 1;
           } else {
+            this.hour = stayingHour;
             this.minutes = currentMinutes - checkInMinutes;
           }
           if (this.hour < 0) {
             this.hour = stayingHour + 24;
             this.day = stayingDay - 1;
           } else {
-            this.hour = currentHour - checkInHour;
             this.day = stayingDay;
           }
 
@@ -101,7 +101,7 @@ export class OrderComponent implements OnInit {
             }
             this.pendingUpdate = this.calculateHourlyRate(services[0], totalHour);
           } else {
-            this.calculateDailyRate(services[0], currentHour, currentMinutes, stayingDay);
+            this.calculateDailyRate(services[0], currentHour, currentMinutes, stayingDay, stayingHour);
           }
           for (let index = 1; index < services.length; index++) {
             const element = services[index];
@@ -221,12 +221,13 @@ export class OrderComponent implements OnInit {
   calculateDailyRate(service: any,
     checkOutHour: number,
     checkOutMinutes: number,
-    totalDay: number) {
+    totalDay: number,
+    stayingHour: number) {
     let price = 0.0, unit = '';
     this.price = price = service.price;
     this.unit = unit = `ngày`;
     this.quantity = totalDay;
-    if (this.hour > 4 && totalDay <= 0) this.quantity++;
+    if (stayingHour >= 4 && totalDay <= 0) this.quantity++;
     if (checkOutHour >= 12 && totalDay > 0) {
       const totalTime = (((checkOutHour - 12) * 60) + (checkOutMinutes));
       let totalHour = Math.trunc(totalTime / 60);
