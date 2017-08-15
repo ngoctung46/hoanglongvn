@@ -1,4 +1,7 @@
 <div class="content" [class.occupied]="room.isOccupied" [class.dirty]="room.status==2">
+  <div *ngIf="booking" class="ui green ribbon label">
+  Phòng này đã được đặt vào ngày mai bởi {{ booking.name }}<br/>Nhận phòng lúc {{ booking.hour }} 
+  </div>
   <div class="ui huge header aligned center">
     Phòng: {{ room.name }}
   </div>
@@ -12,10 +15,7 @@
     Tình trạng vệ sinh: <span class="ui basic green label right floated" [class.blue]="room.status==2"> {{ room.status == 1 ? 'Sạch' : 'Dơ' }}</span>
   </div>
 </div>
-<div *ngIf="!room.isOccupied && room.status == 1" class="ui bottom attached button blue" (click)="showCustomerSearchModal(room);setSelected(room)">
-  <i class="add icon"></i> Nhận Phòng
-</div>
-<div *ngIf="!room.isOccupied && room.status == 4" class="ui bottom attached button red" (click)="showCustomerSearchModal(room);setSelected(room)">
+<div *ngIf="!room.isOccupied && (room.status == 1 || room.status == 4)" class="ui bottom attached button blue" (click)="showCustomerSearchModal(room);setSelected(room)">
   <i class="add icon"></i> Nhận Phòng
 </div>
 <div *ngIf="room.isOccupied" class="ui two bottom attached buttons">
@@ -25,6 +25,7 @@
 <div *ngIf="!room.isOccupied && room.status==2" class="ui bottom attached button orange" (click)="clean(room)">
   <i class="paint brush icon"></i> Phòng Đã Dọn
 </div>
+
 <app-customer-search-form [roomId]="room.$key" #searchForm></app-customer-search-form>
 
 <sm-popup #customerPopup>

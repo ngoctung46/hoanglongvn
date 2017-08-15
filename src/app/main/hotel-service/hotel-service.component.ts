@@ -25,7 +25,7 @@ export class HotelServiceComponent implements OnInit {
   }
 
   add() {
-    const index = this.servicesList.findIndex(x => x.description === this.service.description);
+    const index = this.servicesList.findIndex(x => x.description === this.service.description && x.unit === this.service.unit);
     if (index !== -1) {
       const totalQuantity :number = Number.parseFloat(this.servicesList[index].quantity) + this.service.quantity;
       this.orderService.updateService(this.orderId, this.servicesList[index].$key, {

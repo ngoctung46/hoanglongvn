@@ -50,7 +50,7 @@ export class RoomCardComponent implements OnInit {
 
   ngOnInit() {
     this.roomService.getRooms().subscribe(rooms => this.rooms = rooms.filter(x => !x.isOccupied));
-    //this.getNextDayBooking();
+    this.getNextDayBooking();
   }
 
   setSelected(room: Room) {
@@ -96,8 +96,6 @@ export class RoomCardComponent implements OnInit {
       this.nextDayBooking.forEach(booking => {
         if (this.room.name === booking.room) {
           this.booking = booking;
-          // this.room.status = 4;
-          this.roomService.updateRoom(this.room.$key, { status: 1 });
         }
       });
     });
