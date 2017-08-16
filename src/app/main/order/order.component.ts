@@ -205,7 +205,7 @@ export class OrderComponent implements OnInit {
   getRoomName(key): string {
     switch (key) {
       case '1': return '201';
-      case '2': return '302';
+      case '2': return '301';
       case '3': return '102';
       case '4': return '202';
       case '5': return '302';
