@@ -8,6 +8,7 @@ import { Customer } from '../customer.model';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Service } from '../service.model';
+import { Router } from '@angular/router'
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -47,7 +48,8 @@ export class OrderComponent implements OnInit {
     private orderService: OrderService,
     private roomService: RoomService,
     private customerService: CustomerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
 
   }
@@ -144,7 +146,7 @@ export class OrderComponent implements OnInit {
   }
   hide() {
     this.orderModal.hide();
-    location.reload();
+    this.router.navigate(['/']);
   }
   remove(key: string) {
     this.orderService.removeService(this.orderId, key);
