@@ -42,7 +42,7 @@
     <button class="ui fluid button green" [routerLink]="['/orders',room.orderId,'yes']" skipLocationChange>Xem Hóa Đơn Tạm Thời</button>
     <button class="ui fluid button blue" [routerLink]="['/hotel-services',room.orderId]" skipLocationChange>Thêm Dịch Vụ</button>
     <button class="ui fluid button violet" (click)="markAsDirtyOrClean(room)">{{ room.status == 1 ? 'Báo Phòng Dơ' : 'Báo Phòng Sạch'}}</button>
-    <button class="ui fluid button teal" [routerLink]="['/orders', room.orderId,'customer']"> Xem Thông Tin Khách Hàng</button>
+    <button class="ui fluid button teal" [routerLink]="['/orders', room.orderId,'customer']" skipLocationChange> Xem/In Thông Tin Khách Hàng</button>
   </div>
   
 </sm-popup>

@@ -18,6 +18,7 @@ import { CustomerInfoComponent } from './customer/customer-info.component';
 import { RouterModule } from '@angular/router';
 import { HotelServiceComponent } from './hotel-service/hotel-service.component';
 import { MainRoutingModule } from './main-routing.module';
+import { Angular2Csv } from 'angular2-csv/Angular2-csv';
 import * as $ from 'jquery';
 
 @NgModule({

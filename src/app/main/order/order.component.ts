@@ -250,4 +250,26 @@ export class OrderComponent implements OnInit {
   addService(service: Service) {
     this.orderService.addService(this.orderId, service);
   }
+
+  print(): void {
+    let printContents, popupWin;
+    printContents = document.getElementById('print-section').innerHTML;
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=100%,width=auto');
+    popupWin.document.open();
+    popupWin.document.write(`
+      <html>
+        <head>
+          <title>Thông Tin Khách Hàng</title>
+        </head>
+    <body onload="window.print();window.close()">
+    <h1 align="center">Thông Tin Khách Hàng</h1>
+    ${printContents}
+    <h4>Tiền Phòng:</h4>
+    <h4>Tiền dịch vụ:</h4>
+    <h4>Tổng Cộng:</h4>
+    </body>
+      </html>`
+    );
+    popupWin.document.close();
+  }
 }

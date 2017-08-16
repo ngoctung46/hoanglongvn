@@ -11,7 +11,6 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Service } from '../service.model';
 import { RoomStatus } from '../room-type';
-import { BookingService } from '../../booking/booking.service';
 
 @Component({
   selector: 'app-room-card',
@@ -34,11 +33,8 @@ export class RoomCardComponent implements OnInit {
   orderId = '';
   moveRoom: Room;
   rooms: Room[];
-  booking: any;
-  nextDayBooking: any[] = [];
 
   constructor(public fb: FormBuilder,
-    private bookingService: BookingService,
     public roomService: RoomService,
     public customerService: CustomerService,
     public orderService: OrderService,
@@ -50,7 +46,6 @@ export class RoomCardComponent implements OnInit {
 
   ngOnInit() {
     this.roomService.getRooms().subscribe(rooms => this.rooms = rooms.filter(x => !x.isOccupied));
-    this.getNextDayBooking();
   }
 
   setSelected(room: Room) {
@@ -67,10 +62,9 @@ export class RoomCardComponent implements OnInit {
     this.roomService.updateRoom(room.$key, { status: room.status, isOccupied: false });
   }
 
-  showCustomerSearchModal(room): void {
+  showCustomerSearchModal(): void {
     this.searchForm.show();
   }
-
 
   markAsDirtyOrClean(room: Room): void {
     if (room.status == 1) room.status = 2;
@@ -81,27 +75,12 @@ export class RoomCardComponent implements OnInit {
   move() {
     this.moveRoom.orderId = this.room.orderId;
     this.moveRoom.isOccupied = true;
-    this.roomService.updateRoom(this.moveRoom.$key, { orderId: this.room.orderId, isOccupied: true });
+    this.roomService.updateRoom(this.moveRoom.$key, { orderId: this.room.orderId, isOccupied: true});
     this.room.isOccupied = false;
     this.room.orderId = ``;
-    this.roomService.updateRoom(this.room.$key, { orderId: '', isOccupied: false });
-    this.moveRoomModal.hide();
+    this.roomService.updateRoom(this.room.$key, {orderId: '', isOccupied: false });
+    this.moveRoomModal.hide();  
   }
-
-  getNextDayBooking() {
-    const date = new Date();
-    const nextDate = (date.getDate() + 1).toString() + `0${date.getMonth() + 1}` + date.getFullYear().toString();
-    this.bookingService.getBookingsWithDay(nextDate).subscribe(bookings => {
-      this.nextDayBooking = bookings;
-      this.nextDayBooking.forEach(booking => {
-        if (this.room.name === booking.room) {
-          this.booking = booking;
-        }
-      });
-    });
-  }
-
-
 }
 
 

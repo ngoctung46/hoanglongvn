@@ -1,8 +1,10 @@
+
 <sm-modal title="Khách Sạn Hoàng Long - 40 Hậu Giang Phường 4, Quận Tân Bình, Tp. Hồ Chí Minh" #orderModal>
   <modal-content>
     <h2 *ngIf="editting !== 'customer'" class="ui center aligned icon header">
       <i class="money icon"></i> Hóa Đơn Tạm Tính
     </h2>
+<div id="print-section">
     <div class="ui center aligned large header">Phòng: {{ roomName }}</div>    
     <p>Tên: {{ (customer | async)?.lastName }} {{ (customer | async)?.firstName }}</p>
     <p>Địa Chỉ: {{ (customer | async)?.streetAddress }} - {{ (customer | async)?.city }} - {{ (customer | async)?.country }}</p>
@@ -13,6 +15,7 @@
       <p>Nơi Cấp: {{ (customer | async)?.issueCity }} - {{ (customer | async)?.issueCountry }} </p>
       <p>Nhận Phòng Lúc: {{ (order | async)?.checkInTime }}</p>
       <p>Thời gian đã ở : {{ day }} ngày, {{ hour }} giờ, and {{ minutes }} phút
+</div>
         <table class="ui teal table" *ngIf="editting !== 'customer'">
           <thead>
             <tr>
@@ -90,6 +93,7 @@
   </modal-content>
   <modal-actions>
     <button class="ui blue button" *ngIf="editting=='no'" (click)="close()">Xác Nhận</button>
+    <button class="ui green button" *ngIf="editting=='customer'" (click)="print()">In</button>
     <button class="ui blue button" *ngIf="(editting === 'yes' || editting === 'customer')" (click)="hide()">Đóng</button>
   </modal-actions>
 </sm-modal>
