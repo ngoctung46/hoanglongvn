@@ -262,7 +262,7 @@ export class OrderComponent implements OnInit {
           <title>Thông Tin Khách Hàng</title>
         </head>
     <body onload="window.print();window.close()">
-    <h1 align="center">Thông Tin Khách Hàng</h1>
+    <h1 align="center">Thông Tin Khách Phòng ${ this.roomName }</h1>
     ${printContents}
     <h4>Tiền Phòng:</h4>
     <h4>Tiền dịch vụ:</h4>

@@ -1,3 +1,4 @@
+import { BookingService } from './../../booking/booking.service';
 import { Component, OnInit, HostBinding, Input, ViewChild } from '@angular/core';
 import { Room } from '../room.model';
 import { Customer } from '../customer.model';
@@ -11,7 +12,6 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Service } from '../service.model';
 import { RoomStatus } from '../room-type';
-
 @Component({
   selector: 'app-room-card',
   templateUrl: './room-card.component.html',
@@ -33,8 +33,10 @@ export class RoomCardComponent implements OnInit {
   orderId = '';
   moveRoom: Room;
   rooms: Room[];
+  booking: any;
 
   constructor(public fb: FormBuilder,
+    public bookingService: BookingService,
     public roomService: RoomService,
     public customerService: CustomerService,
     public orderService: OrderService,
@@ -45,7 +47,12 @@ export class RoomCardComponent implements OnInit {
   }
 
   ngOnInit() {
+    const today = new Date();
+    let date = (today.getDate() + 1).toString() + `0${(today.getMonth() + 1).toString()}` + today.getFullYear().toString();
     this.roomService.getRooms().subscribe(rooms => this.rooms = rooms.filter(x => !x.isOccupied));
+    this.booking = this.bookingService.getBookingsWithDay(date).subscribe( x => {
+     this.booking = x.filter(x => x.room === this.room.name)[0]; 
+    });
   }
 
   setSelected(room: Room) {

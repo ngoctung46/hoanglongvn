@@ -53,7 +53,7 @@ export class BookingComponent implements OnInit {
       room: this.bookingRoom.name, 
       date: date, 
       hour: this.bookingHour,
-      note: this.note,
+      note: this.note || '',
       status: 0
      }
     this.bookingService.addBooking(this.booking);

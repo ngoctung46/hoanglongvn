@@ -1,6 +1,6 @@
 <div class="content" [class.occupied]="room.isOccupied" [class.dirty]="room.status==2">
   <div *ngIf="booking" class="ui green ribbon label">
-    Phòng này đã được đặt vào ngày mai bởi {{ booking.name }}<br/>Nhận phòng lúc {{ booking.hour }}
+    Phòng này đã được đặt vào ngày mai bởi {{ booking?.name }}<br/>Nhận phòng lúc {{ booking?.hour }}
   </div>
   <div class="ui huge header aligned center">
     Phòng: {{ room.name }}

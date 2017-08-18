@@ -43,10 +43,9 @@ export class ReportTableComponent implements OnInit {
       let services = ``;
         for ( let j = 0; j < orders[i].services.length; j++){
           if(j > 0) services += `\n`;          
-          services += `${j+1}.Name:${orders[i].services[j].description} Quantity: ${orders[i].services[j].description} Total: ${orders[i].services[j].quantity * orders[i].services[j].price}`;
+          services += `${orders[i].services[j].description} Số Lượng: ${orders[i].services[j].quantity} Tổng Cộng: ${orders[i].services[j].quantity * orders[i].services[j].price}`;
         }
         orders[i].services = services;
-        
     }
     orders = orders.map( order => new Object({
       'Room': order.roomId,
@@ -66,10 +65,42 @@ export class ReportTableComponent implements OnInit {
       Room: '',
       Service: '',
       Adjustment: '',
-      Discount: '',
+      Discount: 'Tổng Thu Tiền Phòng',
       Total : this.total
     })
-    
-    this.csvReport = new Angular2Csv(orders, 'Daily Report');
+    let reservations = []; 
+    reservations = this.reservations.map( x => new Object({
+      date: new Date().toLocaleDateString(),
+      description: x.description,
+      blank1:'',
+      blank2:'',
+      amount: x.amount
+      })
+    );
+    reservations.splice(0, 0,{
+      date: 'Ngày',
+      description: 'Khoản Thu/Chi',
+      bank1:'',
+      blank2:'',
+      amount: 'Số Tiền'
+    });
+    reservations.push({
+      Room: '',
+      Service: '',
+      Adjustment: '',
+      Discount: 'Tổng Thu/Chi Ngoài',
+      Total : this.reservationTotal
+    })
+
+    reservations.push({
+      date: '',
+      description: '',
+      bank1:'',
+      blank2:'Tổng Thu Trong Ngày:',
+      amount: this.total + this.reservationTotal
+    })
+    const exportList = orders.concat(reservations); 
+    let today = new Date().getDate().toString() + (new Date().getMonth() + 1).toString() + new Date().getFullYear();
+    this.csvReport = new Angular2Csv(exportList, `Báo cáo ngày: ${today}`);
   }
 }
